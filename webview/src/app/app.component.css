@@ -1,0 +1,24 @@
+.portrait {
+  width: auto;
+  margin: 10px;
+}
+.card, .card-header, .list-group-item {
+  border: none;
+  border-radius: 0;
+  background-color: #f4f0e6
+}
+.username {
+  font-size: 1.5em;
+  height: 100%;
+  padding-top: 15%;
+}
+
+.nav-set {
+  padding: 0px;
+}
+
+.divider {
+  border-bottom: 1px solid #dddfe6;
+  padding-bottom: 10px;
+  background-color: #f4f0e6
+}
