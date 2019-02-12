@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/ant.go" line="64" />
+    <bookmark url="file://$PROJECT_DIR$/ant.go" line="67" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a27c0ce-fe61-45a2-8044-562a85d08921" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/downloader/test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/config/setupResponse.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/router/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/router/test/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ant.go" beforeDir="false" afterPath="$PROJECT_DIR$/ant.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/ant" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ant" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/webview/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +21,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ant.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="323">
+              <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+              <folding>
+                <element signature="e#14#147#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,6 +44,9 @@
     <findStrings>
       <find>defer</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/node_modules</dir>
+    </dirStrings>
   </component>
   <component name="GOROOT" path="/usr/lib/go" />
   <component name="Git.Settings">
@@ -70,10 +73,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2324" />
-    <option name="y" value="160" />
-    <option name="width" value="1252" />
-    <option name="height" value="979" />
+    <option name="x" value="2000" />
+    <option name="y" value="62" />
+    <option name="width" value="1242" />
+    <option name="height" value="931" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -96,33 +99,6 @@
               <item name="Git" type="462c0819:PsiDirectoryNode" />
               <item name="ant" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="webview" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="webview" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="webview" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="webview" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -140,7 +116,7 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
@@ -187,7 +163,7 @@
     </configuration>
     <configuration name="ant" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="ant" />
-      <working_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$/bin" />
       <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$/|$PROJECT_DIR$/ant.go" />
       <directory value="$PROJECT_DIR$/" />
@@ -195,20 +171,21 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Build.Goo" />
       <item itemvalue="Go Build.GooSin" />
+      <item itemvalue="Go Build.Goo" />
       <item itemvalue="Go Build.ant" />
     </list>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2324" y="160" width="1252" height="979" extended-state="0" />
+    <frame x="2552" y="136" width="1242" height="931" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15257049" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15993266" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23085983" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22835633" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4953146" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -283,7 +260,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Taipei-Torrent/torrent/peer.go" />
     <entry file="file://$PROJECT_DIR$/../Taipei-Torrent/torrent/pieces.go" />
     <entry file="file://$PROJECT_DIR$/../Taipei-Torrent/torrent/sftp.go" />
     <entry file="file://$PROJECT_DIR$/../Taipei-Torrent/torrent/torrentLoop.go" />
@@ -341,20 +317,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dist.go" />
     <entry file="file://$PROJECT_DIR$/webview/dist/index.html" />
-    <entry file="file://$PROJECT_DIR$/webview/dist/webview/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ant.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/webview/dist/webview/index.html" />
     <entry file="file://$PROJECT_DIR$/server/router/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -409,6 +372,26 @@
         <state>
           <folding>
             <element signature="e#17#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../torrent/worst_conns.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#17#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+          <folding>
+            <element signature="e#14#147#0" expanded="true" />
           </folding>
         </state>
       </provider>

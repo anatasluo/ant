@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"github.com/anatasluo/ant/server/router"
 	"github.com/zserge/webview"
+	"strings"
 	"log"
 	"net"
 	"net/http"
-	"strings"
 	"sync"
 )
 
@@ -27,7 +27,8 @@ var wg sync.WaitGroup
 
 
 func configInit()  {
-	Client_config.path = "/home/anatas/Desktop/Git/ant/webview/dist/webview"
+	Client_config.path = "../webview/dist/webview"
+	wg.Add(1)
 }
 
 func runLocalHTTP() {
@@ -51,6 +52,8 @@ func runLocalHTTP() {
 		log.Fatal(http.Serve(ln, nil))
 
 	}()
+	fmt.Println(ln.Addr().String())
+	//wg.Wait()
 
 }
 
