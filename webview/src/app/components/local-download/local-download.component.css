@@ -1,0 +1,20 @@
+.nav-top {
+  /* border: 1px solid rgba(0,0,0,.125); */
+  padding: 0px;
+  background-color: #ffffff;
+}
+
+.nav-btn-groups {
+  /* border-right: 1px solid rgba(0, 0, 0, .125); */
+  /* border-color: #f4f0e6; */
+}
+
+button {
+  border: none;
+  background-color: #ffffff;
+}
+
+.infoPage {
+  background-color: #fafbfd;
+  min-height: 940px;
+}
