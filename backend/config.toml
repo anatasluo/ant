@@ -1,0 +1,41 @@
+
+[connectsetting]
+  authpassword = "passwd"
+  authusername = "ANT"
+  ip = "127.0.0.1"
+  port = "8482"
+  supportremote = false
+
+[enginesetting]
+  logginglevel = 5
+  loggingoutput = "file"
+  maxactivetorrents = 5
+  socksproxyurl = ""
+  usesocksproxy = false
+
+  [enginesetting.torrentconfig]
+    bep20 = ""
+    datadir = "download"
+    debug = false
+    defaultstorage = ""
+    dhtconfig = ""
+    disableipv6 = false
+    disablepex = false
+    disabletcp = false
+    disabletrackers = false
+    disableutp = false
+    downloadratelimit = "Unlimited"
+    extendedhandshakeclientversion = ""
+    httpuseragent = ""
+    ipblocklist = ""
+    listenaddr = ""
+    nodht = false
+    noupload = false
+    peerid = ""
+    seed = false
+    uploadratelimit = "Unlimited"
+
+    [enginesetting.torrentconfig.encryptionpolicy]
+      disableencryption = false
+      forceencryption = false
+      prefernoencryption = true
