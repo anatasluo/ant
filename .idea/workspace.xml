@@ -2,74 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a27c0ce-fe61-45a2-8044-562a85d08921" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/config.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/router/auth.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/router/router.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/setting/loadSetting.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ant.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend" beforeDir="false" afterPath="$PROJECT_DIR$/backend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/ant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/ant.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/backend/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/LICENSE" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/ant.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/ant.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/bin/Goo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/bin/GooSin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/bin/ant" beforeDir="false" afterPath="$PROJECT_DIR$/backend/bin/ant" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/downloader/test.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/backend/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/backend/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server/config/setupResponse.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/setting/setupResponse.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server/router/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server/router/test/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/angular.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/e2e/protractor.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/e2e/src/app.e2e-spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/e2e/src/app.po.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/e2e/tsconfig.e2e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/app-routing.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/app.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/app.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/local-download/local-download.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/local-download/local-download.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/local-download/local-download.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/app/local-download/local-download.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/browserslist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/environments/environment.prod.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/environments/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/karma.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/polyfills.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/tsconfig.spec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/src/tslint.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webview/tslint.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/webview/LICENSE" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,19 +24,59 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/ant.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+            <state relative-caret-position="154">
+              <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/go.mod">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-357">
+              <caret column="39" selection-start-column="39" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/go.sum">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3400">
+              <caret line="7" column="63" lean-forward="true" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="66">
+                <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/setting/setupResponse.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -120,15 +102,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="148">
               <caret line="223" selection-start-line="223" selection-end-line="241" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/router/auth.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -189,9 +162,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="585" />
-    <option name="y" value="229" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="492" />
+    <option name="y" value="81" />
     <option name="width" value="1447" />
     <option name="height" value="870" />
   </component>
@@ -220,20 +193,6 @@
               <item name="Git" type="462c0819:PsiDirectoryNode" />
               <item name="ant" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="setting" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -314,15 +273,15 @@
     </list>
   </component>
   <component name="ToolWindowManager">
-    <frame x="585" y="229" width="1447" height="870" extended-state="0" />
+    <frame x="-4" y="0" width="1928" height="1039" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29718006" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22049356" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32951945" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28011206" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22650057" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4953146" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -408,12 +367,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../torrent/tracker/http_test.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/tracker/expvar.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/../torrent/tracker/http.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -496,32 +449,12 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/config.go" />
-    <entry file="file://$PROJECT_DIR$/backend/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="38">
-            <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1197" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/router/test/main.go" />
-    <entry file="file://$PROJECT_DIR$/backend/go.mod">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="39" selection-start-column="39" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/go.sum">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/config.toml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -543,13 +476,6 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/go/pkg/mod/github.com/xyproto/permissions2@v0.0.0-20190219060541-f47b0751729e/permissions.go" />
-    <entry file="file://$PROJECT_DIR$/backend/ant.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/router/auth.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -581,7 +507,44 @@
     <entry file="file://$PROJECT_DIR$/backend/setting/setupResponse.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/ant.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/go.mod">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <caret column="39" selection-start-column="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="66">
+            <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/go.sum">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3400">
+          <caret line="7" column="63" lean-forward="true" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
         </state>
       </provider>
     </entry>
