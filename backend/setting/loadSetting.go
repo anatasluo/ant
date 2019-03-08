@@ -7,17 +7,15 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"golang.org/x/time/rate"
+	"os"
 	"path/filepath"
 	"strconv"
 )
 
 
 var (
-	// For global logger
-	Logger *log.Logger
-
 	clientConfig ClientSetting
-	haveCreatedConfig bool = false
+	haveCreatedConfig 				= false
 )
 
 type ConnectSetting struct {
@@ -32,29 +30,28 @@ type ConnectSetting struct {
 type EngineSetting struct {
 	UseSocksproxy 		bool
 	SocksProxyURL 		string
+	MaxActiveTorrents	int
+	TorrentDBPath		string
+	TorrentConfig		torrent.ClientConfig `json:"-"`
+	Tmpdir				string
+}
+
+type LoggerSetting struct {
 	LoggingLevel 		log.Level
 	LoggingOutput 		string
-	MaxActiveTorrents	int
-	TorrentConfig		torrent.ClientConfig `json:"-"`
+	Logger				*log.Logger
 }
 
 type ClientSetting struct {
 	ConnectSetting
 	EngineSetting
+	LoggerSetting
 }
 
-func (clientConfig *ClientSetting) loadDefaultConfig() {
-	var ClientConfig ClientSetting
-	ClientConfig.EngineSetting.LoggingLevel = log.WarnLevel
-	ClientConfig.EngineSetting.TorrentConfig.DataDir = "download"
-	ClientConfig.EngineSetting.TorrentConfig.Seed = false
+func (clientConfig *ClientSetting) loadDefaultConfig()() {
 
-	ClientConfig.ConnectSetting.SupportRemote = false
-	ClientConfig.ConnectSetting.IP = "127.0.0.1"
-	ClientConfig.ConnectSetting.Port = 8482
-	ClientConfig.ConnectSetting.Addr = ClientConfig.ConnectSetting.IP + ":" + string(ClientConfig.ConnectSetting.Port)
-	ClientConfig.ConnectSetting.AuthUsername = "ANT"
-	ClientConfig.ConnectSetting.AuthPassword = "passwd"
+	clientConfig.LoggerSetting.Logger = log.New()
+
 }
 
 // TODO
@@ -64,13 +61,22 @@ func calculateRateLimiters(uploadRate, downloadRate string) (*rate.Limiter, *rat
 	return uploadRateLimiter, downloadRateLimiter
 }
 
-func (clientConfig *ClientSetting) loadValueFromConfig() {
+func (clientConfig *ClientSetting) loadValueFromConfig()() {
 
-	clientConfig.EngineSetting.LoggingLevel  		= log.AllLevels[viper.GetInt("EngineSetting.LoggingLevel")]
-	clientConfig.EngineSetting.LoggingOutput 		= viper.GetString("EngineSetting.LoggingOutput")
+	clientConfig.LoggerSetting.LoggingLevel  		= log.AllLevels[viper.GetInt("LoggerSetting.LoggingLevel")]
+	clientConfig.LoggerSetting.LoggingOutput 		= viper.GetString("LoggerSetting.LoggingOutput")
+	clientConfig.LoggerSetting.Logger.SetLevel(clientConfig.LoggerSetting.LoggingLevel)
+
 	clientConfig.EngineSetting.UseSocksproxy 		= viper.GetBool("EngineSetting.UseSocksproxy")
 	clientConfig.EngineSetting.SocksProxyURL 		= viper.GetString("EngineSetting.SocksProxyURL")
 	clientConfig.EngineSetting.MaxActiveTorrents 	= viper.GetInt("EngineSetting.MaxActiveTorrents")
+	clientConfig.EngineSetting.TorrentDBPath 		= viper.GetString("EngineSetting.TorrentDBPath")
+	tmpDir, tmpErr := filepath.Abs(filepath.ToSlash(viper.GetString("EngineSetting.Tmpdir")))
+	os.Mkdir(tmpDir, 0755)
+	clientConfig.EngineSetting.Tmpdir				= tmpDir
+	if tmpErr != nil {
+		fmt.Printf("Fail to create default tmpdir %s \n", tmpErr)
+	}
 
 	clientConfig.ConnectSetting.IP = viper.GetString("ConnectSetting.IP")
 	clientConfig.ConnectSetting.Port = viper.GetInt("ConnectSetting.Port")
@@ -83,8 +89,10 @@ func (clientConfig *ClientSetting) loadValueFromConfig() {
 	clientConfig.ConnectSetting.AuthUsername = viper.GetString("ConnectSetting.AuthUsername")
 	clientConfig.ConnectSetting.AuthPassword = viper.GetString("ConnectSetting.AuthPassword")
 
+	clientConfig.EngineSetting.TorrentConfig = *torrent.NewDefaultClientConfig()
 	clientConfig.EngineSetting.TorrentConfig.UploadRateLimiter, clientConfig.EngineSetting.TorrentConfig.DownloadRateLimiter = calculateRateLimiters(viper.GetString("EngineSetting.TorrentConfig.UploadRateLimit"), viper.GetString("EngineSetting.TorrentConfig.DownloadRateLimit"))
 	tmpDataDir, err := filepath.Abs(filepath.ToSlash(viper.GetString("EngineSetting.TorrentConfig.DataDir")))
+	os.Mkdir(tmpDataDir, 0755)
 	clientConfig.EngineSetting.TorrentConfig.DataDir = tmpDataDir
 	if err != nil {
 		fmt.Printf("Fail to create default datadir %s \n", err)
@@ -93,7 +101,8 @@ func (clientConfig *ClientSetting) loadValueFromConfig() {
 	if tmpListenAddr != "" {
 		clientConfig.EngineSetting.TorrentConfig.SetListenAddr(tmpListenAddr)
 	}
-	clientConfig.EngineSetting.TorrentConfig.ListenPort = clientConfig.ConnectSetting.Port
+	//clientConfig.EngineSetting.TorrentConfig.ListenPort = clientConfig.ConnectSetting.Port
+	clientConfig.EngineSetting.TorrentConfig.ListenPort = viper.GetInt("EngineSetting.TorrentConfig.ListenPort")
 	clientConfig.EngineSetting.TorrentConfig.DisablePEX = viper.GetBool("EngineSetting.TorrentConfig.DisablePEX")
 	clientConfig.EngineSetting.TorrentConfig.NoDHT = viper.GetBool("EngineSetting.TorrentConfig.NoDHT")
 	clientConfig.EngineSetting.TorrentConfig.NoUpload = viper.GetBool("EngineSetting.TorrentConfig.NoUpload")
@@ -110,22 +119,19 @@ func (clientConfig *ClientSetting) loadValueFromConfig() {
 
 }
 
-func (clientConfig *ClientSetting) UpdateConfig (updateKey, updateValue string)  {
-	viper.Set(updateKey, updateValue)
-	viper.WriteConfig()
-}
-
 // Load setting from config.toml
-func createEngineSetting() ClientSetting{
+func (clientConfig *ClientSetting) createClientSetting()(){
+
+	clientConfig.loadDefaultConfig()
+
 	viper.SetConfigName("config")
 	viper.AddConfigPath("./")
 	viper.AddConfigPath("../")
 	err := viper.ReadInConfig()
 	if err != nil {
-		fmt.Printf("error config file : %S \n", err)
-		fmt.Println("use default config")
-		clientConfig.loadDefaultConfig()
+		clientConfig.LoggerSetting.Logger.WithFields(log.Fields{"Detail":err}).Fatal("Can not find config.toml")
 	}else {
+
 		clientConfig.loadValueFromConfig()
 	}
 	viper.WatchConfig()
@@ -133,15 +139,20 @@ func createEngineSetting() ClientSetting{
 		fmt.Println("Config file changed:", e.Name)
 		clientConfig.loadValueFromConfig()
 	})
-	return clientConfig
 }
 
 func GetClientSetting() ClientSetting {
 	if haveCreatedConfig == false {
 		haveCreatedConfig = true
-		createEngineSetting()
+		clientConfig.createClientSetting()
 	}
 	return clientConfig
+}
+
+//TODO : Not only update the config.toml, but also the clientconfig
+func UpdateConfig (updateKey, updateValue string)()  {
+	viper.Set(updateKey, updateValue)
+	viper.WriteConfig()
 }
 
 

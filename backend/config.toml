@@ -6,12 +6,16 @@
   port = "8482"
   supportremote = false
 
-[enginesetting]
+[LoggerSetting]
   logginglevel = 5
   loggingoutput = "file"
+
+[enginesetting]
   maxactivetorrents = 5
   socksproxyurl = ""
   usesocksproxy = false
+  TorrentDBPath = "storm.db"
+  Tmpdir        = "tmp"
 
   [enginesetting.torrentconfig]
     bep20 = ""
@@ -29,6 +33,7 @@
     httpuseragent = ""
     ipblocklist = ""
     listenaddr = ""
+    ListenPort = 0
     nodht = false
     noupload = false
     peerid = ""

@@ -1,36 +1,54 @@
 package main
 
 import (
+	"github.com/anatasluo/ant/backend/engine"
 	"github.com/anatasluo/ant/backend/router"
 	"github.com/anatasluo/ant/backend/setting"
 	log "github.com/sirupsen/logrus"
+	"github.com/urfave/negroni"
 	"net/http"
-	"sync"
+	"os"
+	"os/signal"
+	"runtime"
 )
 
 var (
-	Logger = log.New()
-	ClientConfig = setting.GetClientSetting()
-
-	Wg sync.WaitGroup
+	clientConfig 		= setting.GetClientSetting()
+	logger 				= clientConfig.LoggerSetting.Logger
+	torrentEngine 		= engine.GetEngine()
+	nRouter				  *negroni.Negroni
 )
 
-func runLocalHTTP() {
-	Wg.Add(1)
-
+func runAPP() {
 	go func() {
 		// Init server router
-		n := router.InitRouter()
-		log.Fatal(http.ListenAndServe(ClientConfig.ConnectSetting.Addr, n))
-	}()
+		nRouter = router.InitRouter()
+		err := http.ListenAndServe(clientConfig.ConnectSetting.Addr, nRouter)
+		if err != nil {
+			logger.WithFields(log.Fields{"Error":err}).Fatal("Failed to created http service")
+		}
 
-	Wg.Wait()
+	}()
 }
 
+func cleanUp()  {
+	go func() {
+		c := make(chan os.Signal, 1)
+		signal.Notify(c, os.Interrupt)
+		<-c
+		log.Info("The progame will stop!")
+		torrentEngine.Cleanup()
+		os.Exit(0)
+	}()
+}
 
+func test()  {
+
+}
 func main() {
-
-	runLocalHTTP()
-
+	runAPP()
+	cleanUp()
+	test()
+	runtime.Goexit()
 }
 
