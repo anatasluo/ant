@@ -12,34 +12,6 @@ type TorrentDB struct {
 	Path	string
 }
 
-type TorrentFilePriority struct {
-	FilePath		string
-	FilePriority  	string
-	FileSize		int64
-}
-
-type TorrentLocal struct {
-	Hash		  		string `storm:"id, unique"`
-	InfoBytes	  		[]byte
-	DataAdded	  		string
-	StoragePath			string
-	TempStoragePath		string
-	TorrentMoved		bool
-	TorrentName			string
-	TorrentStatus		string //TODO
-	TorrentUploadLimit	bool
-	MaxConnections		int
-	TorrentType			string
-	TorrentFileName		string
-	TorrentFile			[]byte
-	Label				string
-	UploadedBytes		int64
-	DownloadedBytes		int64
-	TorrentSize			int64
-	UploadRatio			string
-	TorrentFilePriority	[]TorrentFilePriority
-}
-
 func GetTorrentDB(dbPath string) *TorrentDB {
 	db, err := storm.Open(dbPath)
 	var torrentDB	TorrentDB
@@ -60,21 +32,21 @@ func (TorrentDB *TorrentDB)Cleanup()() {
 	}
 }
 
-func (TorrentQueues *TorrentQueues)UpdateQueues()()  {
+func (TorrentQueues *TorrentLogsAndID)UpdateQueues()()  {
 
 }
 
 
 //REST for Torrent File
-func (TorrentDB *TorrentDB)GetAllTorrents()(torrentLocalArray []*TorrentLocal) {
-	err := TorrentDB.DB.All(&torrentLocalArray)
+func (TorrentDB *TorrentDB)GetAllTorrents()(TorrentLogArray []*TorrentLog) {
+	err := TorrentDB.DB.All(&TorrentLogArray)
 	if err != nil {
 		logger.WithFields(log.Fields{"Database":TorrentDB.DB, "Detail": err}).Error("Unable To FetchAll")
 	}
 	return
 }
 
-func (TorrentDB *TorrentDB)GetOneTorrent(selectedHash string)(selectedTorrent TorrentLocal) {
+func (TorrentDB *TorrentDB)GetOneTorrent(selectedHash string)(selectedTorrent TorrentLog) {
 	err := TorrentDB.DB.One("Hash", selectedHash, &selectedTorrent)
 	if err != nil {
 		logger.WithFields(log.Fields{"Database":TorrentDB, "Detail": err}).Error("Error in finding selected torrent")
@@ -82,7 +54,7 @@ func (TorrentDB *TorrentDB)GetOneTorrent(selectedHash string)(selectedTorrent To
 	return
 }
 
-func (TorrentDB *TorrentDB)AddOneTorent(torrentData TorrentLocal)() {
+func (TorrentDB *TorrentDB)AddOneTorent(torrentData TorrentLog)() {
 	logger.WithFields(log.Fields{"path" : torrentData.StoragePath, "name": torrentData.TorrentName}).Info("Add One Torrent successful")
 	err := TorrentDB.DB.Save(&torrentData)
 	if err != nil {
@@ -110,17 +82,17 @@ func (TorrentDB *TorrentDB)DelOneTorrentAndFile(selectedHash string, downloadPat
 	return
 }
 
-func (TorrentDB *TorrentDB)UpdateStorageTick(torrentLocal TorrentLocal)() {
-	err := TorrentDB.DB.Update(&torrentLocal)
+func (TorrentDB *TorrentDB)UpdateStorageTick(TorrentLog TorrentLog)() {
+	err := TorrentDB.DB.Update(&TorrentLog)
 	if err != nil {
-		logger.WithFields(log.Fields{"TorrentInfo":torrentLocal, "Detail": err}).Error("Unable To UpdateOneTorrent")
+		logger.WithFields(log.Fields{"TorrentInfo":TorrentLog, "Detail": err}).Error("Unable To UpdateOneTorrent")
 	}else{
-		logger.WithFields(log.Fields{"TorrentInfo":torrentLocal}).Debug("Successfully update one torrent")
+		logger.WithFields(log.Fields{"TorrentInfo":TorrentLog}).Debug("Successfully update one torrent")
 	}
 }
 
-func (TorrentDB *TorrentDB)GetQueues()(torrentQueues TorrentQueues) {
-	err := TorrentDB.DB.One("ID", 5, &torrentQueues)
+func (TorrentDB *TorrentDB)GetQueues()(torrentLogs TorrentLogsAndID) {
+	err := TorrentDB.DB.One("ID", TorrentLogsID, &torrentLogs)
 	if err != nil {
 		logger.WithFields(log.Fields{"Database":TorrentDB.DB, "Error":err}).Error("Unable to get queues")
 	}

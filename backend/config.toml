@@ -11,11 +11,12 @@
   loggingoutput = "file"
 
 [enginesetting]
-  maxactivetorrents = 5
-  socksproxyurl = ""
-  usesocksproxy = false
-  TorrentDBPath = "storm.db"
-  Tmpdir        = "tmp"
+  maxactivetorrents     = 5
+  socksproxyurl         = ""
+  usesocksproxy         = false
+  TorrentDBPath         = "storm.db"
+  Tmpdir                = "tmp"
+  MaxEstablishedConns   = 60
 
   [enginesetting.torrentconfig]
     bep20 = ""

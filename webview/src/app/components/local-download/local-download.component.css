@@ -1,7 +1,7 @@
 .nav-top {
-  /* border: 1px solid rgba(0,0,0,.125); */
+  /* border-bottom: 1px solid rgba(0,0,0,.125); */
   padding: 0px;
-  background-color: #ffffff;
+  background-color: #FCFCFC;
 }
 
 .nav-btn-groups {
@@ -11,10 +11,15 @@
 
 button {
   border: none;
-  background-color: #ffffff;
+  background-color: #FCFCFC;
 }
 
 .infoPage {
-  background-color: #fafbfd;
+  background-color: #FFFFFF;
   min-height: 940px;
+}
+
+.singleTorrent {
+  background-color: #FCFCFC;
+  margin: 10px;
 }

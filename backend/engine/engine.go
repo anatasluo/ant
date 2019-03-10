@@ -4,9 +4,6 @@ import (
 	"github.com/anacrolix/torrent"
 	"github.com/anatasluo/ant/backend/setting"
 	log "github.com/sirupsen/logrus"
-	"io/ioutil"
-	"os"
-	"time"
 )
 
 type Engine struct {
@@ -32,87 +29,60 @@ func GetEngine() *Engine {
 }
 
 func (engine *Engine)initAndRunEngine()()  {
+	engine.TorrentDB = GetTorrentDB(clientConfig.EngineSetting.TorrentDBPath)
+
 	var tmpErr error
 	engine.TorrentEngine, tmpErr = torrent.NewClient(&clientConfig.EngineSetting.TorrentConfig)
 	if tmpErr != nil {
 		logger.WithFields(log.Fields{"Error":tmpErr}).Error("Failed to Created torrent engine")
 	}
-	engine.TorrentDB = GetTorrentDB(clientConfig.EngineSetting.TorrentDBPath)
 
 	engine.WebInfo = &WebviewInfo{}
 	engine.EngineRunningInfo = &EngineInfo{}
+	engine.EngineRunningInfo.Init()
 
 	engine.setEnvironment()
 }
 
 func (engine *Engine)setEnvironment()() {
-	err := engine.TorrentDB.DB.One("ID", 5, &engine.WebInfo.TQueues)
+	err := engine.TorrentDB.DB.One("ID", TorrentLogsID, &engine.EngineRunningInfo.TorrentLogsAndID)
 	if err != nil {
 		logger.WithFields(log.Fields{"Error":err}).Info("Init running queue now")
-		engine.WebInfo.TQueues.ID = 5
-		tmpErr := engine.TorrentDB.DB.Save(&engine.WebInfo.TQueues)
-		if tmpErr != nil {
-			logger.WithFields(log.Fields{"Error":err}).Info("Failed to save torrent queues")
+	}
+
+	logger.Info("Number of torrent(s) in db is ", len(engine.EngineRunningInfo.TorrentLogs))
+
+	for _, singleLog := range engine.EngineRunningInfo.TorrentLogs {
+
+		if singleLog.Status != DeletedStatus && singleLog.Status != CompletedStatus {
+			//fmt.Printf("%s-->%s\n", singleLog.TorrentName, singleLog.Status)
+			_, tmpErr := engine.TorrentEngine.AddTorrent(&singleLog.MetaInfo)
+			if tmpErr != nil {
+				logger.WithFields(log.Fields{"Error":tmpErr}).Info("Failed to add torrent to client")
+			}
+		}
+	}
+	engine.EngineRunningInfo.UpdateTorrentLog()
+}
+
+
+func (engine *Engine)Cleanup()() {
+
+	for index := range engine.EngineRunningInfo.TorrentLogs {
+		if engine.EngineRunningInfo.TorrentLogs[index].Status != DeletedStatus && engine.EngineRunningInfo.TorrentLogs[index].Status != CompletedStatus {
+			if engine.EngineRunningInfo.TorrentLogs[index].Status == RunningStatus {
+				engine.StopOneTorrent(engine.EngineRunningInfo.TorrentLogs[index].HashInfoBytes().HexString())
+			}
+			engine.EngineRunningInfo.TorrentLogs[index].Status = StoppedStatus
 		}
 	}
 
-
-
-}
-
-func (engine *Engine)waitForInfoByte(singleTorrent *torrent.Torrent, seconds time.Duration)(downloaded bool) {
-	logger.WithFields(log.Fields{"Seconds to wait for info " : seconds}).Info("start to download info for a torrent")
-	timeout := make(chan bool, 1)
-	go func() {
-		time.Sleep(seconds * time.Second)
-	}()
-	select {
-	case <- singleTorrent.GotInfo():
-			log.Info("Get info fo torrent successfully")
-			return true
-	case <- timeout:
-			log.Info("Failed to get info for a torrent")
-			singleTorrent.Drop()
-			return false
-	}
-}
-
-
-func (engine *Engine)readTorrentFile(elem *TorrentLocal)(singleTorrent *torrent.Torrent, err error) {
-	tempFile, err := ioutil.TempFile("", "TorrentFileTemp")
-	if err != nil {
-		logger.WithFields(log.Fields{"TempFile": tempFile, "Error": err}).Error("Unable to create a temp file")
-		return nil, err
+	tmpErr := engine.TorrentDB.DB.Save(&engine.EngineRunningInfo.TorrentLogsAndID)
+	if tmpErr != nil {
+		logger.WithFields(log.Fields{"Error":tmpErr}).Fatal("Failed to save torrent queues")
 	}
 
-	//TODO
-	defer os.Remove(tempFile.Name())
-
-	if _, err := tempFile.Write(elem.TorrentFile); err != nil {
-		logger.WithFields(log.Fields{"TempFile": tempFile, "Error": err}).Error("Unable to write a temp file")
-		return nil, err
-	}
-
-	if err := tempFile.Close(); err != nil {
-		logger.WithFields(log.Fields{"TempFile": tempFile, "Error": err}).Error("Unable to close a temp file")
-	}
-
-	if _, err = os.Stat(elem.TorrentFileName); err != nil {
-		logger.WithFields(log.Fields{"TempFileName": elem.TorrentFileName, "Error": err}).Error("Unable to find torrent file")
-		engine.TorrentDB.DelOneTorrent(elem.Hash)
-		return nil, err
-	}
-
-	if singleTorrent, err = engine.TorrentEngine.AddTorrentFromFile(elem.TorrentFileName); err !=nil {
-		logger.WithFields(log.Fields{"TempFileName": elem.TorrentFileName, "Error": err}).Error("Unable to add torrent file")
-		engine.TorrentDB.DelOneTorrent(elem.Hash)
-		return nil, err
-	}
-
-	return
-}
-
-func (engine *Engine)Cleanup()() {
+	engine.TorrentEngine.Close()
 	engine.TorrentDB.Cleanup()
 }
 

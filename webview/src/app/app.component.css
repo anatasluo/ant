@@ -1,15 +1,22 @@
 * {
-  background-color: #f4f5f7
+  background-color: #f4f5f7;
 }
 
 .portrait {
   width: auto;
   margin: 10px;
 }
+
+.card-header {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
 .card, .card-header, .list-group-item {
   border: none;
   border-radius: 0;
 }
+
 .username {
   font-size: 1.5em;
   height: 100%;
@@ -18,6 +25,7 @@
 
 .nav-set {
   padding: 0px;
+  font-size: 1.2em;
 }
 
 .divider {

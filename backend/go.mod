@@ -3,6 +3,7 @@ module github.com/anatasluo/ant/backend
 require (
 	github.com/Sioro-Neoku/go-peerflix v0.0.0-20190114094900-a8eb11c62265 // indirect
 	github.com/akavel/rsrc v0.0.0-20170831122431-f6a15ece2cfd // indirect
+	github.com/anacrolix/missinggo v0.0.0-20181129073415-3237bf955fed
 	github.com/anacrolix/torrent v1.0.0
 	github.com/andlabs/ui v0.0.0-20180902183112-867a9e5a498d
 	github.com/asdine/storm v2.1.2+incompatible

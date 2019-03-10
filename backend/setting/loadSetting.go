@@ -34,6 +34,7 @@ type EngineSetting struct {
 	TorrentDBPath		string
 	TorrentConfig		torrent.ClientConfig `json:"-"`
 	Tmpdir				string
+	MaxEstablishedConns int
 }
 
 type LoggerSetting struct {
@@ -50,6 +51,7 @@ type ClientSetting struct {
 
 func (clientConfig *ClientSetting) loadDefaultConfig()() {
 
+	//TODO toml file to map[string]string and to json and then unmarshall to struct
 	clientConfig.LoggerSetting.Logger = log.New()
 
 }
@@ -71,6 +73,7 @@ func (clientConfig *ClientSetting) loadValueFromConfig()() {
 	clientConfig.EngineSetting.SocksProxyURL 		= viper.GetString("EngineSetting.SocksProxyURL")
 	clientConfig.EngineSetting.MaxActiveTorrents 	= viper.GetInt("EngineSetting.MaxActiveTorrents")
 	clientConfig.EngineSetting.TorrentDBPath 		= viper.GetString("EngineSetting.TorrentDBPath")
+	clientConfig.EngineSetting.MaxEstablishedConns 	= viper.GetInt("EngineSetting.MaxEstablishedConns")
 	tmpDir, tmpErr := filepath.Abs(filepath.ToSlash(viper.GetString("EngineSetting.Tmpdir")))
 	os.Mkdir(tmpDir, 0755)
 	clientConfig.EngineSetting.Tmpdir				= tmpDir

@@ -1,10 +1,12 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, Menu, Tray } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
+
+let tray = null;
 
 function createWindow() {
 
@@ -13,10 +15,14 @@ function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height
+    width           : size.width * 0.8,
+    height          : size.height * 0.8,
+    minWidth        : size.width * 0.6,
+    minHeight       : size.height * 0.6,
+    title           : "ANT Downloader",
+    icon            : "./src/assets/tray.png",
+    autoHideMenuBar : true,
+    titleBarStyle   : "hidden",
   });
 
   if (serve) {
@@ -40,7 +46,18 @@ function createWindow() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null;
+    tray.destroy();
   });
+
+  tray = new Tray('./src/assets/tray.png')
+  const contextMenu = Menu.buildFromTemplate([
+    { label: '新建下载', type: 'normal' },
+    { label: '', type: 'separator' },
+    { label: '全部开始', type: 'normal' },
+    { label: '全部暂停', type: 'normal' },
+  ])
+  tray.setToolTip('ANT Downloader')
+  tray.setContextMenu(contextMenu)
 
 }
 
@@ -70,5 +87,5 @@ try {
 
 } catch (e) {
   // Catch Error
-  // throw e;
+  throw e;
 }

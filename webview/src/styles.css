@@ -1,3 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
+
+html {
+  /* height: 780px;
+  width: 1070px; */
+}
+
+body {
+  width: 100%;
+  font-size:100%;
+}
+
+::-webkit-scrollbar{
+display:none;
+}

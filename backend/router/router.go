@@ -7,6 +7,7 @@ import (
 	"github.com/rs/cors"
 	"github.com/urfave/negroni"
 )
+
 var (
 	clientConfig 			= setting.GetClientSetting()
 	runningEngine		 	= engine.GetEngine()
@@ -18,6 +19,7 @@ func InitRouter() *negroni.Negroni {
 
 	// Enable router
 	handleTorrent(router)
+	handleMagent(router)
 
 	// Use global middleware
 	n := negroni.New()
