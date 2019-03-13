@@ -29,12 +29,14 @@ function createWindow() {
     }
     else {
         win.loadURL(url.format({
-            pathname: path.join(__dirname, 'dist/webview/index.html'),
+            pathname: path.join(__dirname, 'dist/index.html'),
             protocol: 'file:',
             slashes: true
         }));
     }
-    win.webContents.openDevTools();
+    if (serve) {
+        win.webContents.openDevTools();
+    }
     // Emitted when the window is closed.
     win.on('closed', function () {
         // Dereference the window object, usually you would store window
@@ -76,6 +78,6 @@ try {
 }
 catch (e) {
     // Catch Error
-    throw e;
+    // throw e;
 }
 //# sourceMappingURL=main.js.map

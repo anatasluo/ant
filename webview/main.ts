@@ -15,14 +15,14 @@ function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    width           : size.width * 0.65,
-    height          : size.height * 0.7,
-    minWidth        : size.width * 0.6,
-    minHeight       : size.height * 0.6,
-    title           : "ANT Downloader",
-    icon            : "./src/assets/tray.png",
-    autoHideMenuBar : true,
-    titleBarStyle   : "hidden",
+    width: size.width * 0.65,
+    height: size.height * 0.7,
+    minWidth: size.width * 0.6,
+    minHeight: size.height * 0.6,
+    title: "ANT Downloader",
+    icon: "./src/assets/tray.png",
+    autoHideMenuBar: true,
+    titleBarStyle: "hidden",
   });
 
   if (serve) {
@@ -32,13 +32,15 @@ function createWindow() {
     win.loadURL('http://localhost:4200');
   } else {
     win.loadURL(url.format({
-      pathname: path.join(__dirname, 'dist/webview/index.html'),
+      pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',
       slashes: true
     }));
   }
 
-  win.webContents.openDevTools();
+  if (serve) {
+    win.webContents.openDevTools();
+  }
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -87,5 +89,5 @@ try {
 
 } catch (e) {
   // Catch Error
-  throw e;
+  // throw e;
 }

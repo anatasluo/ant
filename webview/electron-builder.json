@@ -1,5 +1,5 @@
 {
-  "productName": "ANT Downloader",
+  "productName": "angular-electron",
   "directories": {
     "output": "release/"
   },

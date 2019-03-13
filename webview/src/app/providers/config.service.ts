@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class ConfigService {
   port = "8482";
   host = "127.0.0.1";
-  addr = this.host + ":" + this.addr;
+  addr = this.host + ":" + this.port;
   baseUrl = "//" + this.addr;
 
   constructor() { }

@@ -1,13 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../out-tsc/app",
-    "module": "commonjs",
-    "target": "es5",
-    "types": [
-      "jasmine",
-      "jasminewd2",
-      "node"
-    ]
-  }
+    "outDir": "../out-tsc/e2e",
+    "module": "es2015",
+    "types":[]
+  },
+  "include": [
+    "**/*.ts"
+  ]
 }

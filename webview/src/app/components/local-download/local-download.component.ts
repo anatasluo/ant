@@ -5,7 +5,7 @@ import * as _ from "lodash";
 @Component({
   selector: 'app-local-download',
   templateUrl: './local-download.component.html',
-  styleUrls: ['./local-download.component.css']
+  styleUrls: ['./local-download.component.scss']
 })
 
 export class LocalDownloadComponent implements OnInit {
