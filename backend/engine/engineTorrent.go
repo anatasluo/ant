@@ -48,12 +48,15 @@ func (engine *Engine)GetOneTorrent(hexString string)(tmpTorrent *torrent.Torrent
 //TODO: Consider max number of downloading torrents
 func (engine *Engine)StartDownloadTorrent(hexString string)(downloaded bool) {
 	singleTorrent, isExist := engine.GetOneTorrent(hexString)
-	if(isExist) {
+	if isExist {
 		singleTorrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
 		singleTorrentLog.Status = RunningStatus
-		engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()] = TorrentLogExtend{
+		engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()] = &TorrentLogExtend{
 			StatusPub:singleTorrent.SubscribePieceStateChanges(),
 			HasStatusPub:true,
+			ProgressInfo: make(chan TorrentProgressInfo, maxProgressCache),
+			HasProgressInfo:true,
+			WebNeed:false,
 		}
 		singleTorrent.SetMaxEstablishedConns(clientConfig.EngineSetting.MaxEstablishedConns)
 		downloaded = true
@@ -69,7 +72,8 @@ func (engine *Engine)WaitForCompleted(singleTorrent *torrent.Torrent)(){
 	go func() {
 		singleTorrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
 		singleTorrentLogExtend, _ := engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()]
-		engine.ShowTorrentInfo(singleTorrent)
+		//engine.ShowTorrentInfo(singleTorrent)
+		<- singleTorrent.GotInfo()
 		for singleTorrentLog.Status == RunningStatus {
 			if singleTorrent.BytesCompleted() == singleTorrent.Info().TotalLength() {
 				log.Info("Task has been finished!")
@@ -78,7 +82,14 @@ func (engine *Engine)WaitForCompleted(singleTorrent *torrent.Torrent)(){
 				return
 			}
 			<-singleTorrentLogExtend.StatusPub.Values
-			//fmt.Printf("%+v\n", t)
+			//To handle unnecessary error if user shutdown the app when there are some torrent still running
+			if singleTorrentLogExtend.WebNeed && singleTorrentLog.Status == RunningStatus {
+				singleTorrentLogExtend.ProgressInfo <- TorrentProgressInfo {
+					Percentage:	float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength()),
+					UpdateTime:	time.Now(),
+				}
+			}
+			//fmt.Printf("You need it ? %+v\n", singleTorrentLogExtend.WebNeed)
 		}
 		log.WithFields(log.Fields{"TorrentName":singleTorrentLog.TorrentName, "Status":singleTorrentLog.Status}).Info("Torrent status changed !")
 	}()
@@ -94,6 +105,11 @@ func (engine *Engine)StopOneTorrent(hexString string)(stopped bool) {
 			singleTorrentLogExtend.StatusPub.Values <- log.Fields{"Info":"It should be stopped"}
 			singleTorrentLogExtend.HasStatusPub = false
 			singleTorrentLogExtend.StatusPub.Close()
+		}
+
+		if extendExist && singleTorrentLogExtend.HasProgressInfo {
+			singleTorrentLogExtend.HasProgressInfo = false
+			close(singleTorrentLogExtend.ProgressInfo)
 		}
 
 		singleTorrent.SetMaxEstablishedConns(0)

@@ -15,8 +15,8 @@ function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    width           : size.width * 0.8,
-    height          : size.height * 0.8,
+    width           : size.width * 0.65,
+    height          : size.height * 0.7,
     minWidth        : size.width * 0.6,
     minHeight       : size.height * 0.6,
     title           : "ANT Downloader",

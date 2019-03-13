@@ -4,23 +4,48 @@ import (
 	"github.com/anacrolix/missinggo/pubsub"
 	"github.com/anacrolix/torrent"
 	"github.com/anacrolix/torrent/metainfo"
+	"time"
 )
 
 type WebviewInfo struct {
-
+	HashToTorrentWebInfo		map[metainfo.Hash]*TorrentWebInfo
 }
 
 type EngineInfo struct {
 	TorrentLogsAndID
 	HashToTorrentLog    map[metainfo.Hash]*TorrentLog
 	StatusToTorrentLogs map[TorrentStatus][]*TorrentLog
-	TorrentLogExtends	map[metainfo.Hash]TorrentLogExtend
+	TorrentLogExtends	map[metainfo.Hash]*TorrentLogExtend
 }
 
+const maxProgressCache = 100
 //These information is needed in running time
 type TorrentLogExtend struct {
 	StatusPub			*pubsub.Subscription
 	HasStatusPub		bool
+	ProgressInfo		chan TorrentProgressInfo
+	HasProgressInfo		bool
+	WebNeed				bool
+}
+
+//WebInfo only can be used for show in the website, it is generated from engineInfo
+type TorrentWebInfo struct {
+	TorrentName			string
+	TotalLength			string
+	Status				string
+	StoragePath 		string
+	Files				[]FileInfo
+}
+
+type FileInfo struct {
+	Path				string
+	Priority			byte
+	Size				string
+}
+
+type TorrentProgressInfo struct {
+	Percentage			float64
+	UpdateTime			time.Time
 }
 
 //This struct will be saved to storm db, so types of its support is limited
@@ -47,6 +72,15 @@ const (
 	DeletedStatus
 )
 
+var StatusIDToName = []string {
+	"",
+	"RunningStatus",
+	"QueuedStatus",
+	"StoppedStatus",
+	"CompletedStatus",
+	"DeletedStatus",
+}
+
 type OnlyStormID int
 
 const (
@@ -64,7 +98,7 @@ func (engineInfo *EngineInfo) Init()()  {
 	engineInfo.ID				= TorrentLogsID
 	engineInfo.HashToTorrentLog = make(map[metainfo.Hash]*TorrentLog)
 	engineInfo.StatusToTorrentLogs = make(map[TorrentStatus][]*TorrentLog)
-	engineInfo.TorrentLogExtends = make(map[metainfo.Hash]TorrentLogExtend)
+	engineInfo.TorrentLogExtends = make(map[metainfo.Hash]*TorrentLogExtend)
 }
 
 func (engineInfo *EngineInfo) AddoneTorrent(singleTorrent *torrent.Torrent)(singleTorrentLog *TorrentLog)  {

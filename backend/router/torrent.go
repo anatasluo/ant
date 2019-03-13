@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/anacrolix/torrent"
 	"github.com/anatasluo/ant/backend/engine"
+	"github.com/dustin/go-humanize"
 	"github.com/julienschmidt/httprouter"
 	log "github.com/sirupsen/logrus"
 	"io"
@@ -64,21 +65,42 @@ func addOneTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 
 }
 
-func generateInfoFromTorrent(singleTorrent *torrent.Torrent) (jsonFormat JsonFormat) {
-	jsonFormat = JsonFormat{
-		"TorrentName"	:	singleTorrent.Name(),
-		"TorrentStats"	:	runningEngine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()].Status,
-		"TorrentFiles"	:	singleTorrent.Info().Files,
+//TODO Status has been changing during the runing period
+func generateInfoFromTorrent(singleTorrent *torrent.Torrent) (torrentWebInfo *engine.TorrentWebInfo) {
+	torrentWebInfo, isExist := runningEngine.WebInfo.HashToTorrentWebInfo[singleTorrent.InfoHash()]
+	if !isExist {
+		torrentLog, _ := runningEngine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
+		torrentWebInfo = &engine.TorrentWebInfo{
+			TorrentName	:	singleTorrent.Info().Name,
+			TotalLength	:	generateByteSize(singleTorrent.Info().TotalLength()),
+			Status		:	engine.StatusIDToName[torrentLog.Status],
+			StoragePath	:	torrentLog.StoragePath,
+		}
+		for _, key := range singleTorrent.Files() {
+			torrentWebInfo.Files = append(torrentWebInfo.Files, engine.FileInfo{
+				Path	:	key.Path(),
+				Priority:	byte(key.Priority()),
+				Size	:	generateByteSize(key.Length()),
+			})
+		}
+		runningEngine.WebInfo.HashToTorrentWebInfo[singleTorrent.InfoHash()] = torrentWebInfo
+	}else{
+		torrentLog, _ := runningEngine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
+		torrentWebInfo.Status = engine.StatusIDToName[torrentLog.Status]
 	}
 	return
+}
+
+func generateByteSize(byteSize int64) string {
+	return humanize.Bytes(uint64(byteSize))
 }
 
 func getOneTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	hexString := r.FormValue("hexString")
 	singleTorrent, isExist := runningEngine.GetOneTorrent(hexString)
 	if isExist {
-		jsonFormat := generateInfoFromTorrent(singleTorrent)
-		WriteResponse(w, jsonFormat)
+		torrentWebInfo := generateInfoFromTorrent(singleTorrent)
+		WriteResponse(w, torrentWebInfo)
 	}else{
 		w.WriteHeader(http.StatusNotFound)
 	}

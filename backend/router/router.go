@@ -20,12 +20,13 @@ func InitRouter() *negroni.Negroni {
 	// Enable router
 	handleTorrent(router)
 	handleMagent(router)
+	handleWS(router)
 
 	// Use global middleware
 	n := negroni.New()
 
 	//Enable cors
-	c := cors.Default()
+	c := cors.AllowAll()
 	n.Use(c)
 
 	//Enable auth

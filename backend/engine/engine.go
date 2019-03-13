@@ -2,6 +2,7 @@ package engine
 
 import (
 	"github.com/anacrolix/torrent"
+	"github.com/anacrolix/torrent/metainfo"
 	"github.com/anatasluo/ant/backend/setting"
 	log "github.com/sirupsen/logrus"
 )
@@ -38,6 +39,8 @@ func (engine *Engine)initAndRunEngine()()  {
 	}
 
 	engine.WebInfo = &WebviewInfo{}
+	engine.WebInfo.HashToTorrentWebInfo = make(map[metainfo.Hash]*TorrentWebInfo)
+
 	engine.EngineRunningInfo = &EngineInfo{}
 	engine.EngineRunningInfo.Init()
 

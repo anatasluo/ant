@@ -14,12 +14,80 @@ button {
   background-color: #FCFCFC;
 }
 
+.btn:hover {
+  box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, 0.6), 0 0 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.btn:focus {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
 .infoPage {
   background-color: #FFFFFF;
-  min-height: 940px;
+  min-height: 120vh;
 }
 
 .singleTorrent {
   background-color: #FCFCFC;
-  margin: 10px;
+  margin: 15px;
+  border-radius: 20px;
+  min-height: 16vh;
+}
+
+.torrentName {
+  font-size: 100%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 25%;
+  color: #eb5c2f;
+}
+
+.torrentInfo {
+  height: 60%;
+  font-size: 0.7em;
+  font-style: italic;
+  color: #F78D3F;
+  padding-top: 1.5%;
+}
+
+.allInfo {
+  height: 25%;
+}
+
+.allProgress {
+  height: 50%;
+}
+
+.progress-bar {
+  min-width: 2em;
+  width: 2%;
+  background-color: #b8d9c2;
+}
+
+.singleTorrentLeft {
+  border-right: 1px solid rgba(0, 0, 0, .125);
+  max-height: 16vh;
+  max-width: 16vh;
+  padding: 0px;
+}
+
+.singleInfo {
+  margin: 0px 5px 0px 5px;
+  height: 100%;
+  display: inline-block;
+  color: #f9ca79;
+}
+
+.fileType {
+  padding: 20%;
+  height: 100%;
+  width: 100%;
+}
+
+.upFile {
+  visibility: hidden;
+  position: absolute;
 }
