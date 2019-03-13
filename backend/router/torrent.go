@@ -49,19 +49,17 @@ func addOneTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 	//Start to add to client
 	tmpTorrent, err := runningEngine.AddOneTorrent(filePathAbs)
 
-	var jsonFormat JsonFormat
+	var resInfo interface{}
 	if err != nil {
 		logger.WithFields(log.Fields{"Error":err}).Error("unable to start a download")
-		jsonFormat = JsonFormat{
+		resInfo = JsonFormat{
 			"Error":"Task has been completed",
 		}
 	}else{
-		jsonFormat = JsonFormat{
-			"HexHash":tmpTorrent.InfoHash().HexString(),
-		}
+		resInfo = generateInfoFromTorrent(tmpTorrent)
 	}
 
-	WriteResponse(w, jsonFormat)
+	WriteResponse(w, resInfo)
 
 }
 
@@ -69,12 +67,15 @@ func addOneTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 func generateInfoFromTorrent(singleTorrent *torrent.Torrent) (torrentWebInfo *engine.TorrentWebInfo) {
 	torrentWebInfo, isExist := runningEngine.WebInfo.HashToTorrentWebInfo[singleTorrent.InfoHash()]
 	if !isExist {
+		<- singleTorrent.GotInfo();
 		torrentLog, _ := runningEngine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
 		torrentWebInfo = &engine.TorrentWebInfo{
 			TorrentName	:	singleTorrent.Info().Name,
 			TotalLength	:	generateByteSize(singleTorrent.Info().TotalLength()),
+			HexString	:	torrentLog.HashInfoBytes().HexString(),
 			Status		:	engine.StatusIDToName[torrentLog.Status],
 			StoragePath	:	torrentLog.StoragePath,
+			Percentage  :	float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength()) * 100,
 		}
 		for _, key := range singleTorrent.Files() {
 			torrentWebInfo.Files = append(torrentWebInfo.Files, engine.FileInfo{
@@ -107,11 +108,9 @@ func getOneTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 }
 
 func getAllTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params){
-	resInfo := []string{}
-	for _, singleTorrentLog := range runningEngine.EngineRunningInfo.TorrentLogs {
-		if singleTorrentLog.Status != engine.DeletedStatus && singleTorrentLog.Status != engine.CompletedStatus {
-			resInfo = append(resInfo, singleTorrentLog.MetaInfo.HashInfoBytes().HexString())
-		}
+	resInfo := []engine.TorrentWebInfo{}
+	for _, singleTorrent := range runningEngine.TorrentEngine.Torrents() {
+		resInfo = append(resInfo, *generateInfoFromTorrent(singleTorrent))
 	}
 	WriteResponse(w, resInfo)
 }

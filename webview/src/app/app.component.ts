@@ -9,6 +9,8 @@ import { AppConfig } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  public portrait = require('../assets/mouse.jpg');
+
   constructor(public electronService: ElectronService,
     private translate: TranslateService) {
 

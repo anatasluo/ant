@@ -32,8 +32,10 @@ type TorrentLogExtend struct {
 type TorrentWebInfo struct {
 	TorrentName			string
 	TotalLength			string
+	HexString			string
 	Status				string
 	StoragePath 		string
+	Percentage			float64
 	Files				[]FileInfo
 }
 
@@ -74,11 +76,11 @@ const (
 
 var StatusIDToName = []string {
 	"",
-	"RunningStatus",
-	"QueuedStatus",
-	"StoppedStatus",
-	"CompletedStatus",
-	"DeletedStatus",
+	"Running",
+	"Queued",
+	"Stopped",
+	"Completed",
+	"Deleted",
 }
 
 type OnlyStormID int

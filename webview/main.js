@@ -6,7 +6,7 @@ var url = require("url");
 var win, serve;
 var args = process.argv.slice(1);
 serve = args.some(function (val) { return val === '--serve'; });
-var tray = null;
+// let tray = null;
 function createWindow() {
     var electronScreen = electron_1.screen;
     var size = electronScreen.getPrimaryDisplay().workAreaSize;
@@ -16,10 +16,10 @@ function createWindow() {
         height: size.height * 0.7,
         minWidth: size.width * 0.6,
         minHeight: size.height * 0.6,
-        title: "ANT Downloader",
-        icon: "./src/assets/tray.png",
+        title: 'ANT Downloader',
+        icon: path.join(__dirname, 'src/assets/tray.png'),
         autoHideMenuBar: true,
-        titleBarStyle: "hidden",
+        titleBarStyle: 'hidden',
     });
     if (serve) {
         require('electron-reload')(__dirname, {
@@ -34,7 +34,7 @@ function createWindow() {
             slashes: true
         }));
     }
-    if (serve) {
+    if (serve || true) {
         win.webContents.openDevTools();
     }
     // Emitted when the window is closed.
@@ -43,17 +43,17 @@ function createWindow() {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         win = null;
-        tray.destroy();
+        // tray.destroy();
     });
-    tray = new electron_1.Tray('./src/assets/tray.png');
-    var contextMenu = electron_1.Menu.buildFromTemplate([
-        { label: '新建下载', type: 'normal' },
-        { label: '', type: 'separator' },
-        { label: '全部开始', type: 'normal' },
-        { label: '全部暂停', type: 'normal' },
-    ]);
-    tray.setToolTip('ANT Downloader');
-    tray.setContextMenu(contextMenu);
+    // tray = new Tray(path.join(__dirname, 'src/assets/tray.png'));
+    // const contextMenu = Menu.buildFromTemplate([
+    //   { label: '新建下载', type: 'normal' },
+    //   { label: '', type: 'separator' },
+    //   { label: '全部开始', type: 'normal' },
+    //   { label: '全部暂停', type: 'normal' },
+    // ]);
+    // tray.setToolTip('ANT Downloader');
+    // tray.setContextMenu(contextMenu);
 }
 try {
     // This method will be called when Electron has finished

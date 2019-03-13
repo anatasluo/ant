@@ -31,25 +31,27 @@
 
   <div class="row">
     <div class="col-sm-12 infoPage">
-      <div class="row singleTorrent">
-        <div class="col-sm-2 singleTorrentLeft">
-          <img src="../../../assets/file_type/avi.png" class="fileType">
-        </div>
-        <div class="col-sm-10">
-          <p class="torrentName">[ACESSE COMANDOTORRENTS.COM] The Walking Dead S09E12 [720p] [WEB-DL] [DUAL]</p>
-          <div class="row torrentInfo">
-            <div class="col-sm-10 allInfo">
-              <div class="singleInfo">100M</div>
-              <div class="singleInfo">已经下载 50%</div>
-              <div class="singleInfo">剩余时间: 1h</div>
-            </div>
-            <div class="col-sm-2 allInfo">
-              <div class="singleInfo">下载中</div>
-            </div>
-            <div class="col-sm-12 allProgress">
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                  60%
+      <div *ngFor="let torrent of torrents">
+        <div class="row singleTorrent" tabindex="0" (click)="clickOneTorrent(torrent)">
+          <div class="col-sm-2 singleTorrentLeft">
+            <img [src]="torrent.TypeImg" class="fileType" [alt]="torrent.TypeImg"/>
+          </div>
+          <div class="col-sm-10">
+            <p class="torrentName">{{torrent.TorrentName}}</p>
+            <div class="row torrentInfo">
+              <div class="col-sm-10 allInfo">
+                <div class="singleInfo">{{torrent.TotalLength}}</div>
+                <div class="singleInfo">已下载 {{torrent.Percentage}}%</div>
+                <div class="singleInfo">剩余时间: 1h</div>
+              </div>
+              <div class="col-sm-2 allInfo">
+                <div class="singleInfo">{{torrent.Status}}</div>
+              </div>
+              <div class="col-sm-12 allProgress">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngClass]="{'width': torrent.Percentage}">
+                    {{torrent.Percentage}}%
+                  </div>
                 </div>
               </div>
             </div>

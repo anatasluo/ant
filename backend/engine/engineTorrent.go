@@ -25,7 +25,6 @@ func (engine *Engine)AddOneTorrent(filepathAbs string)(tmpTorrent *torrent.Torre
 		tmpTorrent, err = engine.TorrentEngine.AddTorrent(torrentMetaInfo)
 		torrentLog = engine.EngineRunningInfo.AddoneTorrent(tmpTorrent)
 	}
-
 	return tmpTorrent, err
 }
 
@@ -35,14 +34,16 @@ func (engine *Engine)GetOneTorrent(hexString string)(tmpTorrent *torrent.Torrent
 	if err != nil {
 		logger.WithFields(log.Fields{"Error":err}).Error("Unable to get hash from hex string")
 	}
-	singleTorrentLog, isExist := engine.EngineRunningInfo.HashToTorrentLog[torrentHash]
-	if isExist && singleTorrentLog.Status != DeletedStatus && singleTorrentLog.Status != CompletedStatus {
-		tmpTorrent, _ = engine.TorrentEngine.Torrent(torrentHash)
-	} else {
-		tmpTorrent = nil
-		isExist = false
-	}
+	tmpTorrent, isExist = engine.TorrentEngine.Torrent(torrentHash)
 	return
+	//singleTorrentLog, isExist := engine.EngineRunningInfo.HashToTorrentLog[torrentHash]
+	//if isExist && singleTorrentLog.Status != DeletedStatus && singleTorrentLog.Status != CompletedStatus {
+	//	tmpTorrent, _ = engine.TorrentEngine.Torrent(torrentHash)
+	//} else {
+	//	tmpTorrent = nil
+	//	isExist = false
+	//}
+	//return
 }
 
 //TODO: Consider max number of downloading torrents
@@ -85,7 +86,7 @@ func (engine *Engine)WaitForCompleted(singleTorrent *torrent.Torrent)(){
 			//To handle unnecessary error if user shutdown the app when there are some torrent still running
 			if singleTorrentLogExtend.WebNeed && singleTorrentLog.Status == RunningStatus {
 				singleTorrentLogExtend.ProgressInfo <- TorrentProgressInfo {
-					Percentage:	float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength()),
+					Percentage:	float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength()) * 100,
 					UpdateTime:	time.Now(),
 				}
 			}

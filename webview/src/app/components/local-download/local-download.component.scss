@@ -1,7 +1,9 @@
+$nav_background_color : #FCFCFC;
+
 .nav-top {
   /* border-bottom: 1px solid rgba(0,0,0,.125); */
   padding: 0px;
-  background-color: #FCFCFC;
+  background-color: $nav_background_color;
 }
 
 .nav-btn-groups {
@@ -11,7 +13,7 @@
 
 button {
   border: none;
-  background-color: #FCFCFC;
+  background-color: $nav_background_color;
 }
 
 .btn:hover {
@@ -28,10 +30,20 @@ button {
 }
 
 .singleTorrent {
-  background-color: #FCFCFC;
+  background-color: $nav_background_color;
   margin: 15px;
   border-radius: 20px;
   min-height: 16vh;
+  cursor: pointer;
+}
+
+.singleTorrent:hover {
+  background-color: #f5f4e8;
+}
+
+.singleTorrent:focus {
+  background-color: #ffeead;
+  outline:none;
 }
 
 .torrentName {
