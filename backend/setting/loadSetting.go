@@ -1,12 +1,18 @@
 package setting
 
 import (
+	"bufio"
+	"bytes"
+	"compress/gzip"
 	"fmt"
 	"github.com/anacrolix/torrent"
+	"github.com/anacrolix/torrent/iplist"
 	"github.com/fsnotify/fsnotify"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"golang.org/x/time/rate"
+	"io"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -35,6 +41,7 @@ type EngineSetting struct {
 	TorrentConfig		torrent.ClientConfig `json:"-"`
 	Tmpdir				string
 	MaxEstablishedConns int
+	DefaultTrackers		[][]string
 }
 
 type LoggerSetting struct {
@@ -53,6 +60,7 @@ func (clientConfig *ClientSetting) loadDefaultConfig()() {
 
 	//TODO toml file to map[string]string and to json and then unmarshall to struct
 	clientConfig.LoggerSetting.Logger = log.New()
+
 
 }
 
@@ -120,6 +128,17 @@ func (clientConfig *ClientSetting) loadValueFromConfig()() {
 	clientConfig.EngineSetting.TorrentConfig.EncryptionPolicy.ForceEncryption = viper.GetBool("EngineSetting.TorrentConfig.EncryptionPolicy.ForceEncryption")
 	clientConfig.EngineSetting.TorrentConfig.EncryptionPolicy.PreferNoEncryption = viper.GetBool("EngineSetting.TorrentConfig.EncryptionPolicy.PreferNoEncryption")
 
+	//blocklistPath, err := filepath.Abs("biglist.p2p.gz")
+	//if err != nil {
+	//	fmt.Printf("Failed to update block list, Err is %s\n", err)
+	//}
+	//clientConfig.EngineSetting.TorrentConfig.IPBlocklist = getBlocklist(blocklistPath, viper.GetString("EngineSetting.TorrentConfig.defaultIPBlockList"))
+
+	trackerPath, err := filepath.Abs("tracker.txt")
+	if err != nil {
+		fmt.Printf("Failed to update trackers list, Err is %s\n", err)
+	}
+	clientConfig.DefaultTrackers = getDefaultTrackers(trackerPath, viper.GetString("EngineSetting.TorrentConfig.defaultTrackerList"))
 }
 
 // Load setting from config.toml
@@ -128,13 +147,12 @@ func (clientConfig *ClientSetting) createClientSetting()(){
 	clientConfig.loadDefaultConfig()
 
 	viper.SetConfigName("config")
+
 	viper.AddConfigPath("./")
-	viper.AddConfigPath("../")
 	err := viper.ReadInConfig()
 	if err != nil {
 		clientConfig.LoggerSetting.Logger.WithFields(log.Fields{"Detail":err}).Fatal("Can not find config.toml")
 	}else {
-
 		clientConfig.loadValueFromConfig()
 	}
 	viper.WatchConfig()
@@ -142,6 +160,8 @@ func (clientConfig *ClientSetting) createClientSetting()(){
 		fmt.Println("Config file changed:", e.Name)
 		clientConfig.loadValueFromConfig()
 	})
+
+	//More Config for client
 }
 
 func GetClientSetting() ClientSetting {
@@ -159,13 +179,117 @@ func UpdateConfig (updateKey, updateValue string)()  {
 }
 
 
+func getDefaultTrackers(filepath string, url string) [][]string {
+	datas, err := readLines(filepath)
+	if err != nil {
+		panic(err)
+	}
+	var res [][]string
 
+	for i := range datas {
+		if datas[i] != "" {
+			res = append(res, []string{
+				datas[i],
+			})
+		}
+	}
 
+	//Update list if possible for next time
+	downloadFile(url, filepath)
+	return res
+}
 
+// Download and add the blocklist.
+func getBlocklist(filepath string, blocklistURL string) iplist.Ranger {
 
+	// Load blocklist.
+	// #nosec
+	// We trust our temporary directory as we just wrote the file there ourselves.
+	blocklistReader, err := os.Open(filepath)
+	if err != nil {
+		log.Printf("Error opening blocklist: %s", err)
+		return nil
+	}
 
+	// Extract file.
+	gzipReader, err := gzip.NewReader(blocklistReader)
+	if err != nil {
+		log.Printf("Error extracting blocklist: %s", err)
+		return nil
+	}
 
+	// Read as iplist.
+	blocklist, err := iplist.NewFromReader(gzipReader)
+	if err != nil {
+		log.Printf("Error reading blocklist: %s", err)
+		return nil
+	}
 
+	log.Printf("Loading blocklist.\nFound %d ranges\n", blocklist.NumRanges())
+
+	//Update list if possible for next time
+	downloadFile(blocklistURL, filepath)
+	return blocklist
+}
+
+// Read a whole file into the memory and store it as array of lines
+func readLines(path string) (lines []string, err error) {
+	var (
+		file *os.File
+		part []byte
+		prefix bool
+	)
+	if file, err = os.Open(path); err != nil {
+		return
+	}
+	defer file.Close()
+
+	reader := bufio.NewReader(file)
+	buffer := bytes.NewBuffer(make([]byte, 0))
+	for {
+		if part, prefix, err = reader.ReadLine(); err != nil {
+			break
+		}
+		buffer.Write(part)
+		if !prefix {
+			lines = append(lines, buffer.String())
+			buffer.Reset()
+		}
+	}
+	if err == io.EOF {
+		err = nil
+	}
+	return
+}
+
+func downloadFile(downloadURL string, filepath string) {
+
+	go func() {
+		// Get the data
+		resp, err := http.Get(downloadURL)
+		if err != nil {
+			fmt.Printf("Failed to update list, Err is %s\n", err)
+		}
+		defer resp.Body.Close()
+
+		// Create the file
+		out, err := os.Create(filepath)
+		if err != nil {
+			if err != nil {
+				fmt.Printf("Failed to create list, Err is %s\n", err)
+			}
+		}
+		defer out.Close()
+
+		// Write the body to file
+		_, err = io.Copy(out, resp.Body)
+		if err != nil {
+			if err != nil {
+				fmt.Printf("Failed to trackers list, Err is %s\n", err)
+			}
+		}
+	}()
+}
 
 
 

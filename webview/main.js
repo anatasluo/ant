@@ -45,6 +45,20 @@ function createWindow() {
         win = null;
         // tray.destroy();
     });
+    win.webContents.session.on('will-download', function (event, item, webContents) {
+        var filePath = electron_1.app.getPath('downloads') + '/' + item.getFilename();
+        console.log(filePath);
+        item.setSavePath(filePath);
+        item.once('done', function (evt, state) {
+            if (state === 'completed') {
+                console.log('Download successfully');
+                win.webContents.send('torrentDownload', filePath);
+            }
+            else {
+                console.log("Download failed: " + state);
+            }
+        });
+    });
     // tray = new Tray(path.join(__dirname, 'src/assets/tray.png'));
     // const contextMenu = Menu.buildFromTemplate([
     //   { label: '新建下载', type: 'normal' },

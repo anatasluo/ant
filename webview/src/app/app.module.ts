@@ -6,6 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import {WebviewDirective} from './directives/webview.directive';
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     LocalDownloadComponent,
     PageNotFoundComponent,
+    WebviewDirective,
   ],
   imports: [
     NgbModule,

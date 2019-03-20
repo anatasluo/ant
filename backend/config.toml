@@ -16,7 +16,7 @@
   usesocksproxy         = false
   TorrentDBPath         = "storm.db"
   Tmpdir                = "tmp"
-  MaxEstablishedConns   = 60
+  MaxEstablishedConns   = 80
 
   [enginesetting.torrentconfig]
     bep20 = ""
@@ -40,6 +40,8 @@
     peerid = ""
     seed = false
     uploadratelimit = "Unlimited"
+    defaultTrackerList = "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best_ip.txt"
+    defaultIPBlockList = "http://john.bitsurge.net/public/biglist.p2p.gz"
 
     [enginesetting.torrentconfig.encryptionpolicy]
       disableencryption = false

@@ -10,7 +10,11 @@ export class Torrent {
   Status:				string;
   StoragePath: 		    string;
   HexString:            string;
-  Percentage:           number;
+  Percentage:           string;
   TypeImg:              string;
   Files:				FileInfo[];
+  Interval:             number;
+  logUpdateTime:        number;
+  leftTime:             string;
+  downloadSpeed:        string;
 }

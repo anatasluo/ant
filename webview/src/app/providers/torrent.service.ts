@@ -13,8 +13,14 @@ import { ConfigService } from './config.service';
 
 export class TorrentService {
 
-  addOneTorrentUrl = this.configService.baseUrl + '/torrent' + '/addOne';
-  getAllTorrentUrl = this.configService.baseUrl + '/torrent' + '/getAll';
+  addOneTorrentUrl = this.configService.baseUrl + '/torrent' + '/addOneFile';
+  getAllEngineTorrentsUrl = this.configService.baseUrl + '/torrent' + '/getAllEngineTorrents';
+  getAllTorrentsUrl = this.configService.baseUrl + '/torrent' + '/getAllTorrents';
+  getCompletedTorrentsUrl = this.configService.baseUrl + '/torrent' + '/getCompletedTorrents';
+  downloadOneTorrentUrl = this.configService.baseUrl + '/torrent' + '/startDownload';
+  stopTorrentUrl = this.configService.baseUrl + '/torrent' + '/stopDownload';
+  deleteTorrentUrl = this.configService.baseUrl + '/torrent' + '/delOne';
+  refleshTime = 1000;
 
   private formHttpOptions = {
     headers: new HttpHeaders({
@@ -28,23 +34,55 @@ export class TorrentService {
       private configService: ConfigService
   ) { }
 
-  addOneTorrent(file: File): Observable<Torrent> {
+  addOneTorrent(file: File): Observable<boolean> {
     // console.log(file);
     // console.log(this.baseUrl);
     const formData: FormData = new FormData();
     formData.append('oneTorrentFile', file, file.name);
-    return this.httpClient.post<Torrent>(this.addOneTorrentUrl, formData, this.formHttpOptions)
+    return this.httpClient.post<boolean>(this.addOneTorrentUrl, formData, this.formHttpOptions)
         .pipe(
             tap(_ => console.log('addOne torrent')),
-            catchError(this.handleError<Torrent>('add one torrent'))
+            catchError(this.handleError<boolean>('add one torrent'))
         );
   }
 
-  getAllTorrent(): Observable<Torrent[]> {
-    return this.httpClient.get<Torrent[]>(this.getAllTorrentUrl)
+  private getTorrents(url: string): Observable<Torrent[]> {
+    // console.log('url:' + url);
+    return this.httpClient.get<Torrent[]>(url)
         .pipe(
-            tap(_ => console.log('fetched torrents')),
+            tap(_ => console.log('get torrents')),
             catchError(this.handleError<Torrent[]>('add one torrent'))
+        );
+  }
+
+  getSelectedTorrents(state: string): Observable<Torrent[]> {
+    if (state === 'running') {
+      return this.getTorrents(this.getAllEngineTorrentsUrl);
+    } else if (state === 'total') {
+      return this.getTorrents(this.getAllTorrentsUrl);
+    } else if (state === 'completed') {
+      return this.getTorrents(this.getCompletedTorrentsUrl);
+    }
+  }
+
+  startDownloadOneTorrent(hexString: string): Observable<JSON> {
+    return this.operateOneTorrent(this.downloadOneTorrentUrl, hexString);
+  }
+  stopDownloadOneTorrent(hexString: string): Observable<JSON> {
+    return this.operateOneTorrent(this.stopTorrentUrl, hexString);
+  }
+
+  deleteDownloadOneTorrent(hexString: string): Observable<JSON> {
+    return this.operateOneTorrent(this.deleteTorrentUrl, hexString);
+  }
+
+  private operateOneTorrent(operateUrl: string, hexString: string): Observable<JSON> {
+    const formData: FormData = new FormData();
+    formData.append('hexString', hexString);
+    return this.httpClient.post<JSON>(operateUrl, formData, this.formHttpOptions)
+        .pipe(
+            tap(_ => console.log(operateUrl + 'operate torrent')),
+            catchError(this.handleError<JSON>('failed to operate one torrent'))
         );
   }
 

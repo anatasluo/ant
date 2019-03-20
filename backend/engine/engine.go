@@ -40,6 +40,7 @@ func (engine *Engine)initAndRunEngine()()  {
 
 	engine.WebInfo = &WebviewInfo{}
 	engine.WebInfo.HashToTorrentWebInfo = make(map[metainfo.Hash]*TorrentWebInfo)
+	engine.WebInfo.MagnetTmpInfo = make(map[metainfo.Hash]*TorrentWebInfo)
 
 	engine.EngineRunningInfo = &EngineInfo{}
 	engine.EngineRunningInfo.Init()
@@ -57,22 +58,23 @@ func (engine *Engine)setEnvironment()() {
 
 	for _, singleLog := range engine.EngineRunningInfo.TorrentLogs {
 
-		if singleLog.Status != DeletedStatus && singleLog.Status != CompletedStatus {
-			//fmt.Printf("%s-->%s\n", singleLog.TorrentName, singleLog.Status)
+		if singleLog.Status != CompletedStatus {
 			_, tmpErr := engine.TorrentEngine.AddTorrent(&singleLog.MetaInfo)
 			if tmpErr != nil {
 				logger.WithFields(log.Fields{"Error":tmpErr}).Info("Failed to add torrent to client")
 			}
 		}
 	}
-	engine.EngineRunningInfo.UpdateTorrentLog()
+	engine.UpdateInfo()
 }
 
 
 func (engine *Engine)Cleanup()() {
 
+	engine.UpdateInfo()
+
 	for index := range engine.EngineRunningInfo.TorrentLogs {
-		if engine.EngineRunningInfo.TorrentLogs[index].Status != DeletedStatus && engine.EngineRunningInfo.TorrentLogs[index].Status != CompletedStatus {
+		if engine.EngineRunningInfo.TorrentLogs[index].Status != CompletedStatus {
 			if engine.EngineRunningInfo.TorrentLogs[index].Status == RunningStatus {
 				engine.StopOneTorrent(engine.EngineRunningInfo.TorrentLogs[index].HashInfoBytes().HexString())
 			}
@@ -80,6 +82,7 @@ func (engine *Engine)Cleanup()() {
 		}
 	}
 
+	//TODO
 	tmpErr := engine.TorrentDB.DB.Save(&engine.EngineRunningInfo.TorrentLogsAndID)
 	if tmpErr != nil {
 		logger.WithFields(log.Fields{"Error":tmpErr}).Fatal("Failed to save torrent queues")

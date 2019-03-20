@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen, Menu, Tray } from 'electron';
+import { app, BrowserWindow, screen, Menu, Tray, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -49,6 +49,21 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null;
     // tray.destroy();
+  });
+
+  win.webContents.session.on('will-download', (event, item, webContents) => {
+    const filePath = app.getPath('downloads') + '/' + item.getFilename();
+    console.log(filePath);
+    item.setSavePath(filePath);
+    item.once('done', (evt, state) => {
+      if (state === 'completed') {
+        console.log('Download successfully');
+        win.webContents.send('torrentDownload', filePath);
+      } else {
+        console.log(`Download failed: ${state}`);
+        alert('Failed to get meta data');
+      }
+    });
   });
 
   // tray = new Tray(path.join(__dirname, 'src/assets/tray.png'));

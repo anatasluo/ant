@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/signal"
 	"runtime"
+	"syscall"
 )
 
 var (
@@ -34,7 +35,11 @@ func runAPP() {
 func cleanUp()  {
 	go func() {
 		c := make(chan os.Signal, 1)
-		signal.Notify(c, os.Interrupt)
+		signal.Notify(c, os.Interrupt,
+			syscall.SIGHUP,
+			syscall.SIGINT,
+			syscall.SIGTERM,
+			syscall.SIGQUIT)
 		<-c
 		log.Info("The progame will stop!")
 		torrentEngine.Cleanup()

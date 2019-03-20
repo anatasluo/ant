@@ -2,9 +2,7 @@ package router
 
 import (
 	"fmt"
-	"github.com/anacrolix/torrent"
 	"github.com/anatasluo/ant/backend/engine"
-	"github.com/dustin/go-humanize"
 	"github.com/julienschmidt/httprouter"
 	log "github.com/sirupsen/logrus"
 	"io"
@@ -13,7 +11,7 @@ import (
 	"path/filepath"
 )
 
-func addOneTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params)  {
+func addOneTorrentFromFile(w http.ResponseWriter, r *http.Request, ps httprouter.Params)  {
 
 	//Get torrent file from form
 	err := r.ParseMultipartForm(32 << 20)
@@ -47,71 +45,81 @@ func addOneTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 	}
 
 	//Start to add to client
-	tmpTorrent, err := runningEngine.AddOneTorrent(filePathAbs)
+	tmpTorrent, err := runningEngine.AddOneTorrentFromFile(filePathAbs)
 
-	var resInfo interface{}
+	var isAdded bool
 	if err != nil {
-		logger.WithFields(log.Fields{"Error":err}).Error("unable to start a download")
-		resInfo = JsonFormat{
-			"Error":"Task has been completed",
-		}
+		logger.WithFields(log.Fields{"Error":err}).Error("unable to add a torrent")
+		isAdded = false
 	}else{
-		resInfo = generateInfoFromTorrent(tmpTorrent)
+		runningEngine.GenerateInfoFromTorrent(tmpTorrent)
+		runningEngine.StartDownloadTorrent(tmpTorrent.InfoHash().HexString())
+		isAdded = true
 	}
 
-	WriteResponse(w, resInfo)
+	WriteResponse(w, JsonFormat{
+		"IsAdded":isAdded,
+	})
 
-}
-
-//TODO Status has been changing during the runing period
-func generateInfoFromTorrent(singleTorrent *torrent.Torrent) (torrentWebInfo *engine.TorrentWebInfo) {
-	torrentWebInfo, isExist := runningEngine.WebInfo.HashToTorrentWebInfo[singleTorrent.InfoHash()]
-	if !isExist {
-		<- singleTorrent.GotInfo();
-		torrentLog, _ := runningEngine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
-		torrentWebInfo = &engine.TorrentWebInfo{
-			TorrentName	:	singleTorrent.Info().Name,
-			TotalLength	:	generateByteSize(singleTorrent.Info().TotalLength()),
-			HexString	:	torrentLog.HashInfoBytes().HexString(),
-			Status		:	engine.StatusIDToName[torrentLog.Status],
-			StoragePath	:	torrentLog.StoragePath,
-			Percentage  :	float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength()) * 100,
-		}
-		for _, key := range singleTorrent.Files() {
-			torrentWebInfo.Files = append(torrentWebInfo.Files, engine.FileInfo{
-				Path	:	key.Path(),
-				Priority:	byte(key.Priority()),
-				Size	:	generateByteSize(key.Length()),
-			})
-		}
-		runningEngine.WebInfo.HashToTorrentWebInfo[singleTorrent.InfoHash()] = torrentWebInfo
-	}else{
-		torrentLog, _ := runningEngine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
-		torrentWebInfo.Status = engine.StatusIDToName[torrentLog.Status]
-	}
-	return
-}
-
-func generateByteSize(byteSize int64) string {
-	return humanize.Bytes(uint64(byteSize))
 }
 
 func getOneTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	hexString := r.FormValue("hexString")
 	singleTorrent, isExist := runningEngine.GetOneTorrent(hexString)
 	if isExist {
-		torrentWebInfo := generateInfoFromTorrent(singleTorrent)
+		torrentWebInfo := runningEngine.GenerateInfoFromTorrent(singleTorrent)
 		WriteResponse(w, torrentWebInfo)
 	}else{
 		w.WriteHeader(http.StatusNotFound)
 	}
 }
 
-func getAllTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params){
-	resInfo := []engine.TorrentWebInfo{}
+func appendMagnet(resInfo []engine.TorrentWebInfo)([]engine.TorrentWebInfo) {
+	//for _, singleWebInfo := range runningEngine.WebInfo.MagnetTmpInfo {
+	//	resInfo = append(resInfo, *singleWebInfo)
+	//}
+	return resInfo
+}
+
+func appendRunningTorrents(resInfo []engine.TorrentWebInfo)([]engine.TorrentWebInfo) {
 	for _, singleTorrent := range runningEngine.TorrentEngine.Torrents() {
-		resInfo = append(resInfo, *generateInfoFromTorrent(singleTorrent))
+		singleTorrentLog, isExist := runningEngine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
+		if isExist && singleTorrentLog.Status != engine.CompletedStatus {
+			resInfo = append(resInfo, *runningEngine.GenerateInfoFromTorrent(singleTorrent))
+		}
 	}
+	return resInfo
+}
+
+func appendCompletedTorrents(resInfo []engine.TorrentWebInfo)([]engine.TorrentWebInfo) {
+	for _, singleTorrentLog := range runningEngine.EngineRunningInfo.TorrentLogs {
+		if singleTorrentLog.Status == engine.CompletedStatus {
+			resInfo = append(resInfo, *runningEngine.GenerateInfoFromLog(singleTorrentLog))
+		}
+	}
+	return resInfo
+}
+
+
+func getAllTorrents(w http.ResponseWriter, r *http.Request, ps httprouter.Params)  {
+	resInfo := []engine.TorrentWebInfo{}
+	resInfo = appendMagnet(resInfo)
+	resInfo = appendRunningTorrents(resInfo)
+	resInfo = appendCompletedTorrents(resInfo)
+	WriteResponse(w, resInfo)
+}
+
+func getCompletedTorrents(w http.ResponseWriter, r *http.Request, ps httprouter.Params)  {
+	resInfo := []engine.TorrentWebInfo{}
+	resInfo = appendCompletedTorrents(resInfo)
+	WriteResponse(w, resInfo)
+}
+
+
+
+func getAllEngineTorrents(w http.ResponseWriter, r *http.Request, ps httprouter.Params){
+	resInfo := []engine.TorrentWebInfo{}
+	resInfo = appendRunningTorrents(resInfo)
 	WriteResponse(w, resInfo)
 }
 
@@ -135,23 +143,20 @@ func startDownloadTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.
 	hexString := r.FormValue("hexString")
 	downloaded := runningEngine.StartDownloadTorrent(hexString)
 	WriteResponse(w, JsonFormat{
-		"Downloaded":downloaded,
+		"IsDownloading":downloaded,
 	})
 }
 
 func test(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	torrents := runningEngine.TorrentEngine.Torrents()
-	for _, tt := range torrents {
-		<- tt.GotInfo()
-		fmt.Printf("%+v\n", tt)
-	}
-	runningEngine.TorrentEngine.WriteStatus(w)
+
 }
 
 func handleTorrent(router *httprouter.Router)  {
-	router.POST("/torrent/addOne", addOneTorrent)
+	router.POST("/torrent/addOneFile", addOneTorrentFromFile)
 	router.POST("/torrent/getOne", getOneTorrent)
-	router.GET("/torrent/getAll", getAllTorrent)
+	router.GET("/torrent/getAllEngineTorrents", getAllEngineTorrents)
+	router.GET("/torrent/getAllTorrents", getAllTorrents)
+	router.GET("/torrent/getCompletedTorrents", getCompletedTorrents)
 	router.POST("/torrent/delOne", delOneTorrent)
 	router.POST("/torrent/startDownload", startDownloadTorrent)
 	router.POST("/torrent/stopDownload", stopOneTorrent)

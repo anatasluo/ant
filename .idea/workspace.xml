@@ -2,25 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a27c0ce-fe61-45a2-8044-562a85d08921" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/tracker.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/ant.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ant.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/ant.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/engine/engine.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/engine.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/engine/engineTorrent.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/engineTorrent.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/engine/info.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/info.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/router/magent.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/router/magent.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/router/router.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/router/torrent.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/router/torrent.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/router/ws.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/router/ws.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/setting/loadSetting.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/setting/loadSetting.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/webview/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/webview/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/webview/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/webview/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/app/classes/torrent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/classes/torrent.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/app/components/page-not-found/page-not-found.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/components/page-not-found/page-not-found.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/app/providers/config.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/providers/config.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/app/providers/torrent.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/providers/torrent.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/styles.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,31 +56,70 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
+        <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1584">
-              <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/engine/info.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
+            <state relative-caret-position="2750">
+              <caret line="134" column="52" selection-start-line="134" selection-start-column="52" selection-end-line="134" selection-end-column="52" />
+              <folding>
+                <element signature="e#16#184#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
+        <entry file="file://$PROJECT_DIR$/backend/config.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="88" column="118" selection-start-line="88" selection-start-column="118" selection-end-line="88" selection-end-column="118" />
+            <state relative-caret-position="924">
+              <caret line="42" column="22" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1474">
+              <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
               <folding>
-                <element signature="e#16#148#0" expanded="true" />
+                <element signature="e#16#190#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/router/magent.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="9" column="90" selection-start-line="9" selection-start-column="90" selection-end-line="9" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/engine/torrentDB.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/ant.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/setting/loadSetting.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1521">
+              <caret line="137" column="19" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -83,50 +133,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/missinggo@v0.0.0-20181129073415-3237bf955fed/pubsub/pubsub.go">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webview/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+            <state relative-caret-position="660">
+              <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/engine/torrentDB.go">
+        <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/ant.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-              <folding>
-                <element signature="e#14#259#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-264">
-              <caret line="53" selection-start-line="53" selection-end-line="56" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/client.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="1115" column="18" selection-start-line="1115" selection-start-column="18" selection-end-line="1115" selection-end-column="18" />
+            <state relative-caret-position="1364">
+              <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -151,6 +171,15 @@
       <find>GotInfo</find>
       <find>TorrentLocal</find>
       <find>AddPeers</find>
+      <find>TorrentLogs</find>
+      <find>rate</find>
+      <find>WebInfo</find>
+      <find>HasStatusPub</find>
+      <find>complete</find>
+      <find>upda</find>
+      <find>magnet</find>
+      <find>tracker</find>
+      <find>Failed to update trackers list</find>
     </findStrings>
     <replaceStrings>
       <replace>TorrentLog</replace>
@@ -198,29 +227,33 @@
         <option value="$PROJECT_DIR$/backend/engine/message.go" />
         <option value="$PROJECT_DIR$/backend/engine/client.go" />
         <option value="$PROJECT_DIR$/backend/router/setting.go" />
-        <option value="$PROJECT_DIR$/backend/ant.go" />
         <option value="$PROJECT_DIR$/backend/bin/dash.go" />
-        <option value="$PROJECT_DIR$/backend/router/magent.go" />
         <option value="$PROJECT_DIR$/backend/router/json.go" />
         <option value="$PROJECT_DIR$/backend/router/router.go" />
         <option value="$PROJECT_DIR$/backend/router/info.go" />
         <option value="$PROJECT_DIR$/backend/engine/torrentDB.go" />
         <option value="$PROJECT_DIR$/backend/router/tools.go" />
-        <option value="$PROJECT_DIR$/backend/setting/loadSetting.go" />
-        <option value="$PROJECT_DIR$/backend/config.toml" />
-        <option value="$PROJECT_DIR$/backend/engine/engine.go" />
         <option value="$PROJECT_DIR$/backend/.gitignore" />
-        <option value="$PROJECT_DIR$/backend/router/torrent.go" />
-        <option value="$PROJECT_DIR$/backend/engine/engineTorrent.go" />
+        <option value="$PROJECT_DIR$/backend/router/ws.go" />
+        <option value="$PROJECT_DIR$/../torrent/cmd/torrent/main.go" />
+        <option value="$PROJECT_DIR$/backend/tracker.txt" />
+        <option value="$PROJECT_DIR$/backend/engine/engine.go" />
         <option value="$PROJECT_DIR$/backend/engine/info.go" />
+        <option value="$PROJECT_DIR$/backend/router/torrent.go" />
+        <option value="$PROJECT_DIR$/backend/router/magent.go" />
+        <option value="$PROJECT_DIR$/backend/engine/engineTorrent.go" />
+        <option value="$PROJECT_DIR$/backend/ant.go" />
+        <option value="$PROJECT_DIR$/backend/config.toml" />
+        <option value="$PROJECT_DIR$/backend/setting/loadSetting.go" />
+        <option value="$PROJECT_DIR$/webview/.gitignore" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-143" />
-    <option name="y" value="283" />
-    <option name="width" value="1749" />
-    <option name="height" value="951" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="4" />
+    <option name="y" value="92" />
+    <option name="width" value="1902" />
+    <option name="height" value="939" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -252,22 +285,7 @@
               <item name="ant" type="b2602c69:ProjectViewProjectNode" />
               <item name="Git" type="462c0819:PsiDirectoryNode" />
               <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="webview" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -287,13 +305,16 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../goTorrent" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../go-peerflix" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/bin" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/setting" />
       <recent name="$PROJECT_DIR$/backend" />
@@ -358,15 +379,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-143" y="283" width="1749" height="951" extended-state="0" />
+    <frame x="4" y="92" width="1902" height="939" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34005934" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19609967" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997239" weight="0.18272841" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997239" visible="true" weight="0.12327044" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997239" weight="0.32616082" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997239" weight="0.3997735" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4953146" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -382,12 +403,12 @@
       <window_info anchor="right" id="Database" order="3" weight="0.32965213" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24172185" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36919317" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997239" weight="0.1835206" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997239" visible="true" weight="0.2682927" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997239" weight="0.32616082" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997239" visible="true" weight="0.45053634" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4953146" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -400,7 +421,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32965213" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,75 +495,76 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/lib/go/src/io/io.go">
+    <entry file="file:///usr/lib/go/src/builtin/builtin.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="362" column="5" selection-start-line="362" selection-start-column="5" selection-end-line="362" selection-end-column="5" />
+        <state relative-caret-position="507">
+          <caret line="255" column="4" selection-start-line="255" selection-start-column="4" selection-end-line="255" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go/src/path/filepath/path.go">
+    <entry file="file://$PROJECT_DIR$/backend/router/router.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="239" column="5" selection-start-line="239" selection-start-column="5" selection-end-line="239" selection-end-column="5" />
+        <state relative-caret-position="176">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="e#16#203#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go/src/os/file.go">
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/gorilla/websocket@v1.4.0/json.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6006">
-          <caret line="281" column="5" selection-start-line="281" selection-start-column="5" selection-end-line="281" selection-end-column="5" />
+        <state relative-caret-position="990">
+          <caret line="48" column="15" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/config.go">
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/gorilla/websocket@v1.4.0/conn.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2156">
+        <state relative-caret-position="22286">
+          <caret line="1025" column="15" selection-start-line="1025" selection-start-column="15" selection-end-line="1025" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/file.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent-infohash/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/misc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="156" column="4" selection-start-line="156" selection-start-column="4" selection-end-line="156" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/metainfo/info.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="109" column="9" lean-forward="true" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/julienschmidt/httprouter@v1.2.0/router.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="333" selection-start-line="333" selection-end-line="333" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/tools.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
           <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/peerid.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/missinggo@v0.0.0-20181129073415-3237bf955fed/event.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/bin/dash.go" />
-    <entry file="file://$PROJECT_DIR$/backend/router/json.go" />
-    <entry file="file:///usr/lib/go/src/encoding/json/encode.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="156" column="5" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/go/src/encoding/json/decode.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/spf13/viper@v1.3.1/viper.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="1655" column="5" selection-start-line="1655" selection-start-column="5" selection-end-line="1655" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/setting/auth.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
@@ -553,107 +575,150 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/router/magent.go">
+    <entry file="file://$PROJECT_DIR$/../goTorrent/engine/cronJobs.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="-2243">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/piece.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="180" column="16" selection-start-line="180" selection-start-column="16" selection-end-line="180" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../goTorrent/engine/clientStructs.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../goTorrent/engine/engineHelpers.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="178" column="27" selection-start-line="178" selection-start-column="9" selection-end-line="178" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/ws.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="42" column="30" lean-forward="true" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent-create/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent-magnet/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
           <folding>
-            <element signature="e#16#77#0" expanded="true" />
+            <element signature="e#14#111#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/storage/interface.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/file.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/metainfo/metainfo.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+        <state relative-caret-position="145">
+          <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/metainfo/hash.go">
+    <entry file="file://$PROJECT_DIR$/../goTorrent/storage/storage.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
+        <state relative-caret-position="132">
+          <caret line="85" column="39" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/julienschmidt/httprouter@v1.2.0/router.go">
+    <entry file="file://$PROJECT_DIR$/../goTorrent/settings/settings.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6222">
-          <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+        <state relative-caret-position="132">
+          <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/metainfo/fileinfo.go">
+    <entry file="file://$PROJECT_DIR$/../goTorrent/engine/doneTorrentActions.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../goTorrent/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        <state relative-caret-position="-72">
+          <caret line="459" column="37" selection-start-line="459" selection-start-column="37" selection-end-line="459" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/metainfo/info.go">
+    <entry file="file://$PROJECT_DIR$/../goTorrent/engine/engine.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state relative-caret-position="-7349">
+          <caret line="89" column="50" selection-start-line="89" selection-start-column="50" selection-end-line="89" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go/src/net/http/request.go">
+    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="1269" column="18" selection-start-line="1269" selection-start-column="18" selection-end-line="1269" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/router/tools.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/setting/loadSetting.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1310">
-          <caret line="75" column="101" selection-start-line="75" selection-start-column="101" selection-end-line="75" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/config.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/router/router.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-146">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        <state relative-caret-position="125">
+          <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
           <folding>
-            <element signature="e#16#203#0" expanded="true" />
+            <element signature="e#59#479#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/conn_stats.go">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/spf13/viper@v1.3.1/viper.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1778">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        <state relative-caret-position="281">
+          <caret line="402" column="5" selection-start-line="402" selection-start-column="5" selection-end-line="402" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/go/src/path/filepath/path.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="244" column="5" selection-start-line="244" selection-start-column="5" selection-end-line="244" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/bin/config.toml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/t.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="93" column="18" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
+          <folding>
+            <element signature="e#17#121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/missinggo@v0.0.0-20181129073415-3237bf955fed/pubsub/pubsub.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/bin/tracker.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/tracker.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
@@ -664,115 +729,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent-pick/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3036" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent-infohash/main.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent-verify/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1019" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-          <folding>
-            <element signature="e#59#479#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent-create/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="31" column="10" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/magnet-metainfo/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
-          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent-metainfo-pprint/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-249" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrent-magnet/main.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/torrentfs/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-777">
-          <caret line="92" column="36" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../torrent/cmd/tracker-announce/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1122" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/piece.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="180" column="16" selection-start-line="180" selection-start-column="16" selection-end-line="180" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/torrent.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="149" column="18" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="18" />
+        <state relative-caret-position="185">
+          <caret line="1402" column="18" selection-start-line="1402" selection-start-column="18" selection-end-line="1402" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go/src/builtin/builtin.go">
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/conn_stats.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="255" column="4" selection-start-line="255" selection-start-column="4" selection-end-line="255" selection-end-column="4" />
+        <state relative-caret-position="-135">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/t.go">
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/metainfo/magnet.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1936">
-          <caret line="93" column="67" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="67" />
+        <state relative-caret-position="110">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/spec.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-71">
+          <caret line="1053" column="18" selection-start-line="1053" selection-start-column="18" selection-end-line="1053" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/engine/info.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3542">
+          <caret line="167" column="1" selection-start-line="167" selection-start-column="1" selection-end-line="167" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2750">
+          <caret line="134" column="52" selection-start-line="134" selection-start-column="52" selection-end-line="134" selection-end-column="52" />
           <folding>
-            <element signature="e#17#121#0" expanded="true" />
+            <element signature="e#16#184#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/missinggo@v0.0.0-20181129073415-3237bf955fed/pubsub/pubsub.go">
+    <entry file="file://$PROJECT_DIR$/backend/config.toml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        <state relative-caret-position="924">
+          <caret line="42" column="22" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1474">
+          <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+          <folding>
+            <element signature="e#16#190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/magent.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="9" column="90" selection-start-line="9" selection-start-column="90" selection-end-line="9" selection-end-column="90" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/engine/torrentDB.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        <state relative-caret-position="220">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/ant.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-          <folding>
-            <element signature="e#14#259#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="660">
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1364">
+          <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/setting/loadSetting.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1521">
+          <caret line="137" column="19" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -783,41 +847,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/client.go">
+    <entry file="file://$PROJECT_DIR$/webview/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="1115" column="18" selection-start-line="1115" selection-start-column="18" selection-end-line="1115" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="53" selection-start-line="53" selection-end-line="56" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="88" column="118" selection-start-line="88" selection-start-column="118" selection-end-line="88" selection-end-column="118" />
-          <folding>
-            <element signature="e#16#148#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/engine/info.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
+        <state relative-caret-position="660">
+          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
         </state>
       </provider>
     </entry>

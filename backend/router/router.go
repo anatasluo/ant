@@ -19,7 +19,7 @@ func InitRouter() *negroni.Negroni {
 
 	// Enable router
 	handleTorrent(router)
-	handleMagent(router)
+	handleMagnet(router)
 	handleWS(router)
 
 	// Use global middleware
