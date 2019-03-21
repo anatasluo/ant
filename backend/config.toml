@@ -16,7 +16,7 @@
   usesocksproxy         = false
   TorrentDBPath         = "storm.db"
   Tmpdir                = "tmp"
-  MaxEstablishedConns   = 80
+  MaxEstablishedConns   = 100
 
   [enginesetting.torrentconfig]
     bep20 = ""

@@ -56,6 +56,7 @@ function createWindow() {
             }
             else {
                 console.log("Download failed: " + state);
+                alert('Failed to get meta data');
             }
         });
     });
