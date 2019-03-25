@@ -11,6 +11,7 @@ export class ConfigService {
   addr = this.host + ':' + this.port;
   baseUrl = 'http://' + this.addr;
   wsBaseUrl = 'ws://' + this.addr + '/ws';
+  playerUrl = this.baseUrl + '/player';
 
   constructor() { }
 }

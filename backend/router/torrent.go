@@ -52,9 +52,11 @@ func addOneTorrentFromFile(w http.ResponseWriter, r *http.Request, ps httprouter
 		logger.WithFields(log.Fields{"Error":err}).Error("unable to add a torrent")
 		isAdded = false
 	}else{
-		runningEngine.GenerateInfoFromTorrent(tmpTorrent)
-		runningEngine.StartDownloadTorrent(tmpTorrent.InfoHash().HexString())
-		isAdded = true
+		if tmpTorrent != nil {
+			runningEngine.GenerateInfoFromTorrent(tmpTorrent)
+			runningEngine.StartDownloadTorrent(tmpTorrent.InfoHash().HexString())
+			isAdded = true
+		}
 	}
 
 	WriteResponse(w, JsonFormat{

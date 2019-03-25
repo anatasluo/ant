@@ -23,6 +23,7 @@ func (engine *Engine)AddOneTorrentFromFile (filepathAbs string)(tmpTorrent *torr
 	return tmpTorrent, err
 }
 
+//Check if duplicated torrent
 func (engine *Engine)checkOneHash(infoHash metainfo.Hash) (tmpTorrent *torrent.Torrent, needMoreOperation bool){
 	torrentLog, isExist := engine.EngineRunningInfo.HashToTorrentLog[infoHash]
 	if isExist && torrentLog.Status != CompletedStatus {
@@ -40,6 +41,7 @@ func (engine *Engine)checkOneHash(infoHash metainfo.Hash) (tmpTorrent *torrent.T
 	return
 }
 
+//TODO: There are some problems for client to add magnet directly, so I just use itorrents api to convert magneg to torrent in Electron
 func (engine *Engine)AddOneTorrentFromMagnet (linkAddress string)(tmpTorrent *torrent.Torrent, err error) {
 	if strings.HasPrefix(linkAddress, "magnet:") {
 		torrentMetaInfo, err := torrent.TorrentSpecFromMagnetURI(linkAddress)
@@ -83,6 +85,7 @@ func (engine *Engine)AddOneTorrentFromMagnet (linkAddress string)(tmpTorrent *to
 	return tmpTorrent, err
 }
 
+//Only handle torrent in client
 func (engine *Engine)GetOneTorrent(hexString string)(tmpTorrent *torrent.Torrent, isExist bool) {
 	torrentHash := metainfo.Hash{}
 	err := torrentHash.FromHexString(hexString)
@@ -93,7 +96,7 @@ func (engine *Engine)GetOneTorrent(hexString string)(tmpTorrent *torrent.Torrent
 	return
 }
 
-//TODO: Consider max number of downloading torrents
+//Max number of downloading torrents should be considered in electron
 func (engine *Engine)StartDownloadTorrent(hexString string)(downloaded bool) {
 	downloaded = true
 	singleTorrent, isExist := engine.GetOneTorrent(hexString)
@@ -114,6 +117,7 @@ func (engine *Engine)StartDownloadTorrent(hexString string)(downloaded bool) {
 			singleTorrent.AddTrackers(clientConfig.DefaultTrackers)
 			singleTorrent.SetMaxEstablishedConns(clientConfig.EngineSetting.MaxEstablishedConns)
 			engine.WaitForCompleted(singleTorrent)
+			//TODO: Download selected files
 			singleTorrent.DownloadAll()
 		}
 	}else{
@@ -122,19 +126,34 @@ func (engine *Engine)StartDownloadTorrent(hexString string)(downloaded bool) {
 	return
 }
 
+func (engine *Engine)CompleteOneTorrent(singleTorrent *torrent.Torrent)() {
+	singleTorrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
+	singleTorrentLogExtend, extendExist := engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()]
+	<- singleTorrent.GotInfo()
+	//One more check
+	if singleTorrent.BytesCompleted() == singleTorrent.Info().TotalLength() {
+		logger.WithFields(log.Fields{"TorrentName": singleTorrent.Name()}).Info("Torrent has been finished")
+		singleTorrent.VerifyData()
+		singleTorrentLog.Status = CompletedStatus
+		if extendExist && singleTorrentLogExtend.HasStatusPub && singleTorrentLogExtend.StatusPub != nil {
+			singleTorrentLogExtend.HasStatusPub = false
+			if !channelClosed(singleTorrentLogExtend.StatusPub.Values) {
+				singleTorrentLogExtend.StatusPub.Values <- struct{}{}
+				singleTorrentLogExtend.StatusPub.Close()
+			}
+		}
+	}
+}
+
 func (engine *Engine)WaitForCompleted(singleTorrent *torrent.Torrent)(){
 	go func() {
 		singleTorrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
 		singleTorrentLogExtend, _ := engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()]
-		//engine.ShowTorrentInfo(singleTorrent)
 		<- singleTorrent.GotInfo()
 		for singleTorrentLog.Status == RunningStatus {
 			if singleTorrent.BytesCompleted() == singleTorrent.Info().TotalLength() {
-				log.Debug("Task has been finished!")
-				singleTorrent.VerifyData()
-				singleTorrentLog.Status = CompletedStatus
-				engine.UpdateInfo();
-				//singleTorrent.Drop()
+				engine.CompleteOneTorrent(singleTorrent)
+				engine.UpdateInfo()
 				return
 			}
 			<-singleTorrentLogExtend.StatusPub.Values

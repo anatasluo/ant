@@ -1,11 +1,14 @@
 package engine
 
 import (
+	"fmt"
 	"github.com/anacrolix/missinggo/pubsub"
 	"github.com/anacrolix/torrent"
 	"github.com/anacrolix/torrent/metainfo"
 	"github.com/dustin/go-humanize"
+	"math"
 	"path/filepath"
+	"time"
 )
 
 type WebviewInfo struct {
@@ -34,13 +37,26 @@ type TorrentWebInfo struct {
 	Status				string
 	StoragePath 		string
 	Percentage			float64
+	DownloadSpeed		string
+	LeftTime			string
 	Files				[]FileInfo
 	TorrentStatus		torrent.TorrentStats
+	UpdateTime			time.Time
 }
 
+type MessageTypeID	int
 type MessageFromWeb struct {
+	MessageType			MessageTypeID
 	HexString			string
 }
+
+const (
+	updateDuration	    = time.Second
+)
+
+const (
+	GetInfo				MessageTypeID = iota
+)
 
 type FileInfo struct {
 	Path				string
@@ -50,6 +66,8 @@ type FileInfo struct {
 
 type TorrentProgressInfo struct {
 	Percentage			float64
+	DownloadSpeed		string
+	LeftTime			string
 	HexString			string
 }
 
@@ -93,14 +111,8 @@ const (
 	TorrentLogsID		OnlyStormID = iota + 1
 )
 
-const (
-	nothingStatus		int = iota
-	mannualedKill
-	osKill
-	successCompleted
-)
 
-func (engineInfo *EngineInfo) Init()()  {
+func (engineInfo *EngineInfo) init()()  {
 	engineInfo.ID				= TorrentLogsID
 	engineInfo.HashToTorrentLog = make(map[metainfo.Hash]*TorrentLog)
 	engineInfo.TorrentLogExtends = make(map[metainfo.Hash]*TorrentLogExtend)
@@ -139,7 +151,7 @@ func (engine *Engine) UpdateWebInfo()()  {
 func createTorrentLogFromTorrent(singleTorrent *torrent.Torrent) *TorrentLog {
 	absPath, err := filepath.Abs(clientConfig.EngineSetting.TorrentConfig.DataDir)
 	if err != nil {
-		logger.Info("Unable to get abs path -> ", err)
+		logger.Error("Unable to get abs path -> ", err)
 	}
 	return &TorrentLog{
 		MetaInfo		:	singleTorrent.Metainfo(),
@@ -179,9 +191,9 @@ func (engine *Engine) GenerateInfoFromMagnet(infoHash metainfo.Hash) (torrentWeb
 }
 
 func (engine *Engine) GenerateInfoFromTorrent(singleTorrent *torrent.Torrent) (torrentWebInfo *TorrentWebInfo) {
+	<- singleTorrent.GotInfo()
 	torrentWebInfo, isExist := engine.WebInfo.HashToTorrentWebInfo[singleTorrent.InfoHash()]
 	if !isExist {
-		<- singleTorrent.GotInfo();
 		torrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
 		torrentWebInfo = &TorrentWebInfo{
 			TorrentName		:	singleTorrent.Info().Name,
@@ -190,7 +202,10 @@ func (engine *Engine) GenerateInfoFromTorrent(singleTorrent *torrent.Torrent) (t
 			Status			:	StatusIDToName[torrentLog.Status],
 			StoragePath		:	torrentLog.StoragePath,
 			Percentage  	:	float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength()),
+			DownloadSpeed	:	"Estimating",
+			LeftTime		:	"Estimating",
 			TorrentStatus	:	singleTorrent.Stats(),
+			UpdateTime		:	time.Now(),
 		}
 		for _, key := range singleTorrent.Files() {
 			torrentWebInfo.Files = append(torrentWebInfo.Files, FileInfo{
@@ -202,10 +217,46 @@ func (engine *Engine) GenerateInfoFromTorrent(singleTorrent *torrent.Torrent) (t
 		engine.WebInfo.HashToTorrentWebInfo[singleTorrent.InfoHash()] = torrentWebInfo
 	}else{
 		torrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
-		torrentWebInfo.Status = StatusIDToName[torrentLog.Status]
-		torrentWebInfo.Percentage = float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength())
 		torrentWebInfo.TorrentStatus = singleTorrent.Stats()
+		torrentWebInfo.Status = StatusIDToName[torrentLog.Status]
+
+		timeNow := time.Now()
+		timeDis := timeNow.Sub(torrentWebInfo.UpdateTime).Seconds()
+		percentageNow := float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength())
+		percentageDis := percentageNow - torrentWebInfo.Percentage
+		if timeDis >= updateDuration.Seconds() && percentageDis > 0 {
+			leftDuration := time.Duration((1 - torrentWebInfo.Percentage) / (percentageDis / timeDis) * 1000 * 1000 * 1000)
+			torrentWebInfo.LeftTime = humanizeDuration(leftDuration)
+			torrentWebInfo.DownloadSpeed = generateByteSize(int64(percentageDis * float64(singleTorrent.Info().TotalLength()) / timeDis)) + "/s"
+			torrentWebInfo.Percentage = percentageNow
+			torrentWebInfo.UpdateTime = time.Now()
+			if torrentWebInfo.Percentage == 1 {
+				engine.CompleteOneTorrent(singleTorrent)
+			}
+		}
 	}
 	return
 }
 
+
+func humanizeDuration(duration time.Duration) string {
+	if duration.Seconds() < 60.0 {
+		return fmt.Sprintf("%d seconds", int64(duration.Seconds()))
+	}
+	if duration.Minutes() < 60.0 {
+		remainingSeconds := math.Mod(duration.Seconds(), 60)
+		return fmt.Sprintf("%d minutes %d seconds", int64(duration.Minutes()), int64(remainingSeconds))
+	}
+	if duration.Hours() < 24.0 {
+		remainingMinutes := math.Mod(duration.Minutes(), 60)
+		remainingSeconds := math.Mod(duration.Seconds(), 60)
+		return fmt.Sprintf("%d hours %d minutes %d seconds",
+			int64(duration.Hours()), int64(remainingMinutes), int64(remainingSeconds))
+	}
+	remainingHours := math.Mod(duration.Hours(), 24)
+	remainingMinutes := math.Mod(duration.Minutes(), 60)
+	remainingSeconds := math.Mod(duration.Seconds(), 60)
+	return fmt.Sprintf("%d days %d hours %d minutes %d seconds",
+		int64(duration.Hours()/24), int64(remainingHours),
+		int64(remainingMinutes), int64(remainingSeconds))
+}

@@ -33,16 +33,22 @@ func torrentProgress (w http.ResponseWriter, r *http.Request, ps httprouter.Para
 			break
 		}
 
-		singleTorrent, isExist := runningEngine.GetOneTorrent(tmp.HexString)
+		if tmp.MessageType == engine.GetInfo {
+			singleTorrent, isExist := runningEngine.GetOneTorrent(tmp.HexString)
 
-		if isExist {
-			singleTorrentLog, _ := runningEngine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
-			if singleTorrentLog.Status == engine.RunningStatus || singleTorrentLog.Status == engine.CompletedStatus {
-				resInfo.Percentage = float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength())
-				resInfo.HexString = tmp.HexString
-				err = conn.WriteJSON(resInfo)
+			if isExist {
+				singleTorrentLog, _ := runningEngine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
+				if singleTorrentLog.Status == engine.RunningStatus || singleTorrentLog.Status == engine.CompletedStatus {
+					singleWebLog := runningEngine.GenerateInfoFromTorrent(singleTorrent)
+					resInfo.HexString = singleWebLog.HexString
+					resInfo.Percentage = singleWebLog.Percentage
+					resInfo.LeftTime = singleWebLog.LeftTime
+					resInfo.DownloadSpeed = singleWebLog.DownloadSpeed
+					err = conn.WriteJSON(resInfo)
+				}
 			}
 		}
+
 	}
 
 }

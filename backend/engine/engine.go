@@ -43,18 +43,17 @@ func (engine *Engine)initAndRunEngine()()  {
 	engine.WebInfo.MagnetTmpInfo = make(map[metainfo.Hash]*TorrentWebInfo)
 
 	engine.EngineRunningInfo = &EngineInfo{}
-	engine.EngineRunningInfo.Init()
+	engine.EngineRunningInfo.init()
 
+	//Get info from storm database
 	engine.setEnvironment()
 }
 
 func (engine *Engine)setEnvironment()() {
-	err := engine.TorrentDB.DB.One("ID", TorrentLogsID, &engine.EngineRunningInfo.TorrentLogsAndID)
-	if err != nil {
-		logger.WithFields(log.Fields{"Error":err}).Info("Init running queue now")
-	}
 
-	logger.Info("Number of torrent(s) in db is ", len(engine.EngineRunningInfo.TorrentLogs))
+	engine.TorrentDB.GetLogs(&engine.EngineRunningInfo.TorrentLogsAndID)
+
+	logger.Debug("Number of torrent(s) in db is ", len(engine.EngineRunningInfo.TorrentLogs))
 
 	for _, singleLog := range engine.EngineRunningInfo.TorrentLogs {
 
@@ -82,7 +81,6 @@ func (engine *Engine)Cleanup()() {
 		}
 	}
 
-	//TODO
 	tmpErr := engine.TorrentDB.DB.Save(&engine.EngineRunningInfo.TorrentLogsAndID)
 	if tmpErr != nil {
 		logger.WithFields(log.Fields{"Error":tmpErr}).Fatal("Failed to save torrent queues")

@@ -14,7 +14,6 @@ export class Torrent {
   TypeImg:              string;
   Files:				FileInfo[];
   Interval:             number;
-  logUpdateTime:        number;
   leftTime:             string;
   downloadSpeed:        string;
 }

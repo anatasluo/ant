@@ -36,13 +36,13 @@ func getLargestFile(singleTorrent *torrent.Torrent) *torrent.File {
 
 	firstPieceIndex := target.Offset() * int64(singleTorrent.NumPieces()) / singleTorrent.Length()
 	endPieceIndex := (target.Offset() + target.Length()) * int64(singleTorrent.NumPieces()) / singleTorrent.Length()
-	for idx := firstPieceIndex; idx <= endPieceIndex*10/100; idx++ {
+	for idx := firstPieceIndex; idx <= endPieceIndex*5/100; idx++ {
 		singleTorrent.Piece(int(idx)).SetPriority(torrent.PiecePriorityNow)
 	}
 	return target
 }
 
-//TODO
+//TODO: Get selected file
 func (engine *Engine)GetReaderFromTorrent(singleTorrent *torrent.Torrent, fileID string)(SeekableContent, *torrent.File, error)  {
 	return getReaderFromFile(getLargestFile(singleTorrent))
 }

@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {TorrentService} from '../../providers/torrent.service';
 import * as _ from 'lodash';
-import {shell} from 'electron';
 import {Torrent} from '../../classes/torrent';
 import {ActivatedRoute} from '@angular/router';
-import { ipcRenderer, ipcMain } from 'electron';
+import { ipcRenderer, remote, screen } from 'electron';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as events from 'events';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {ConfigService} from '../../providers/config.service';
@@ -16,9 +14,7 @@ import { magnetDecode } from '@ctrl/magnet-link';
 
 let globalTorrents: Torrent[];
 let ws: WebSocket;
-let globalCompleteOneTorrent: any;
 let torrentFile: File;
-let globalEvent: events.EventEmitter;
 
 @Component({
   selector: 'app-local-download',
@@ -32,7 +28,7 @@ export class LocalDownloadComponent implements OnInit {
   torrents: Torrent[];
   // See GetTrueFromSelected
   selectedTorrent: Torrent;
-  state: string;
+  status: string;
   webview: any;
   constructor(private torrentService: TorrentService,
               private configService: ConfigService,
@@ -40,10 +36,9 @@ export class LocalDownloadComponent implements OnInit {
               private modalService: NgbModal,
   ) { }
   ngOnInit() {
-    globalCompleteOneTorrent = this.completeOneTorrent;
+    this.status = this.route.snapshot.url[0].path;
     this.getTorrents();
     ws = this.generateOneWS();
-    globalEvent = new events.EventEmitter();
     this.webview = document.querySelector('webview');
     // @ts-ignore
     this.webview.addEventListener('dom-ready', () => {
@@ -60,7 +55,7 @@ export class LocalDownloadComponent implements OnInit {
       }
     });
 
-    globalEvent.on('torrentLoaded', () => {
+    ipcRenderer.on('torrentLoaded', () => {
       this.addOneTorrentService(torrentFile);
     });
   }
@@ -76,7 +71,7 @@ export class LocalDownloadComponent implements OnInit {
       b.lastModifiedDate = new Date();
       b.name = path.basename(filePath);
       torrentFile = <File>b;
-      globalEvent.emit('torrentLoaded');
+      remote.getCurrentWebContents().send('torrentLoaded');
     });
   }
 
@@ -99,16 +94,12 @@ export class LocalDownloadComponent implements OnInit {
         if (globalTorrents[i].HexString === data.HexString) {
           const currentProgress = globalTorrents[i].Percentage;
           if (parseFloat(currentProgress) < parseFloat(data.Percentage)) {
-            const disPercentage = parseFloat(data.Percentage) - parseFloat(currentProgress);
-            const tmpTime = Date.now();
-            const disTime = (tmpTime - globalTorrents[i].logUpdateTime) / 1000;
-            const leftTime = ((1 - parseFloat(currentProgress)) / (disPercentage / disTime) / 60).toFixed(2);
             globalTorrents[i].Percentage = data.Percentage;
-            globalTorrents[i].logUpdateTime = tmpTime;
-            globalTorrents[i].leftTime = leftTime.toString() + '  Minutes';
+            globalTorrents[i].leftTime = data.LeftTime;
+            globalTorrents[i].downloadSpeed = data.DownloadSpeed;
           }
           if (parseFloat(currentProgress) === parseFloat('1')) {
-            globalCompleteOneTorrent(globalTorrents[i]);
+            globalTorrents[i].Status = 'Completed';
           }
           break;
         }
@@ -121,24 +112,23 @@ export class LocalDownloadComponent implements OnInit {
   }
   private getTorrentWebFromData(torrent: Torrent): Torrent {
     torrent.TypeImg = this.aviImg;
+    torrent.leftTime = 'Estimating ...';
+    torrent.downloadSpeed = 'Estimating ...';
     torrent.Interval = -1;
-    torrent.logUpdateTime = Date.now();
-    torrent.leftTime = 'Estimating' + '  Minutes';
     return torrent;
   }
 
   private compareTwoTorrent(a: Torrent, b: Torrent): number {
     let result: boolean;
     if (a.Status !== b.Status) {
-      result = a.Status < b.Status;
+      result = a.Status > b.Status;
     } else {
       result = a.TorrentName > b.TorrentName;
     }
     return result ? 1 : 0;
   }
   getTorrents(): void {
-    this.state = this.route.snapshot.url[0].path;
-    this.torrentService.getSelectedTorrents(this.state).subscribe((datas: Torrent[]) => {
+    this.torrentService.getSelectedTorrents(this.status).subscribe((datas: Torrent[]) => {
       this.torrents = datas;
       globalTorrents = this.torrents;
       for (let i = 0; i < this.torrents.length; i ++) {
@@ -201,13 +191,14 @@ export class LocalDownloadComponent implements OnInit {
   private getInfo(hexString: string) {
     // console.log('Send Message');
     ws.send(JSON.stringify({
+      MessageType: 0,
       HexString: hexString
     }));
   }
 
 
   private getTrueFromSelect(torrent: Torrent) {
-    if ( torrent === null) {
+    if ( torrent === null || torrent === undefined ) {
       return torrent;
     }
     for (let i = 0; i < this.torrents.length; i ++) {
@@ -240,7 +231,8 @@ export class LocalDownloadComponent implements OnInit {
 
   startOneTorrent() {
     this.selectedTorrent = this.getTrueFromSelect(this.selectedTorrent);
-    if (this.selectedTorrent != null && this.selectedTorrent.Status !== 'Completed' && this.selectedTorrent.Status !== 'Running') {
+    if (this.selectedTorrent !== null && this.selectedTorrent !== undefined
+        && this.selectedTorrent.Status !== 'Completed' && this.selectedTorrent.Status !== 'Running') {
       const tmpTorrent = this.selectedTorrent;
       this.torrentService.startDownloadOneTorrent(tmpTorrent.HexString)
           .subscribe((data: JSON) => {
@@ -254,18 +246,9 @@ export class LocalDownloadComponent implements OnInit {
     }
   }
 
-  private completeOneTorrent(tmpTorrent: Torrent) {
-    if (tmpTorrent !== null) {
-      tmpTorrent.Status = 'Completed';
-      if (tmpTorrent.Interval > 0) {
-        clearInterval(tmpTorrent.Interval);
-        tmpTorrent.Interval = -1;
-      }
-    }
-  }
-
   stopOneTorrent() {
-    if (this.selectedTorrent !== null && this.selectedTorrent.Status !== 'Completed') {
+    if (this.selectedTorrent !== null && this.selectedTorrent !== undefined
+        && this.selectedTorrent.Status !== 'Completed') {
       this.selectedTorrent = this.getTrueFromSelect(this.selectedTorrent);
       if (this.selectedTorrent.Interval > 0) {
         console.log(this.selectedTorrent.Interval);
@@ -288,7 +271,7 @@ export class LocalDownloadComponent implements OnInit {
 
   delOneTorrent() {
     // console.log(this.selectedTorrent);
-    if (this.selectedTorrent !== null) {
+    if (this.selectedTorrent !== null && this.selectedTorrent !== undefined) {
 
       this.selectedTorrent = this.getTrueFromSelect(this.selectedTorrent);
       if (this.selectedTorrent.Interval > 0) {
@@ -312,8 +295,30 @@ export class LocalDownloadComponent implements OnInit {
 
   showInfo() {
     this.selectedTorrent = this.getTrueFromSelect(this.selectedTorrent);
-    console.log(this.selectedTorrent);
+    if (this.selectedTorrent !== null && this.selectedTorrent !== undefined) {
+      console.log(this.selectedTorrent);
+    }
   }
 
+  private getBaseHost(): string {
+    return _.trimEnd(window.location.href, this.status);
+  }
 
+  showPlay() {
+    this.selectedTorrent = this.getTrueFromSelect(this.selectedTorrent);
+    if (this.selectedTorrent !== null && this.selectedTorrent !== undefined) {
+      const electronScreen = screen;
+      const size = electronScreen.getPrimaryDisplay().workAreaSize;
+      const win = new remote.BrowserWindow({
+        width: size.width * 0.7,
+        height: size.width * 0.7 / 16 * 9,
+        autoHideMenuBar: true,
+        titleBarStyle: 'hidden',
+      });
+      win.loadURL(this.getBaseHost() + 'player/' + this.selectedTorrent.HexString);
+      // win.webContents.openDevTools();
+    }
+
+
+  }
 }
