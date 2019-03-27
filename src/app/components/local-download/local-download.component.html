@@ -1,0 +1,174 @@
+<div class="row flex-xl-nowrap">
+  <app-navbar class="col-sm-2 nav-set">
+  </app-navbar>
+  <div class="col-sm-10 nav-set">
+    <div class="container-fluid">
+      <div class="row nav sticky-top">
+        <div class="btn-toolbar col-sm-10 nav-top" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group nav-btn-groups" role="group" aria-label="First group">
+            <button type="button" class="btn btn-light" title="Open Torrent" onclick="upFile.click()"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></button>
+            <input type="file" id="upFile" (change)="addOneTorrent($event.target.files)" class="upFile">
+            <button type="button" class="btn btn-light" (click)="handleMagnet(magnet)" title="Add Magnet"><i class="fa fa-link fa-1x" aria-hidden="true"></i></button>
+            <ng-template #magnet let-modal>
+              <div class="modal-body">
+                <textarea type="text" class="form-control" #box (keyup.enter)="downloadMagnet(box.value)" placeholder="magnet:?xt=urn:" aria-label="Magnet"></textarea>
+              </div>
+            </ng-template>
+          </div>
+          <div class="btn-group nav-btn-groups" role="group" aria-label="Second group">
+            <button type="button" class="btn btn-light" title="Start Task" (click)="startOneTorrent()"><i class="fa fa-play fa-1x" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-light" title="Stop Task" (click)="stopOneTorrent()"><i class="fa fa-pause fa-1x" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-light" title="Delete Task" (click)="delOneTorrent()"><i class="fa fa-times fa-1x" aria-hidden="true"></i></button>
+          </div>
+          <div class="btn-group nav-btn-groups" role="group" aria-label="Third group">
+            <button type="button" class="btn btn-light" title="Show Torrent Information" (click)="showInfo(details)"><i class="fa fa-info fa-1x" aria-hidden="true"></i></button>
+            <ng-template class="container-fluid" #details let-modal>
+              <div class="row modal-body">
+                <ngb-tabset class= "col-sm-12" justify="center" type="pills">
+                  <ngb-tab title="Torrent">
+                    <ng-template ngbTabContent>
+                      <br>
+                      <form>
+                        <div class="form-group row">
+                          <label for="torrentName" class="col-sm-2 col-form-label">Name</label>
+                          <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="torrentName" [value]="selectedTorrent.TorrentName">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="infoHash" class="col-sm-2 col-form-label">InfoHash</label>
+                          <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="infoHash" [value]="selectedTorrent.HexString">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="torrentSize" class="col-sm-2 col-form-label">Size</label>
+                          <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="torrentSize" [value]="selectedTorrent.TotalLength">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="storagePath" class="col-sm-2 col-form-label">Path</label>
+                          <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="storagePath" [value]="selectedTorrent.StoragePath">
+                          </div>
+                        </div>
+                      </form>
+                    </ng-template>
+                  </ngb-tab>
+                  <ngb-tab title="Files">
+                    <ng-template ngbTabContent>
+                      <br>
+                      <div class="table-responsive" *ngIf="selectedTorrent.Files !== null &&  selectedTorrent.Files !== undefined && selectedTorrent.Files.length !== 0">
+                        <table class="table table-sm">
+                          <thead>
+                          <tr class="d-flex">
+                            <td scope="col" class="col-md-8 fileNameHeader">Path</td>
+                            <td scope="col" class="col-md-2 fileNameHeader">Size</td>
+                            <td scope="col" class="col-md-2 fileNameHeader">Priority</td>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let file of selectedTorrent.Files" class="d-flex">
+                            <td class="col-md-8"><input type="text" readonly class="form-control-plaintext" [title]="file.Path" [value]="file.Path"></td>
+                            <td class="col-md-2"><input type="text" readonly class="form-control-plaintext" [title]="file.Size" [value]="file.Size"></td>
+                            <td class="col-md-2"><input type="text" readonly class="form-control-plaintext" [title]="file.Priority" [value]="file.Priority"></td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="alert alert-warning" role="alert" *ngIf="selectedTorrent.Files === null ||  selectedTorrent.Files === undefined || selectedTorrent.Files.length === 0">
+                        No More Info
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+                  <ngb-tab title="Status">
+                    <ng-template ngbTabContent>
+                      <br>
+                      <form>
+                        <div class="form-group row">
+                          <label for="torrentStatus" class="col-sm-2 col-form-label">Status</label>
+                          <div class="col-sm-4">
+                            <input type="text" readonly class="form-control-plaintext" id="torrentStatus" [value]="selectedTorrent.Status">
+                          </div>
+                          <label for="updateTime" class="col-sm-2 col-form-label">UpdateAt</label>
+                          <div class="col-sm-4">
+                            <input type="text" readonly class="form-control-plaintext" id="updateTime" [value]="selectedTorrent.UpdateTime">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="percentage" class="col-sm-2 col-form-label">Progress</label>
+                          <div class="col-sm-4">
+                            <input type="text" readonly class="form-control-plaintext" id="percentage" [value]="selectedTorrent.Percentage | percent:'2.2-4'">
+                          </div>
+                          <label for="peers" class="col-sm-2 col-form-label">Peers</label>
+                          <div class="col-sm-4">
+                            <input type="text" readonly class="form-control-plaintext" id="peers" [value]="selectedTorrent.TorrentStatus.ActivePeers + ' / ' + selectedTorrent.TorrentStatus.TotalPeers">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="speed" class="col-sm-2 col-form-label">Speed</label>
+                          <div class="col-sm-4">
+                            <input type="text" readonly class="form-control-plaintext" id="speed" [value]="selectedTorrent.DownloadSpeed">
+                          </div>
+                          <label for="leftTime" class="col-sm-2 col-form-label">Left</label>
+                          <div class="col-sm-4">
+                            <input type="text" readonly class="form-control-plaintext" id="leftTime" [value]="selectedTorrent.LeftTime">
+                          </div>
+                        </div>
+                      </form>
+                    </ng-template>
+                  </ngb-tab>
+                </ngb-tabset>
+              </div>
+            </ng-template>
+          </div>
+          <div class="btn-group" role="group" aria-label="Forth group">
+            <button type="button" class="btn btn-light" title="Play It" (click)="showPlay()"><i class="fa fa-play-circle fa-1x" aria-hidden="true"></i></button>
+          </div>
+        </div>
+
+        <div class="btn-toolbar col-sm-2 nav-top" role="toolbar" aria-label="Toolbar with button groups">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 infoPage" tabindex="0" (click) = "torrentBlur()">
+          <div *ngFor="let torrent of torrents">
+            <div class="row singleTorrent" tabindex="0" (click)="clickOneTorrent($event, torrent)" [ngClass]="{'selectedTorrent' : judgeEqual(torrent, selectedTorrent)}">
+              <div class="col-sm-2 singleTorrentLeft">
+                <img [src]="torrent.TypeImg" class="fileType" [alt]="torrent.TypeImg"/>
+              </div>
+              <div class="col-sm-10">
+                <input [title]="torrent.TorrentName" [value]="torrent.TorrentName" class="torrentName form-control-plaintext"
+                       id="" readonly type="text"/>
+                <div class="row torrentInfo">
+                  <div class="col-sm-10 allInfo">
+                    <input *ngIf = "torrent.Status !== 'Running'" [value]="torrent.TotalLength" class="singleInfo form-control-plaintext"
+                           readonly type="text"/>
+                    <input *ngIf = "torrent.Status === 'Running'" [value]="torrent.TotalLength + ' Left: ' + torrent.LeftTime + ' Speed: ' + torrent.DownloadSpeed" class="singleInfo form-control-plaintext"
+                           readonly type="text"/>
+                  </div>
+                  <div class="col-sm-2 allInfo">
+                    <div class="singleInfo">{{torrent.Status}}</div>
+                  </div>
+                  <div class="col-sm-12 allProgress">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped progress-bar-animated" [id] = "torrent.HexString" role="progressbar" aria-valuemin="0" aria-valuemax="100" [style.width] = "torrent.Percentage | percent:'2.2-4'">
+                        {{torrent.Percentage | percent:'2.2-4'}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <webview id="itorrents" src="https://itorrents.org/" style="display:none; width:100%; height:100%"></webview>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

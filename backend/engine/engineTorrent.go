@@ -15,10 +15,14 @@ import (
 
 func (engine *Engine)AddOneTorrentFromFile (filepathAbs string)(tmpTorrent *torrent.Torrent, err error) {
 	torrentMetaInfo, err := metainfo.LoadFromFile(filepathAbs)
-	tmpTorrent, needMoreOperation := engine.checkOneHash(torrentMetaInfo.HashInfoBytes())
-	if needMoreOperation {
-		tmpTorrent, err = engine.TorrentEngine.AddTorrent(torrentMetaInfo)
-		engine.EngineRunningInfo.AddOneTorrent(tmpTorrent)
+	if err == nil {
+		//To solve problem of different variable scope
+		needMoreOperation := false
+		tmpTorrent, needMoreOperation = engine.checkOneHash(torrentMetaInfo.HashInfoBytes())
+		if needMoreOperation {
+			tmpTorrent, err = engine.TorrentEngine.AddTorrent(torrentMetaInfo)
+			engine.EngineRunningInfo.AddOneTorrent(tmpTorrent)
+		}
 	}
 	return tmpTorrent, err
 }

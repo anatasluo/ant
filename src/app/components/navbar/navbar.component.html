@@ -1,0 +1,68 @@
+<div class="bd-sidebar">
+  <div class="card">
+    <div class="row usernameAndPortrait">
+      <div class="col-sm-4">
+        <img [src]="portrait" alt="..." class="img-fluid rounded-circle portrait">
+      </div>
+      <div class="col-sm-8">
+        <span class="badge username align-middle">ANT</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <div class="divider"></div> -->
+
+  <div class="card">
+    <div class="card-header">
+      Local Download
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" tabindex="0" routerLink="/total" routerLinkActive="activeLink"><i class="fa fa-list" aria-hidden="true"></i>&nbsp; All Tasks</li>
+      <li class="list-group-item" tabindex="0" routerLink="/running" routerLinkActive="activeLink"><i class="fa fa-arrow-down" aria-hidden="true"></i>&nbsp; Download</li>
+      <li class="list-group-item" tabindex="0" routerLink="/completed" routerLinkActive="activeLink"><i class="fa fa-check" aria-hidden="true"></i>&nbsp; Completed</li>
+    </ul>
+  </div>
+
+  <!--<div class="divider"></div>-->
+
+  <!--<div class="card">-->
+    <!--<div class="card-header">-->
+      <!--Remote Support-->
+    <!--</div>-->
+    <!--<ul class="list-group list-group-flush">-->
+      <!--<li class="list-group-item" tabindex="0"><i class="fa fa-telegram" aria-hidden="true"></i>&nbsp; Instruction</li>-->
+      <!--<li class="list-group-item" tabindex="0"><i class="fa fa-wrench" aria-hidden="true"></i>&nbsp; Open Remote</li>-->
+    <!--</ul>-->
+    <!--&lt;!&ndash; <ul class="list-group list-group-flush">-->
+      <!--<li class="list-group-item"><i class="fa fa-list" aria-hidden="true"></i>&nbsp; 全部任务</li>-->
+      <!--<li class="list-group-item"><i class="fa fa-arrow-down" aria-hidden="true"></i>&nbsp; 正在下载</li>-->
+      <!--<li class="list-group-item"><i class="fa fa-check" aria-hidden="true"></i>&nbsp; 已完成</li>-->
+      <!--<li class="list-group-item"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; 垃圾箱</li>-->
+    <!--</ul> &ndash;&gt;-->
+  <!--</div>-->
+
+  <div class="divider"></div>
+
+  <div class="card">
+    <div class="card-header">
+      More Functions
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" tabindex="0" routerLink="/search" routerLinkActive="activeLink"><i class="fa fa-search" aria-hidden="true"></i>&nbsp; Tools</li>
+      <li class="list-group-item" tabindex="0" routerLink="/settings" routerLinkActive="activeLink"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp; Setting</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card">
+    <div class="card-header">
+      About ANT
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" tabindex="0" routerLink="/about" routerLinkActive="activeLink"><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp; Version</li>
+      <li class="list-group-item" tabindex="0" routerLink="/instruction" routerLinkActive="activeLink"><i class="fa fa-book" aria-hidden="true"></i>&nbsp; Instruction</li>
+    </ul>
+  </div>
+</div>

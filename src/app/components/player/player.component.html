@@ -1,0 +1,23 @@
+<div class="col-xs-12 videoWrapper embed-responsive-item">
+    <video controls autoplay preload id="media">
+        <source [src]="videoUrl" type="video/mp4">
+    </video>
+    <button type="button" class="btn btn-light" (click)="handleVideoWaring(VideoWaring)" id="waringButton" style="display: none;"></button>
+    <ng-template #VideoWaring let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title">Waring</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Currently, ANT Downloader only supports steaming the biggest file in torrent. And html5 video element only support some types of video. </p>
+            <p>You can try to play it with your own player with the following address to get better experience.</p>
+            <p class="videoUrl" >{{videoUrl}}</p>
+        </div>
+        <!--<div class="modal-footer"></div>-->
+    </ng-template>
+</div>
+
+
+<!--http://127.0.0.1:8482/player/e602582a03ac4f7c5df4450145bcf1aca098988d-->

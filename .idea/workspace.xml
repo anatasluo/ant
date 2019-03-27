@@ -2,32 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a27c0ce-fe61-45a2-8044-562a85d08921" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.directory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ant.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ant.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/engine/engine.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/engine.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/engine/engineTorrent.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/engineTorrent.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/engine/info.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/info.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/engine/player.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/player.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/engine/torrentDB.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/torrentDB.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/router/player.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/router/player.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/router/torrent.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/router/torrent.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/router/ws.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/router/ws.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/.directory" beforeDir="false" afterPath="$PROJECT_DIR$/webview/.directory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/.directory" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/electron-builder.json" beforeDir="false" afterPath="$PROJECT_DIR$/webview/electron-builder.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/webview/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/webview/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/webview/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/src/app/classes/torrent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/classes/torrent.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/components/local-download/local-download.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/src/app/providers/config.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/app/providers/config.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webview/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webview/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/assets/bin/ant" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webview/src/assets/bin/config.toml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,44 +42,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/router/player.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
-              <folding>
-                <element signature="e#16#128#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1077">
-              <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-              <folding>
-                <element signature="e#16#190#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/router/ws.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/engine/info.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-242">
-              <caret line="192" column="22" selection-start-line="192" selection-start-column="22" selection-end-line="192" selection-end-column="22" />
+            <state relative-caret-position="-619">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
@@ -96,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4642">
-              <caret line="211" column="32" selection-start-line="211" selection-start-column="32" selection-end-line="211" selection-end-column="32" />
+            <state relative-caret-position="41">
+              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
               <folding>
                 <element signature="e#16#184#0" expanded="true" />
               </folding>
@@ -108,20 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="902">
-              <caret line="53" column="72" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
-              <folding>
-                <element signature="e#16#177#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/engine/torrentDB.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+            <state relative-caret-position="110">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -176,7 +122,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/go/pkg/mod/github.com/zserge/webview@v0.0.0-20190123072648-16c93bcaeaeb/webview.h" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/webview/test.go" />
         <option value="$PROJECT_DIR$/downloader/test.go" />
@@ -219,21 +164,23 @@
         <option value="$PROJECT_DIR$/backend/config.toml" />
         <option value="$PROJECT_DIR$/backend/bin/config.toml" />
         <option value="$PROJECT_DIR$/backend/router/player.go" />
-        <option value="$PROJECT_DIR$/backend/router/torrent.go" />
-        <option value="$PROJECT_DIR$/backend/engine/engineTorrent.go" />
         <option value="$PROJECT_DIR$/backend/engine/player.go" />
         <option value="$PROJECT_DIR$/backend/engine/engine.go" />
         <option value="$PROJECT_DIR$/backend/engine/torrentDB.go" />
         <option value="$PROJECT_DIR$/backend/engine/info.go" />
         <option value="$PROJECT_DIR$/backend/router/ws.go" />
+        <option value="$PROJECT_DIR$/electron-builder.json" />
+        <option value="$PROJECT_DIR$/main.ts" />
+        <option value="$PROJECT_DIR$/backend/engine/engineTorrent.go" />
+        <option value="$PROJECT_DIR$/backend/router/torrent.go" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-194" />
-    <option name="y" value="577" />
-    <option name="width" value="1924" />
-    <option name="height" value="976" />
+    <option name="x" value="-420" />
+    <option name="y" value="325" />
+    <option name="width" value="1912" />
+    <option name="height" value="932" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -243,50 +190,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
               <item name="ant" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
               <item name="ant" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Git" type="462c0819:PsiDirectoryNode" />
-              <item name="ant" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="setting" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,10 +221,14 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../go-peerflix" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -358,11 +282,51 @@
       <output_directory value="$PROJECT_DIR$/backend/bin" />
       <method v="2" />
     </configuration>
+    <configuration name="Tests" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/src/karma.conf.js" />
+      <working-directory value="$PROJECT_DIR$" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Go Build.GooSin" />
       <item itemvalue="Go Build.Goo" />
       <item itemvalue="Go Build.ant" />
+      <item itemvalue="JavaScript Debug.Angular Application" />
+      <item itemvalue="npm.Angular CLI Server" />
     </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a27c0ce-fe61-45a2-8044-562a85d08921" name="Default Changelist" comment="" />
+      <created>1553582594000</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553582594000</updated>
+      <workItem from="1553582598476" duration="1177000" />
+      <workItem from="1553583827345" duration="4411000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5588000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -374,15 +338,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-112" y="479" width="1924" height="976" extended-state="0" />
-    <editor active="true" />
+    <frame x="-420" y="325" width="1912" height="932" extended-state="1" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19247311" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19859308" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4997239" weight="0.074745186" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997239" visible="true" weight="0.46585366" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997239" visible="true" weight="0.38917527" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4953146" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -392,10 +356,11 @@
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3296582" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32792208" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5002761" side_tool="true" weight="0.5368421" />
+      <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.15913978" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.1590909" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36919317" />
@@ -421,12 +386,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/webview/main.js" />
-        <option value="$PROJECT_DIR$/webview/main.js.map" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -478,39 +437,7 @@
     <integration-enabled>true</integration-enabled>
     <proxy>http://127.0.0.1:7777/</proxy>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/bencode/decode.go</url>
-          <line>45</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/julienschmidt/httprouter@v1.2.0/router.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="333" selection-start-line="333" selection-end-line="333" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../goTorrent/engine/cronJobs.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2243">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/piece.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="180" column="16" selection-start-line="180" selection-start-column="16" selection-end-line="180" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../goTorrent/engine/clientStructs.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -690,13 +617,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webview/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/webview/.gitignore" />
     <entry file="file://$USER_HOME$/go/pkg/mod/github.com/anacrolix/torrent@v1.0.0/config.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1364">
@@ -768,16 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/router/player.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
-          <folding>
-            <element signature="e#16#128#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/router/router.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -802,13 +713,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
+    <entry file="file:///usr/lib/go/src/time/time.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1077">
-          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding>
-            <element signature="e#16#190#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="179">
+          <caret line="667" column="56" selection-start-line="667" selection-start-column="48" selection-end-line="667" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/player.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/ws.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/go.mod">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/engine/info.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="192" column="22" selection-start-line="192" selection-start-column="22" selection-end-line="192" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -819,44 +751,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.ts" />
+    <entry file="file://$PROJECT_DIR$/electron-builder.json" />
     <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="53" column="72" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
-          <folding>
-            <element signature="e#16#177#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="110">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4642">
-          <caret line="211" column="32" selection-start-line="211" selection-start-column="32" selection-end-line="211" selection-end-column="32" />
+        <state relative-caret-position="41">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding>
             <element signature="e#16#184#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go/src/time/time.go">
+    <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="667" column="56" selection-start-line="667" selection-start-column="48" selection-end-line="667" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/engine/info.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-242">
-          <caret line="192" column="22" selection-start-line="192" selection-start-column="22" selection-end-line="192" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/router/ws.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+        <state relative-caret-position="-619">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
