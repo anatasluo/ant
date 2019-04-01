@@ -117,7 +117,7 @@ func (engine *Engine)StartDownloadTorrent(hexString string)(downloaded bool) {
 			}
 			logger.Debug("Create extend info for log")
 			//Some download setting for task
-			logger.Info(clientConfig.DefaultTrackers)
+			logger.Debug(clientConfig.DefaultTrackers)
 			singleTorrent.AddTrackers(clientConfig.DefaultTrackers)
 			singleTorrent.SetMaxEstablishedConns(clientConfig.EngineSetting.MaxEstablishedConns)
 			engine.WaitForCompleted(singleTorrent)

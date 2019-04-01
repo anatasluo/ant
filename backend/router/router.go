@@ -22,6 +22,7 @@ func InitRouter() *negroni.Negroni {
 	handleMagnet(router)
 	handleWS(router)
 	handlePlayer(router)
+	handleSetting(router)
 
 	// Use global middleware
 	n := negroni.New()

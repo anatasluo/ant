@@ -3,63 +3,60 @@
   </app-navbar>
   <div class="col-sm-10 nav-set">
     <div class="container-fluid infoPage">
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="card">
-              <div class="card-header">
-                ANT Downloader <span class="badge badge-pill badge-info">I</span>
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="list-unstyled">
+            <li tabindex="0" class="media my-4" (click)="openUrl('https://itorrents.org/')" title="click to open it.">
+              <img [src]="itorrents" class="align-self-center mr-3 img-thumbnail" alt="...">
+              <div class="media-body">
+                <h3 class="mt-0 mb-1">itorrents</h3>
+                <p><cite>iTorrents.org is a free service for caching torrent files online.</cite></p>
+                <p>
+                  <cite>You can not search or list torrent files that are stored here, you can only access them if you already know the info_hash value of the torrent you want to download.</cite>
+                </p>
               </div>
-              <div class="card-body">
-                <p class="card-text text-muted infoText">This page lists some useful services for a bittorrent client which I don't have enough time to keep.</p>
-                <button (click)="openUrl('https://github.com/anatasluo/ant')" class="btn btn-primary">ANT Github</button>
+            </li>
+            <li tabindex="0" class="media my-4" (click)="openUrl('https://thepiratebay.org/')" title="click to open it.">
+              <img [src]="thepiratebay" class="align-self-center mr-3 img-thumbnail" alt="...">
+              <div class="media-body">
+                <h3 class="mt-0 mb-1">thepiratebay</h3>
+                <p>
+                  <cite>
+                    The Pirate Bay (TPB) is one of the largest torrent sites, millions of visitors per day.
+                  </cite>
+                </p>
+                <p>
+                  <cite>
+                    The Pirate Bay allows visitors to search, download, and contribute magnet links and torrent files.
+                  </cite>
+                </p>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="card">
-              <div class="card-header">
-                thepiratebay <span class="badge badge-pill badge-secondary">S</span>
+            </li>
+            <li tabindex="0" class="media my-4" (click)="openUrl('https://www.torlock.com/')" title="click to open it.">
+              <img [src]="torlock" class="align-self-center mr-3 img-thumbnail" alt="...">
+              <div class="media-body">
+                <h3 class="mt-0 mb-1">torlock</h3>
+                <p>
+                  <cite>
+                    TorLock is a website which features various torrent files to download movies, TV series, anime, ebooks, software, music, and so on.
+                  </cite>
+                </p>
               </div>
-              <div class="card-body">
-                <p class="card-text text-muted infoText">Thepiratebay is one of the biggest torrent search engine in the world.</p>
-                <button (click)="openUrl('https://thepiratebay.org/')" class="btn btn-primary">Website</button>
+            </li>
+            <li tabindex="0" class="media my-4" (click)="openUrl('https://www.torrentdownload.ch/')" title="click to open it.">
+              <img [src]="torrentdownload" class="align-self-center mr-3 img-thumbnail" alt="...">
+              <div class="media-body">
+                <h3 class="mt-0 mb-1">torrentdownload</h3>
+                <p>
+                  <cite>
+                    torrentdownload is a website which features various torrent files to download movies, TV series, anime, ebooks, software, music, and so on.
+                  </cite>
+                </p>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="card">
-              <div class="card-header">
-                itorrents <span class="badge badge-pill badge-dark">T</span>
-              </div>
-              <div class="card-body">
-                <p class="card-text text-muted infoText">itorrents supports mutual transformation between magnet and torrent.</p>
-                <button (click)="openUrl('https://itorrents.org/')" class="btn btn-primary">Website</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="card">
-              <div class="card-header">
-                torlock <span class="badge badge-pill badge-secondary">S</span>
-              </div>
-              <div class="card-body">
-                <p class="card-text text-muted infoText">torlock is a popular torrent search engine. </p>
-                <button (click)="openUrl('https://www.torlock.com/')" class="btn btn-primary">Website</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="card">
-              <div class="card-header">
-                limetorrents <span class="badge badge-pill badge-secondary">S</span>
-              </div>
-              <div class="card-body">
-                <p class="card-text text-muted infoText">limetorrents is a popular torrent search engine. </p>
-                <button (click)="openUrl('https://www.limetorrents.info/')" class="btn btn-primary">Website</button>
-              </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
   </div>
 </div>

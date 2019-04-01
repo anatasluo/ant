@@ -5,6 +5,7 @@ import (
 	"github.com/anacrolix/torrent/metainfo"
 	"github.com/anatasluo/ant/backend/setting"
 	log "github.com/sirupsen/logrus"
+	"path/filepath"
 )
 
 type Engine struct {
@@ -67,9 +68,31 @@ func (engine *Engine)setEnvironment()() {
 	engine.UpdateInfo()
 }
 
+func (engine *Engine)Restart()() {
+	logger.Info("Restart engine now")
+
+	//To handle problems caused by change of settings
+	for index, _:= range engine.EngineRunningInfo.TorrentLogs {
+		if engine.EngineRunningInfo.TorrentLogs[index].Status != CompletedStatus && engine.EngineRunningInfo.TorrentLogs[index].StoragePath != clientConfig.TorrentConfig.DataDir{
+			filePath := filepath.Join(engine.EngineRunningInfo.TorrentLogs[index].StoragePath, engine.EngineRunningInfo.TorrentLogs[index].TorrentName)
+			log.WithFields(log.Fields{"Path":filePath}).Info("To restart engine, these unfinished files will be deleted")
+			singleTorrent, torrentExist := engine.GetOneTorrent(engine.EngineRunningInfo.TorrentLogs[index].HashInfoBytes().HexString())
+			if torrentExist {
+				singleTorrent.Drop()
+			}
+			engine.EngineRunningInfo.TorrentLogs[index].StoragePath = clientConfig.TorrentConfig.DataDir
+			engine.UpdateInfo()
+			delFiles(filePath)
+		}
+	}
+	engine.Cleanup()
+	GetEngine()
+}
+
 
 func (engine *Engine)Cleanup()() {
 
+	hasCreatedEngine = false
 	engine.UpdateInfo()
 
 	for index := range engine.EngineRunningInfo.TorrentLogs {

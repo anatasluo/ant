@@ -22,9 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PlayerComponent } from './components/player/player.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { SearchComponent } from './components/search/search.component';
-import { InstructionComponent } from './components/instruction/instruction.component';
 import { AboutComponent } from './components/about/about.component';
-
+import { FormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -41,7 +40,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     PlayerComponent,
     SettingsComponent,
     SearchComponent,
-    InstructionComponent,
     AboutComponent,
   ],
   imports: [
@@ -51,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFontAwesomeModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -46,5 +46,3 @@ func (TorrentDB *TorrentDB)GetLogs(torrentLogs *TorrentLogsAndID)() {
 
 
 
-
-

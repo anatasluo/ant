@@ -44,7 +44,7 @@ button {
 
 .selectedTorrent, .singleTorrent:hover {
   box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, 0.6), 0 0 8px 0 rgba(0, 0, 0, 0.5);
-  background-color: #f5f4e8;
+  background-color: #EAEAEA;
   outline:none;
 }
 
@@ -87,7 +87,7 @@ button {
 }
 
 .allProgress {
-  height: 50%;
+  height: 25%;
 }
 
 .progress-bar {
@@ -105,15 +105,16 @@ button {
 }
 
 .singleInfo {
-  margin: 0px 5px 0px 5px;
+  margin: 0px 5px 0px 0px;
   height: 100%;
   display: inline-block;
-  color: #a696c8;
+  color: #bb6b4e;
 }
 
 .progress {
-  height: 1.2rem;
+  height: 0.8rem;
   background-color: #e8b9b930;
+  overflow: visible;
 }
 
 .fileType {
@@ -131,3 +132,24 @@ button {
   padding: 0;
   font-size: 1.2em;
 }
+
+.progress .progress-bar{
+  position: relative;
+  -webkit-animation: animate-positive 2s;
+  animation: animate-positive 2s;
+}
+
+.progress .progress-bar:after{
+  content: "";
+  display: inline-block;
+  width: 8px;
+  background: #d9d9f3;
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  right: -1px;
+  z-index: 1;
+  transform: rotate(35deg);
+}
+
+

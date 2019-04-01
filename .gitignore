@@ -44,9 +44,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-#For dist
-/release
-
 # Binaries for programs and plugins
 *.exe
 *.exe~

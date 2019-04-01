@@ -41,7 +41,7 @@
                             <input type="text" readonly class="form-control-plaintext" id="infoHash" [value]="selectedTorrent.HexString">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" *ngIf="selectedTorrent.Status === 'Running'">
                           <label for="torrentSize" class="col-sm-2 col-form-label">Size</label>
                           <div class="col-sm-10">
                             <input type="text" readonly class="form-control-plaintext" id="torrentSize" [value]="selectedTorrent.TotalLength">
@@ -51,6 +51,12 @@
                           <label for="storagePath" class="col-sm-2 col-form-label">Path</label>
                           <div class="col-sm-10">
                             <input type="text" readonly class="form-control-plaintext" id="storagePath" [value]="selectedTorrent.StoragePath">
+                          </div>
+                        </div>
+                        <div class="form-group row" *ngIf="selectedTorrent.Status === 'Running'">
+                          <label for="storagePath" class="col-sm-2 col-form-label">StreamURL</label>
+                          <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="streamURL" [value]="selectedTorrent.StreamURL">
                           </div>
                         </div>
                       </form>
@@ -106,7 +112,7 @@
                             <input type="text" readonly class="form-control-plaintext" id="peers" [value]="selectedTorrent.TorrentStatus.ActivePeers + ' / ' + selectedTorrent.TorrentStatus.TotalPeers">
                           </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" *ngIf="selectedTorrent.Status === 'Running'">
                           <label for="speed" class="col-sm-2 col-form-label">Speed</label>
                           <div class="col-sm-4">
                             <input type="text" readonly class="form-control-plaintext" id="speed" [value]="selectedTorrent.DownloadSpeed">
@@ -131,7 +137,6 @@
         <div class="btn-toolbar col-sm-2 nav-top" role="toolbar" aria-label="Toolbar with button groups">
         </div>
       </div>
-
       <div class="row">
         <div class="col-sm-12 infoPage" tabindex="0" (click) = "torrentBlur()">
           <div *ngFor="let torrent of torrents">
@@ -144,7 +149,7 @@
                        id="" readonly type="text"/>
                 <div class="row torrentInfo">
                   <div class="col-sm-10 allInfo">
-                    <input *ngIf = "torrent.Status !== 'Running'" [value]="torrent.TotalLength" class="singleInfo form-control-plaintext"
+                    <input *ngIf = "torrent.Status !== 'Running'" [value]="torrent.TotalLength + '  ' + torrent.StoragePath" class="singleInfo form-control-plaintext"
                            readonly type="text"/>
                     <input *ngIf = "torrent.Status === 'Running'" [value]="torrent.TotalLength + ' Left: ' + torrent.LeftTime + ' Speed: ' + torrent.DownloadSpeed" class="singleInfo form-control-plaintext"
                            readonly type="text"/>
@@ -155,7 +160,7 @@
                   <div class="col-sm-12 allProgress">
                     <div class="progress">
                       <div class="progress-bar progress-bar-striped progress-bar-animated" [id] = "torrent.HexString" role="progressbar" aria-valuemin="0" aria-valuemax="100" [style.width] = "torrent.Percentage | percent:'2.2-4'">
-                        {{torrent.Percentage | percent:'2.2-4'}}
+                        <div *ngIf="torrent.Percentage >= 0.1">{{torrent.Percentage | percent:'2.0-2'}}</div>
                       </div>
                     </div>
                   </div>

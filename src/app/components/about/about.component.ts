@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { shell } from 'electron';
 
 @Component({
   selector: 'app-about',
@@ -10,6 +11,10 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openUrl (url: string) {
+    shell.openExternal(url);
   }
 
 }

@@ -6,7 +6,6 @@ import { PlayerComponent } from './components/player/player.component';
 import { SearchComponent } from './components/search/search.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
-import {InstructionComponent} from './components/instruction/instruction.component';
 
 const routes: Routes = [
     { path: 'total', component: LocalDownloadComponent },
@@ -16,7 +15,6 @@ const routes: Routes = [
     { path: 'search', component: SearchComponent },
     { path: 'settings', component: SettingsComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'instruction', component: InstructionComponent },
     { path: '', redirectTo: '/total', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];

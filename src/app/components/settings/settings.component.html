@@ -3,7 +3,94 @@
   </app-navbar>
   <div class="col-sm-10 nav-set">
     <div class="container-fluid infoPage">
-
+      <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>Enable Proxy</span>
+              </div>
+              <div class="col-sm-6">
+                <div class="ckbx-style-9">
+                  <input type="checkbox" id="useSocksproxy" [(ngModel)]="settings.UseSocksproxy" name="useSocksproxy">
+                  <label for="useSocksproxy"></label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>Proxy URL</span>
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group-sm">
+                  <input *ngIf="settings.UseSocksproxy" name="socksProxyURL" type="text" title="Examples: socks5://demo:demo@192.168.99.100:1080, http://proxy.domain.com:3128"  [(ngModel)]="settings.SocksProxyURL" class="form-control form-control-sm">
+                  <input *ngIf="!settings.UseSocksproxy" readonly name="socksProxyURL" type="text" [(ngModel)]="settings.SocksProxyURL" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>Enable Default Trackers</span>
+              </div>
+              <div class="col-sm-6">
+                <div class="ckbx-style-9">
+                  <input type="checkbox" id="useTrackers" [(ngModel)]="settings.EnableDefaultTrackers" name="useTrackers">
+                  <label for="useTrackers"></label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>DefaultTrackerList</span>
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group-sm">
+                  <input *ngIf="settings.EnableDefaultTrackers" title="Currently, it only supports format like this. If you want to change, please check this url." name="defaultTrackerList" type="text" [(ngModel)]="settings.DefaultTrackerList" class="form-control form-control-sm">
+                  <input *ngIf="!settings.EnableDefaultTrackers" readonly name="defaultTrackerList" type="text" [(ngModel)]="settings.DefaultTrackerList" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>MaxEstablishedConns({{settings.MaxEstablishedConns}})</span>
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group-sm">
+                  <input type="range" min="50" max="200" title="Default is 100, you can set it depend on your computer." name="maxEstablishedConns" class="custom-range" [(ngModel)]="settings.MaxEstablishedConns">
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>Download Directory</span>
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group-sm">
+                  <input type="text" readonly class="form-control form-control-sm" title="This will lead to restart of all unfinished tasks." (click)="selectDataDir()" name="dataDir" [(ngModel)]="settings.DataDir">
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>Cache Directory</span>
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group-sm">
+                  <input type="text" readonly title="This directory is used for log and other cached data." class="form-control form-control-sm" (click)="selectTmpDir()" name="tmpDir" [(ngModel)]="settings.Tmpdir">
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="form-group row">
+              <div class="col-sm-2 offset-sm-8">
+                <button type="button" class="btn btn-light btn-xs btn-radius" (click)="resetSetting()">Reset</button>
+              </div>
+              <div class="col-sm-2 offset-sm-0">
+                <button type="button" class="btn btn-warning btn-xs btn-radius"  (click)="applySetting()">Apply</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

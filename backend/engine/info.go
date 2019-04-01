@@ -109,6 +109,7 @@ type OnlyStormID int
 
 const (
 	TorrentLogsID		OnlyStormID = iota + 1
+	ConfigID
 )
 
 

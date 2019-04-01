@@ -26,4 +26,5 @@ export class Torrent {
   DownloadSpeed:        string;
   TorrentStatus:        TorrentStatusInfo;
   UpdateTime:           any;
+  StreamURL:            string;
 }

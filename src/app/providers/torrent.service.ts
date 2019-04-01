@@ -68,6 +68,7 @@ export class TorrentService {
   startDownloadOneTorrent(hexString: string): Observable<JSON> {
     return this.operateOneTorrent(this.downloadOneTorrentUrl, hexString);
   }
+
   stopDownloadOneTorrent(hexString: string): Observable<JSON> {
     return this.operateOneTorrent(this.stopTorrentUrl, hexString);
   }

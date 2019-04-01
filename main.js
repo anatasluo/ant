@@ -18,10 +18,13 @@ function copyFile(src, dist) {
 function runEngine() {
     console.log('Engine running');
     var userData = electron_1.app.getPath('userData');
-    var cmdPath = userData + '/ant';
+    var cmdPath = userData + '/ant.exe';
     console.log(userData);
     // Copy file from app.asar to user data
-    copyFile(electron_1.app.getAppPath() + '/torrent/ant', cmdPath);
+    if (fs.existsSync(cmdPath)) {
+        fs.unlinkSync(cmdPath);
+    }
+    copyFile(electron_1.app.getAppPath() + '/torrent/ant.exe', cmdPath);
     copyFile(electron_1.app.getAppPath() + '/torrent/tracker.txt', userData + '/tracker.txt');
     copyFile(electron_1.app.getAppPath() + '/torrent/config.toml', userData + '/config.toml');
     fs.chmodSync(cmdPath, '0555');
@@ -71,7 +74,7 @@ function createWindow() {
             slashes: true
         }));
     }
-    if (serve || true) {
+    if (serve) {
         win.webContents.openDevTools();
     }
     // Emitted when the window is closed.

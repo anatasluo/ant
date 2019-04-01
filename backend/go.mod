@@ -5,6 +5,7 @@ require (
 	github.com/akavel/rsrc v0.0.0-20170831122431-f6a15ece2cfd // indirect
 	github.com/anacrolix/missinggo v0.0.0-20181129073415-3237bf955fed
 	github.com/anacrolix/torrent v1.0.0
+	github.com/anacrolix/utp v0.0.0-20180219060659-9e0e1d1d0572 // indirect
 	github.com/andlabs/ui v0.0.0-20180902183112-867a9e5a498d
 	github.com/asdine/storm v2.1.2+incompatible
 	github.com/dustin/go-humanize v1.0.0
@@ -12,6 +13,7 @@ require (
 	github.com/gorilla/websocket v1.4.0
 	github.com/julienschmidt/httprouter v1.2.0
 	github.com/nareix/joy4 v0.0.0-20181022032202-3ddbc8f9d431
+	github.com/pelletier/go-toml v1.2.0
 	github.com/pkg/errors v0.8.0
 	github.com/rs/cors v1.6.0
 	github.com/sirupsen/logrus v1.2.0

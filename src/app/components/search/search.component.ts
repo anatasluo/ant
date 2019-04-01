@@ -7,7 +7,10 @@ import { shell } from 'electron';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
+  itorrents = require('../../../assets/tools/itorrents.png');
+  thepiratebay = require('../../../assets/tools/thepiratebay.png');
+  torlock = require('../../../assets/tools/torlock.png');
+  torrentdownload = require('../../../assets/tools/torrentdownload.png');
   constructor() { }
 
   ngOnInit() {

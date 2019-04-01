@@ -123,6 +123,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     torrent.LeftTime = 'Estimating ...';
     torrent.DownloadSpeed = 'Estimating ...';
     torrent.Interval = -1;
+    torrent.StreamURL = this.getBaseHost() + 'player/' + torrent.HexString;
     return torrent;
   }
 
@@ -136,32 +137,34 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     return result ? 1 : 0;
   }
   getTorrents(): void {
-    this.torrentService.getSelectedTorrents(this.status).subscribe((datas: Torrent[]) => {
-      this.torrents = datas;
-      globalTorrents = this.torrents;
-      for (let i = 0; i < this.torrents.length; i ++) {
-        this.torrents[i] = this.getTorrentWebFromData(this.torrents[i]);
-        if (this.torrents[i].Status === 'Running') {
-          // console.log(this.torrents[i].Status);
-          this.updateInfo(this.torrents[i].HexString);
-        }
-      }
-      this.torrents.sort(this.compareTwoTorrent);
-    }, error => {
-      console.log(error);
-    });
+    this.torrentService.getSelectedTorrents(this.status)
+        .subscribe((datas: Torrent[]) => {
+          this.torrents = datas;
+          globalTorrents = this.torrents;
+          for (let i = 0; i < this.torrents.length; i ++) {
+            this.torrents[i] = this.getTorrentWebFromData(this.torrents[i]);
+            if (this.torrents[i].Status === 'Running') {
+              // console.log(this.torrents[i].Status);
+              this.updateInfo(this.torrents[i].HexString);
+            }
+          }
+          this.torrents.sort(this.compareTwoTorrent);
+        }, error => {
+          console.log(error);
+        });
   }
 
   private addOneTorrentService(file: File): void {
     if (_.endsWith(_.lowerCase(file.name), 'torrent')) {
       console.log(file.name);
-      this.torrentService.addOneTorrent(file).subscribe((IsAdded: boolean) => {
-        if (IsAdded) {
-          this.getTorrents();
-        }
-      }, error => {
-        console.log(error);
-      });
+      this.torrentService.addOneTorrent(file)
+          .subscribe((IsAdded: boolean) => {
+            if (IsAdded) {
+              this.getTorrents();
+            }
+          }, error => {
+            console.log(error);
+          });
     } else {
       alert('请上传有效文件(后缀为.torrent)');
     }
@@ -179,9 +182,11 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
       return torrentA.HexString === torrentB.HexString;
     }
   }
+
   torrentBlur() {
     this.selectedTorrent = null;
   }
+
   clickOneTorrent(event: Event, torrent: Torrent) {
     // console.log(torrent);
     event.stopPropagation();
@@ -319,16 +324,20 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
   showPlay() {
     this.selectedTorrent = this.getTrueFromSelect(this.selectedTorrent);
     if (this.selectedTorrent !== null && this.selectedTorrent !== undefined) {
-      const electronScreen = screen;
-      const size = electronScreen.getPrimaryDisplay().workAreaSize;
-      const win = new remote.BrowserWindow({
-        width: size.width * 0.7,
-        height: size.width * 0.7 / 16 * 9,
-        autoHideMenuBar: true,
-        titleBarStyle: 'hidden',
-      });
-      win.loadURL(this.getBaseHost() + 'player/' + this.selectedTorrent.HexString);
-      // win.webContents.openDevTools();
+      if (this.selectedTorrent.Status === 'Running') {
+        const electronScreen = screen;
+        const size = electronScreen.getPrimaryDisplay().workAreaSize;
+        const win = new remote.BrowserWindow({
+          width: size.width * 0.7,
+          height: size.width * 0.7 / 16 * 9,
+          autoHideMenuBar: true,
+          titleBarStyle: 'hidden',
+        });
+        win.loadURL(this.selectedTorrent.StreamURL);
+        // win.webContents.openDevTools();
+      } else {
+        alert('Pleas choose a running task');
+      }
     }
 
 

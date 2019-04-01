@@ -26,9 +26,12 @@ export class PlayerComponent implements OnInit {
     this.videoUrl = this.configService.playerUrl + '/' + this.hexString;
     const videoEle = document.getElementsByTagName('video')[0];
     const waringButton = document.getElementById('waringButton');
-    waringButton.click();
     videoEle.addEventListener('error', function() {
       alert('Unsupported type');
+      waringButton.click();
+    }, true);
+    videoEle.addEventListener('canplay', function() {
+      waringButton.click();
     }, true);
   }
 
