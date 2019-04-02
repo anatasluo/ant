@@ -2,14 +2,16 @@ import { app, BrowserWindow, screen, Menu, Tray, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import * as fs from 'fs';
+import * as os from 'os';
 import { exec, execFile } from 'child_process';
 
+require('update-electron-app')();
 
-// require('update-electron-app')();
-
-let win, serve;
+let win: BrowserWindow, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
+
+const gotTheLock = app.requestSingleInstanceLock();
 
 // let tray = null;
 
@@ -22,20 +24,24 @@ function copyFile(src, dist) {
 function runEngine() {
   console.log('Engine running');
   const userData = app.getPath('userData');
-  const cmdPath = userData + '/ant.exe';
-  console.log(userData);
 
+  const systemVersion = os.platform();
+  let cmdPath;
+  if (systemVersion === 'win32') {
+      cmdPath = '/ant.exe';
+  } else {
+      cmdPath = '/ant';
+  }
   // Copy file from app.asar to user data
   if (fs.existsSync(cmdPath)) {
     fs.unlinkSync(cmdPath);
   }
-  copyFile(app.getAppPath() + '/torrent/ant.exe', cmdPath);
-  copyFile(app.getAppPath() + '/torrent/tracker.txt', userData + '/tracker.txt');
-  copyFile(app.getAppPath() + '/torrent/config.toml', userData + '/config.toml');
-  fs.chmodSync(cmdPath, '0555');
+  copyFile(app.getAppPath() + '/torrent' + cmdPath, userData + cmdPath);
+  copyFile(app.getAppPath() + '/torrent' + '/tracker.txt', userData + '/tracker.txt');
+  copyFile(app.getAppPath() + '/torrent' + '/config.toml', userData + '/config.toml');
+  fs.chmodSync(userData + cmdPath, '0555');
 
-  console.log('Done');
-  const torrentEngine = exec(cmdPath, {cwd: userData}, (error, stdout, stderr) => {
+  const torrentEngine = exec(userData + cmdPath, {cwd: userData}, (error, stdout, stderr) => {
     if (error) {
       console.error(`Exec Failed: ${error}`);
       return;
@@ -62,12 +68,12 @@ function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    width: size.width * 0.65,
-    height: size.height * 0.7,
-    minWidth: size.width * 0.6,
-    minHeight: size.height * 0.6,
+    width: size.width * 0.8,
+    height: size.height * 0.75,
+    minWidth: size.width * 0.65,
+    minHeight: size.height * 0.7,
     title: 'ANT Downloader',
-    icon: path.join(__dirname, 'src/assets/tray.png'),
+    icon: path.join(__dirname, 'src/icon.png'),
     autoHideMenuBar: true,
     titleBarStyle: 'hidden',
   });
@@ -94,7 +100,7 @@ function createWindow() {
     // Dereference the window object, usually you would store window
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    win = null;
+      win = null;
     // tray.destroy();
   });
 
@@ -125,34 +131,49 @@ function createWindow() {
 
 }
 
-try {
- // run torrent engine
-  if (!serve) {
-    runEngine();
-  }
+if (gotTheLock) {
+    try {
+        // run torrent engine
+        runEngine();
 
-  // This method will be called when Electron has finished
-  // initialization and is ready to create browser windows.
-  // Some APIs can only be used after this event occurs.
-  app.on('ready', createWindow);
-  // Quit when all windows are closed.
-  app.on('window-all-closed', () => {
-    // On OS X it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
-      app.quit();
+
+        // This method will be called when Electron has finished
+        // initialization and is ready to create browser windows.
+        // Some APIs can only be used after this event occurs.
+        app.on('ready', createWindow);
+        // Quit when all windows are closed.
+        app.on('window-all-closed', () => {
+            // On OS X it is common for applications and their menu bar
+            // to stay active until the user quits explicitly with Cmd + Q
+            if (process.platform !== 'darwin') {
+                app.quit();
+            }
+        });
+
+        app.on('activate', () => {
+            // On OS X it's common to re-create a window in the app when the
+            // dock icon is clicked and there are no other windows open.
+            if (win === null) {
+                createWindow();
+            }
+        });
+
+        app.on('second-instance',  (evt, commandLine, workingDirectory) => {
+            console.log('Second instance');
+            if (win !== null) {
+                if (win.isMinimized()) {
+                    win.restore();
+                }
+                win.focus();
+            }
+        });
+
+    } catch (e) {
+        console.log(e);
+        // Catch Error
+        // throw e;
     }
-  });
-
-  app.on('activate', () => {
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (win === null) {
-      createWindow();
-    }
-  });
-
-} catch (e) {
-  // Catch Error
-  // throw e;
+} else {
+    console.log('Only one instance can run');
+    app.quit();
 }

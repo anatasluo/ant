@@ -214,7 +214,7 @@ func (engine *Engine)DelOneTorrent(hexString string)(deleted bool) {
 				engine.StopOneTorrent(hexString)
 			}
 			filePath := filepath.Join(engine.EngineRunningInfo.TorrentLogs[index].StoragePath, engine.EngineRunningInfo.TorrentLogs[index].TorrentName)
-			log.WithFields(log.Fields{"Path":filePath}).Info("Files have been deleted!")
+			logger.WithFields(log.Fields{"Path":filePath}).Info("Files have been deleted!")
 			engine.EngineRunningInfo.TorrentLogs = append(engine.EngineRunningInfo.TorrentLogs[:index], engine.EngineRunningInfo.TorrentLogs[index+1:]...)
 			engine.UpdateInfo()
 			delFiles(filePath)

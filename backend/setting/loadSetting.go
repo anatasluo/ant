@@ -156,7 +156,7 @@ func (clientConfig *ClientSetting) loadValueFromConfig()() {
 		if err != nil {
 			clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Failed to update trackers list")
 		}
-		clientConfig.EngineSetting.DefaultTrackers = getDefaultTrackers(trackerPath, globalViper.GetString("EngineSetting.DefaultTrackerList"))
+		clientConfig.EngineSetting.DefaultTrackers = clientConfig.getDefaultTrackers(trackerPath, globalViper.GetString("EngineSetting.DefaultTrackerList"))
 	} else {
 		clientConfig.EngineSetting.DefaultTrackers = [][]string{}
 	}
@@ -229,7 +229,7 @@ func (clientConfig *ClientSetting) UpdateConfig (newSetting WebSetting)()  {
 }
 
 
-func getDefaultTrackers(filepath string, url string) [][]string {
+func (clientConfig *ClientSetting) getDefaultTrackers(filepath string, url string) [][]string {
 	datas, err := readLines(filepath)
 	if err != nil {
 		panic(err)
@@ -245,40 +245,39 @@ func getDefaultTrackers(filepath string, url string) [][]string {
 	}
 
 	//Update list if possible for next time
-	downloadFile(url, filepath)
+	clientConfig.downloadFile(url, filepath)
 	return res
 }
 
 // Download and add the blocklist.
-func getBlocklist(filepath string, blocklistURL string) iplist.Ranger {
+func (clientConfig *ClientSetting) getBlocklist(filepath string, blocklistURL string) iplist.Ranger {
 
 	// Load blocklist.
 	// #nosec
 	// We trust our temporary directory as we just wrote the file there ourselves.
 	blocklistReader, err := os.Open(filepath)
 	if err != nil {
-		log.Printf("Error opening blocklist: %s", err)
+		clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Error opening blocklist")
 		return nil
 	}
 
 	// Extract file.
 	gzipReader, err := gzip.NewReader(blocklistReader)
 	if err != nil {
-		log.Printf("Error extracting blocklist: %s", err)
+		clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Error extracting blocklist")
 		return nil
 	}
 
 	// Read as iplist.
 	blocklist, err := iplist.NewFromReader(gzipReader)
 	if err != nil {
-		log.Printf("Error reading blocklist: %s", err)
+		clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Error reading blocklist")
 		return nil
 	}
-
-	log.Printf("Loading blocklist.\nFound %d ranges\n", blocklist.NumRanges())
+	clientConfig.Logger.Debug("Loading blocklist")
 
 	//Update list if possible for next time
-	downloadFile(blocklistURL, filepath)
+	clientConfig.downloadFile(blocklistURL, filepath)
 	return blocklist
 }
 
@@ -312,32 +311,37 @@ func readLines(path string) (lines []string, err error) {
 	return
 }
 
-func downloadFile(downloadURL string, filepath string) {
+func (clientConfig *ClientSetting) downloadFile(downloadURL string, filepath string) {
 
 	go func() {
 		// Get the data
 		resp, err := http.Get(downloadURL)
-		if err != nil {
-			log.Printf("Failed to update list, Err is %s\n", err)
-		}
 		defer resp.Body.Close()
+		if err != nil {
+			clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Failed to update list")
+			return
+		}
 
 		// Create the file
 		out, err := os.Create(filepath)
+		defer out.Close()
 		if err != nil {
 			if err != nil {
-				log.Printf("Failed to create list, Err is %s\n", err)
+				clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Failed to create list")
+				return
 			}
 		}
-		defer out.Close()
+
 
 		// Write the body to file
 		_, err = io.Copy(out, resp.Body)
 		if err != nil {
 			if err != nil {
-				log.Printf("Failed to trackers list, Err is %s\n", err)
+				clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Failed to trackers list")
+				return
 			}
 		}
+		clientConfig.Logger.Info("update tracker list successfully")
 	}()
 }
 

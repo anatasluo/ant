@@ -56,4 +56,14 @@ ul li {
 ul li:focus {
   outline: none;
 }
+@mixin nameOverflow {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-group-item, .card-header {
+  @include nameOverflow;
+}
+
 

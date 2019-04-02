@@ -7,43 +7,44 @@
   supportremote = false
 
 [LoggerSetting]
-  logginglevel = 5
-  loggingoutput = "file"
+  LoggingLevel = 5
+  LoggingOutput = "file"
 
-[enginesetting]
-  maxactivetorrents     = 5
-  socksproxyurl         = ""
-  usesocksproxy         = false
+[Enginesetting]
+  MaxActiveTorrents     = 5
+  SocksProxyURL         = ""
+  UseSocksproxy         = false
   TorrentDBPath         = "storm.db"
   Tmpdir                = "tmp"
-  MaxEstablishedConns   = 80
+  MaxEstablishedConns   = 100
+  DataDir = "download"
+  EnableDefaultTrackers = true
+  DefaultTrackerList = "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ip.txt"
+  DefaultIPBlockList = "http://john.bitsurge.net/public/biglist.p2p.gz"
 
-  [enginesetting.torrentconfig]
-    bep20 = ""
-    datadir = "download"
-    debug = false
-    defaultstorage = ""
-    dhtconfig = ""
-    disableipv6 = false
-    disablepex = false
-    disabletcp = false
-    disabletrackers = false
-    disableutp = false
-    downloadratelimit = "Unlimited"
-    extendedhandshakeclientversion = ""
-    httpuseragent = ""
-    ipblocklist = ""
-    listenaddr = ""
-    ListenPort = 0
-    nodht = false
-    noupload = false
-    peerid = ""
-    seed = false
-    uploadratelimit = "Unlimited"
-    defaultTrackerList = "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ip.txt"
-    defaultIPBlockList = "http://john.bitsurge.net/public/biglist.p2p.gz"
+[Torrentconfig]
+  bep20 = ""
+  debug = false
+  defaultstorage = ""
+  dhtconfig = ""
+  disableipv6 = false
+  disablepex = false
+  disabletcp = false
+  disabletrackers = false
+  disableutp = false
+  downloadratelimit = ""
+  extendedhandshakeclientversion = ""
+  httpuseragent = ""
+  ipblocklist = ""
+  listenaddr = ""
+  ListenPort = 0
+  nodht = false
+  noupload = false
+  peerid = ""
+  seed = false
+  uploadratelimit = ""
 
-    [enginesetting.torrentconfig.encryptionpolicy]
-      disableencryption = false
-      forceencryption = false
-      prefernoencryption = true
+[Encryptionpolicy]
+  disableencryption = false
+  forceencryption = false
+  prefernoencryption = true

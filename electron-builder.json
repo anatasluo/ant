@@ -18,22 +18,22 @@
         "!karma.conf.js",
         "!tsconfig.json",
         "!tslint.json",
-        "!backend"
+        "!backend/"
     ],
   "win": {
-    "icon": "dist",
+    "icon": "src/favicon.png",
     "target": [
       "portable"
     ]
   },
   "mac": {
-    "icon": "dist",
+    "icon": "src/favicon.png",
     "target": [
       "dmg"
     ]
   },
   "linux": {
-    "icon": "dist",
+    "icon": "src/favicon.png",
     "target": [
       "AppImage"
     ]

@@ -123,7 +123,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     torrent.LeftTime = 'Estimating ...';
     torrent.DownloadSpeed = 'Estimating ...';
     torrent.Interval = -1;
-    torrent.StreamURL = this.getBaseHost() + 'player/' + torrent.HexString;
+    torrent.StreamURL = this.configService.baseUrl + '/player/' + torrent.HexString;
     return torrent;
   }
 

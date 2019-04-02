@@ -30,7 +30,7 @@ export class PlayerComponent implements OnInit {
       alert('Unsupported type');
       waringButton.click();
     }, true);
-    videoEle.addEventListener('canplay', function() {
+    videoEle.addEventListener('loadeddata', function() {
       waringButton.click();
     }, true);
   }

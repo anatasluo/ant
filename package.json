@@ -1,6 +1,6 @@
 {
   "name": "ant-downloader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "homepage": "https://github.com/anatasluo/ant",
   "repository": {
@@ -12,11 +12,10 @@
     "email": "luolongjuna@gmail.com"
   },
   "keywords": [
-    "angular",
-    "angular 7",
+    "golang",
+    "bitTorrent",
     "electron",
-    "typescript",
-    "sass"
+    "typescript"
   ],
   "main": "main.js",
   "private": true,
