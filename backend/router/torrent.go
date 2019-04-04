@@ -76,12 +76,6 @@ func getOneTorrent(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 	}
 }
 
-func appendMagnet(resInfo []engine.TorrentWebInfo)([]engine.TorrentWebInfo) {
-	//for _, singleWebInfo := range runningEngine.WebInfo.MagnetTmpInfo {
-	//	resInfo = append(resInfo, *singleWebInfo)
-	//}
-	return resInfo
-}
 
 func appendRunningTorrents(resInfo []engine.TorrentWebInfo)([]engine.TorrentWebInfo) {
 	for _, singleTorrent := range runningEngine.TorrentEngine.Torrents() {
@@ -105,7 +99,6 @@ func appendCompletedTorrents(resInfo []engine.TorrentWebInfo)([]engine.TorrentWe
 
 func getAllTorrents(w http.ResponseWriter, r *http.Request, ps httprouter.Params)  {
 	resInfo := []engine.TorrentWebInfo{}
-	resInfo = appendMagnet(resInfo)
 	resInfo = appendRunningTorrents(resInfo)
 	resInfo = appendCompletedTorrents(resInfo)
 	WriteResponse(w, resInfo)

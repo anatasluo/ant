@@ -41,7 +41,6 @@ func (engine *Engine)initAndRunEngine()()  {
 
 	engine.WebInfo = &WebviewInfo{}
 	engine.WebInfo.HashToTorrentWebInfo = make(map[metainfo.Hash]*TorrentWebInfo)
-	engine.WebInfo.MagnetTmpInfo = make(map[metainfo.Hash]*TorrentWebInfo)
 
 	engine.EngineRunningInfo = &EngineInfo{}
 	engine.EngineRunningInfo.init()
@@ -69,7 +68,7 @@ func (engine *Engine)setEnvironment()() {
 }
 
 func (engine *Engine)Restart()() {
-	logger.Info("Restart engine now")
+	logger.Info("Restart engine")
 
 	//To handle problems caused by change of settings
 	for index, _:= range engine.EngineRunningInfo.TorrentLogs {
@@ -97,10 +96,31 @@ func (engine *Engine)Cleanup()() {
 
 	for index := range engine.EngineRunningInfo.TorrentLogs {
 		if engine.EngineRunningInfo.TorrentLogs[index].Status != CompletedStatus {
-			if engine.EngineRunningInfo.TorrentLogs[index].Status == RunningStatus {
+			if engine.EngineRunningInfo.TorrentLogs[index].Status == AnalysingStatus {
+				aimLog := engine.EngineRunningInfo.TorrentLogs[index]
+				torrentHash := metainfo.Hash{}
+				_ = torrentHash.FromHexString(aimLog.TorrentName)
+				magnetTorrent, isExist := engine.TorrentEngine.Torrent(torrentHash)
+				if isExist {
+					logger.Info("One magnet will be deleted " + magnetTorrent.String())
+					magnetTorrent.Drop()
+				}
+			}else if engine.EngineRunningInfo.TorrentLogs[index].Status == RunningStatus {
 				engine.StopOneTorrent(engine.EngineRunningInfo.TorrentLogs[index].HashInfoBytes().HexString())
+				engine.EngineRunningInfo.TorrentLogs[index].Status = StoppedStatus
+			}else if engine.EngineRunningInfo.TorrentLogs[index].Status == QueuedStatus{
+				engine.EngineRunningInfo.TorrentLogs[index].Status = StoppedStatus
 			}
-			engine.EngineRunningInfo.TorrentLogs[index].Status = StoppedStatus
+		}
+	}
+
+	//Update info in torrentLogs, remove magnet
+	tmpLogs := engine.EngineRunningInfo.TorrentLogs
+	engine.EngineRunningInfo.TorrentLogs = nil
+
+	for index := range tmpLogs {
+		if tmpLogs[index].Status != AnalysingStatus {
+			engine.EngineRunningInfo.TorrentLogs = append(engine.EngineRunningInfo.TorrentLogs, tmpLogs[index])
 		}
 	}
 

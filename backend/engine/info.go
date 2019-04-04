@@ -13,14 +13,16 @@ import (
 
 type WebviewInfo struct {
 	HashToTorrentWebInfo		map[metainfo.Hash]*TorrentWebInfo
-	//Store magnets that have not get meta data
-	MagnetTmpInfo				map[metainfo.Hash]*TorrentWebInfo
 }
 
 type EngineInfo struct {
 	TorrentLogsAndID
-	HashToTorrentLog    map[metainfo.Hash]*TorrentLog
-	TorrentLogExtends	map[metainfo.Hash]*TorrentLogExtend
+	MagnetAnalyseChan chan bool
+	MagnetDel         chan bool
+	MagnetNum         int
+	EngineCMD         chan MessageTypeID
+	HashToTorrentLog  map[metainfo.Hash]*TorrentLog
+	TorrentLogExtends map[metainfo.Hash]*TorrentLogExtend
 }
 
 //These information is needed in running time
@@ -56,6 +58,7 @@ const (
 
 const (
 	GetInfo				MessageTypeID = iota
+	RefleshInfo
 )
 
 type FileInfo struct {
@@ -64,7 +67,12 @@ type FileInfo struct {
 	Size				string
 }
 
+type CMDInfo struct {
+	MessageType			MessageTypeID
+}
+
 type TorrentProgressInfo struct {
+	CMDInfo
 	Percentage			float64
 	DownloadSpeed		string
 	LeftTime			string
@@ -89,6 +97,7 @@ type TorrentStatus int
 //StormID cant not be zero
 const (
 	QueuedStatus 		TorrentStatus = iota + 1
+
 	//This status only used for magnet
 	AnalysingStatus
 	RunningStatus
@@ -105,18 +114,22 @@ var StatusIDToName = []string {
 	"Completed",
 }
 
+
 type OnlyStormID int
 
 const (
 	TorrentLogsID		OnlyStormID = iota + 1
-	ConfigID
 )
 
 
 func (engineInfo *EngineInfo) init()()  {
-	engineInfo.ID				= TorrentLogsID
-	engineInfo.HashToTorrentLog = make(map[metainfo.Hash]*TorrentLog)
-	engineInfo.TorrentLogExtends = make(map[metainfo.Hash]*TorrentLogExtend)
+	engineInfo.MagnetNum			= 0
+	engineInfo.MagnetAnalyseChan 	= make(chan bool)
+	engineInfo.MagnetDel 			= make(chan bool)
+	engineInfo.EngineCMD 			= make(chan MessageTypeID, 100)
+	engineInfo.ID					= TorrentLogsID
+	engineInfo.HashToTorrentLog 	= make(map[metainfo.Hash]*TorrentLog)
+	engineInfo.TorrentLogExtends 	= make(map[metainfo.Hash]*TorrentLogExtend)
 }
 
 func (engineInfo *EngineInfo) AddOneTorrent(singleTorrent *torrent.Torrent)(singleTorrentLog *TorrentLog)  {
@@ -129,8 +142,30 @@ func (engineInfo *EngineInfo) AddOneTorrent(singleTorrent *torrent.Torrent)(sing
 	return
 }
 
+//For magnet
+func (engineInfo *EngineInfo) AddOneTorrentFromMagnet(infoHash metainfo.Hash)(singleTorrentLog *TorrentLog)  {
+	singleTorrentLog, isExist := engineInfo.HashToTorrentLog[infoHash]
+	if !isExist {
+		singleTorrentLog = createTorrentLogFromMagnet(infoHash)
+		engineInfo.TorrentLogs = append(engineInfo.TorrentLogs, *singleTorrentLog)
+		engineInfo.UpdateTorrentLog()
+	}
+	return
+}
+
+
+// After get magnet info, update log information
+func (engineInfo *EngineInfo) UpdateMagnetInfo(singleTorrent *torrent.Torrent)()  {
+	singleTorrentLog, _ := engineInfo.HashToTorrentLog[singleTorrent.InfoHash()]
+	singleTorrentLog.TorrentName = singleTorrent.Name()
+	singleTorrentLog.MetaInfo = singleTorrent.Metainfo()
+	singleTorrentLog.Status = QueuedStatus
+	engineInfo.UpdateTorrentLog()
+	return
+}
+
 func (engine *Engine) UpdateInfo()() {
-	engine.EngineRunningInfo.UpdateTorrentLog();
+	engine.EngineRunningInfo.UpdateTorrentLog()
 	engine.UpdateWebInfo()
 }
 
@@ -138,7 +173,13 @@ func (engineInfo *EngineInfo) UpdateTorrentLog()()  {
 	engineInfo.HashToTorrentLog = make(map[metainfo.Hash]*TorrentLog)
 
 	for index, singleTorrentLog := range engineInfo.TorrentLogs {
-		engineInfo.HashToTorrentLog[singleTorrentLog.HashInfoBytes()] = &engineInfo.TorrentLogs[index]
+		if singleTorrentLog.Status != AnalysingStatus {
+			engineInfo.HashToTorrentLog[singleTorrentLog.HashInfoBytes()] = &engineInfo.TorrentLogs[index]
+		}else{
+			torrentHash := metainfo.Hash{}
+			_ = torrentHash.FromHexString(singleTorrentLog.TorrentName)
+			engineInfo.HashToTorrentLog[torrentHash] =  &engineInfo.TorrentLogs[index]
+		}
 	}
 }
 
@@ -162,6 +203,19 @@ func createTorrentLogFromTorrent(singleTorrent *torrent.Torrent) *TorrentLog {
 	}
 }
 
+func createTorrentLogFromMagnet(infoHash metainfo.Hash) *TorrentLog {
+	absPath, err := filepath.Abs(clientConfig.EngineSetting.TorrentConfig.DataDir)
+	if err != nil {
+		logger.Error("Unable to get abs path -> ", err)
+	}
+	return &TorrentLog{
+		MetaInfo		: 	metainfo.MetaInfo{},
+		TorrentName		:	infoHash.String(),
+		Status			:	AnalysingStatus,
+		StoragePath		:	absPath,
+	}
+}
+
 func generateByteSize(byteSize int64) string {
 	return humanize.Bytes(uint64(byteSize))
 }
@@ -180,40 +234,45 @@ func (engine *Engine) GenerateInfoFromLog(torrentLog TorrentLog) (torrentWebInfo
 	return
 }
 
-//For magnet
-func (engine *Engine) GenerateInfoFromMagnet(infoHash metainfo.Hash) (torrentWebInfo *TorrentWebInfo) {
-	return &TorrentWebInfo{
-		TorrentName		: infoHash.String(),
-		HexString		: infoHash.String(),
-		Status			:  StatusIDToName[AnalysingStatus],
-		StoragePath		: "",
-		Percentage		:  0,
-	}
-}
 
 func (engine *Engine) GenerateInfoFromTorrent(singleTorrent *torrent.Torrent) (torrentWebInfo *TorrentWebInfo) {
-	<- singleTorrent.GotInfo()
 	torrentWebInfo, isExist := engine.WebInfo.HashToTorrentWebInfo[singleTorrent.InfoHash()]
-	if !isExist {
+	if !isExist || torrentWebInfo.Status == StatusIDToName[AnalysingStatus]{
 		torrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
-		torrentWebInfo = &TorrentWebInfo{
-			TorrentName		:	singleTorrent.Info().Name,
-			TotalLength		:	generateByteSize(singleTorrent.Info().TotalLength()),
-			HexString		:	torrentLog.HashInfoBytes().HexString(),
-			Status			:	StatusIDToName[torrentLog.Status],
-			StoragePath		:	torrentLog.StoragePath,
-			Percentage  	:	float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength()),
-			DownloadSpeed	:	"Estimating",
-			LeftTime		:	"Estimating",
-			TorrentStatus	:	singleTorrent.Stats(),
-			UpdateTime		:	time.Now(),
-		}
-		for _, key := range singleTorrent.Files() {
-			torrentWebInfo.Files = append(torrentWebInfo.Files, FileInfo{
-				Path	:	key.Path(),
-				Priority:	byte(key.Priority()),
-				Size	:	generateByteSize(key.Length()),
-			})
+		if torrentLog.Status != AnalysingStatus {
+			<- singleTorrent.GotInfo()
+			torrentWebInfo = &TorrentWebInfo{
+				TorrentName		:	singleTorrent.Info().Name,
+				TotalLength		:	generateByteSize(singleTorrent.Info().TotalLength()),
+				HexString		:	torrentLog.HashInfoBytes().HexString(),
+				Status			:	StatusIDToName[torrentLog.Status],
+				StoragePath		:	torrentLog.StoragePath,
+				Percentage  	:	float64(singleTorrent.BytesCompleted()) / float64(singleTorrent.Info().TotalLength()),
+				DownloadSpeed	:	"Estimating",
+				LeftTime		:	"Estimating",
+				TorrentStatus	:	singleTorrent.Stats(),
+				UpdateTime		:	time.Now(),
+			}
+			for _, key := range singleTorrent.Files() {
+				torrentWebInfo.Files = append(torrentWebInfo.Files, FileInfo{
+					Path	:	key.Path(),
+					Priority:	byte(key.Priority()),
+					Size	:	generateByteSize(key.Length()),
+				})
+			}
+		}else{
+			//for magnet
+			torrentWebInfo = &TorrentWebInfo{
+				TorrentName		:	torrentLog.TorrentName,
+				HexString		:	torrentLog.TorrentName,
+				Status			:	StatusIDToName[torrentLog.Status],
+				StoragePath		:	torrentLog.StoragePath,
+				Percentage  	:	0,
+				DownloadSpeed	:	"Estimating",
+				LeftTime		:	"Estimating",
+				TorrentStatus	:	singleTorrent.Stats(),
+				UpdateTime		:	time.Now(),
+			}
 		}
 		engine.WebInfo.HashToTorrentWebInfo[singleTorrent.InfoHash()] = torrentWebInfo
 	}else{

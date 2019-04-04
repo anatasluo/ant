@@ -15,6 +15,7 @@ import { magnetDecode } from '@ctrl/magnet-link';
 let globalTorrents: Torrent[];
 let ws: WebSocket;
 let torrentFile: File;
+let currentMagnet: string;
 
 @Component({
   selector: 'app-local-download',
@@ -36,6 +37,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
               private modalService: NgbModal,
   ) { }
   ngOnInit() {
+    currentMagnet = undefined;
     this.status = this.route.snapshot.url[0].path;
     this.getTorrents();
     if (ws === null || ws === undefined) {
@@ -49,11 +51,14 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
 
     ipcRenderer.on('torrentDownload', (event, arg) => {
       console.log('Download Finished! Handle it now');
+      const tmpMagnet = currentMagnet;
+      currentMagnet = undefined;
       const filePath: string = arg;
       if (_.endsWith(filePath, 'torrent')) {
         this.getFileFromURL(filePath);
       } else {
         console.log('Failed to get meta data!');
+        this.sendMagnet(tmpMagnet);
       }
     });
 
@@ -83,7 +88,24 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     });
   }
 
+  private sendMagnet(magnet: string) {
+    magnet = _.trim(magnet);
+    console.log(magnet);
+    this.torrentService.sendMagnet(magnet)
+        .subscribe((IsAdded: boolean) => {
+          if (IsAdded) {
+            // location.reload();
+            console.log('Update magnet');
+            this.getTorrents();
+          }
+        }, error => {
+          console.log(error);
+        });
+  }
+
   private generateOneWS(): WebSocket {
+
+    const tmpThis = this;
     const tmpWS = new WebSocket(this.configService.wsBaseUrl);
     tmpWS.onopen = function(evt: any) {
       console.log('create websocket');
@@ -95,22 +117,29 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
         location.reload();
       }, 5000);
     };
+
     tmpWS.onmessage = function(evt: any) {
       const data = JSON.parse(evt.data);
-      // console.log('Get message');
-      for (let i = 0; i < globalTorrents.length; i ++) {
-        if (globalTorrents[i].HexString === data.HexString) {
-          const currentProgress = globalTorrents[i].Percentage;
-          if (parseFloat(currentProgress) < parseFloat(data.Percentage)) {
-            globalTorrents[i].Percentage = data.Percentage;
-            globalTorrents[i].LeftTime = data.LeftTime;
-            globalTorrents[i].DownloadSpeed = data.DownloadSpeed;
+      // console.log(data);
+      if (data.MessageType === 0) {
+        for (let i = 0; i < globalTorrents.length; i ++) {
+          if (globalTorrents[i].HexString === data.HexString) {
+            const currentProgress = globalTorrents[i].Percentage;
+            if (parseFloat(currentProgress) < parseFloat(data.Percentage)) {
+              globalTorrents[i].Percentage = data.Percentage;
+              globalTorrents[i].LeftTime = data.LeftTime;
+              globalTorrents[i].DownloadSpeed = data.DownloadSpeed;
+            }
+            if (parseFloat(currentProgress) === parseFloat('1')) {
+              globalTorrents[i].Status = 'Completed';
+            }
+            break;
           }
-          if (parseFloat(currentProgress) === parseFloat('1')) {
-            globalTorrents[i].Status = 'Completed';
-          }
-          break;
         }
+      } else if (data.MessageType === 1) {
+        console.log('Should reflesh');
+        tmpThis.getTorrents();
+        // location.reload();
       }
     };
     tmpWS.onerror = function(evt: Event) {
@@ -118,6 +147,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     };
     return tmpWS;
   }
+
   private getTorrentWebFromData(torrent: Torrent): Torrent {
     torrent.TypeImg = this.aviImg;
     torrent.LeftTime = 'Estimating ...';
@@ -136,9 +166,11 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     }
     return result ? 1 : 0;
   }
+
   getTorrents(): void {
     this.torrentService.getSelectedTorrents(this.status)
         .subscribe((datas: Torrent[]) => {
+          console.log(datas);
           this.torrents = datas;
           globalTorrents = this.torrents;
           for (let i = 0; i < this.torrents.length; i ++) {
@@ -231,12 +263,17 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
 
   downloadMagnet(magnetURL: string) {
     this.modalService.dismissAll();
+    magnetURL = _.trim(magnetURL);
     const torrent = magnetDecode(magnetURL);
-    console.log(torrent.infoHash);
     if (torrent.infoHash !== undefined && torrent.infoHash !== '' && torrent.infoHash.length === 40) {
       const infoHash = torrent.infoHash.toUpperCase();
-      console.log(infoHash);
-      this.webview.downloadURL(this.getTorrentFromInfoHash(infoHash));
+      if (currentMagnet === undefined) {
+        currentMagnet = magnetURL;
+        alert('Add magnet successfully');
+        this.webview.downloadURL(this.getTorrentFromInfoHash(infoHash));
+      } else {
+        alert('One magnet is handing, please wait a moment');
+      }
     } else {
       alert('Invalid infohash');
     }
@@ -333,13 +370,13 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
           autoHideMenuBar: true,
           titleBarStyle: 'hidden',
         });
-        win.loadURL(this.selectedTorrent.StreamURL);
+        const playerUrl = this.getBaseHost() + 'player/' + this.selectedTorrent.HexString
+        console.log(playerUrl);
+        win.loadURL(playerUrl);
         // win.webContents.openDevTools();
       } else {
         alert('Pleas choose a running task');
       }
     }
-
-
   }
 }

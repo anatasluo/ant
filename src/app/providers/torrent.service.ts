@@ -20,6 +20,7 @@ export class TorrentService {
   downloadOneTorrentUrl = this.configService.baseUrl + '/torrent' + '/startDownload';
   stopTorrentUrl = this.configService.baseUrl + '/torrent' + '/stopDownload';
   deleteTorrentUrl = this.configService.baseUrl + '/torrent' + '/delOne';
+  sendMagnetUrl = this.configService.baseUrl + '/magnet' + '/addOneMagent';
   refleshTime = 1000;
 
   private formHttpOptions = {
@@ -43,6 +44,16 @@ export class TorrentService {
         .pipe(
             tap(_ => console.log('addOne torrent')),
             catchError(this.handleError<boolean>('add one torrent'))
+        );
+  }
+
+  sendMagnet(magnet: string): Observable<boolean> {
+    const formData: FormData = new FormData();
+    formData.append('linkAddress', magnet);
+    return this.httpClient.post<boolean>(this.sendMagnetUrl, formData, this.formHttpOptions)
+        .pipe(
+            tap(_ => console.log('addOne magnet')),
+            catchError(this.handleError<boolean>('add one magnet'))
         );
   }
 

@@ -102,8 +102,8 @@ function createWindow() {
                 win.webContents.send('torrentDownload', filePath);
             }
             else {
+                // TODO
                 console.log("Download failed: " + state);
-                alert('Failed to get meta data');
             }
         });
     });
@@ -120,7 +120,9 @@ function createWindow() {
 if (gotTheLock) {
     try {
         // run torrent engine
-        runEngine();
+        if (!serve) {
+            runEngine();
+        }
         // This method will be called when Electron has finished
         // initialization and is ready to create browser windows.
         // Some APIs can only be used after this event occurs.

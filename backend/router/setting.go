@@ -12,6 +12,10 @@ func getSetting(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	WriteResponse(w, clientConfig.GetWebSetting())
 }
 
+func getStatus(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	runningEngine.TorrentEngine.WriteStatus(w)
+}
+
 func applySetting(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	decoder := json.NewDecoder(r.Body)
 	isApplied := false
@@ -32,5 +36,6 @@ func applySetting(w http.ResponseWriter, r *http.Request, ps httprouter.Params) 
 
 func handleSetting(router *httprouter.Router)  {
 	router.GET("/settings/config", getSetting)
+	router.GET("/settings/status", getStatus)
 	router.POST("/settings/apply", applySetting)
 }

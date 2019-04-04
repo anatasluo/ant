@@ -172,6 +172,8 @@ func (clientConfig *ClientSetting) loadValueFromConfig()() {
 		} else {
 			clientConfig.Logger.Out = file
 		}
+	}else{
+		clientConfig.Logger.Out = os.Stdout
 	}
 }
 
@@ -291,7 +293,9 @@ func readLines(path string) (lines []string, err error) {
 	if file, err = os.Open(path); err != nil {
 		return
 	}
-	defer file.Close()
+	defer func() {
+		_ = file.Close()
+	}()
 
 	reader := bufio.NewReader(file)
 	buffer := bytes.NewBuffer(make([]byte, 0))
@@ -316,15 +320,18 @@ func (clientConfig *ClientSetting) downloadFile(downloadURL string, filepath str
 	go func() {
 		// Get the data
 		resp, err := http.Get(downloadURL)
-		defer resp.Body.Close()
 		if err != nil {
 			clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Failed to update list")
 			return
 		}
-
+		defer func() {
+			_ = resp.Body.Close()
+		}()
 		// Create the file
 		out, err := os.Create(filepath)
-		defer out.Close()
+		defer func() {
+			_ = out.Close()
+		}()
 		if err != nil {
 			if err != nil {
 				clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Failed to create list")
