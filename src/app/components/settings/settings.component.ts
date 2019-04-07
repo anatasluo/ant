@@ -26,7 +26,7 @@ export class SettingsComponent implements OnInit {
     private loadSettings() {
         this.settingsService.getSettings()
             .subscribe((data: Settings) => {
-                console.log(data);
+                // console.log(data);
                 this.settings = data;
             }, error => {
                 console.log(error);

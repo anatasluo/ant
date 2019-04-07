@@ -51,14 +51,14 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
 
     ipcRenderer.on('torrentDownload', (event, arg) => {
       console.log('Download Finished! Handle it now');
-      const tmpMagnet = currentMagnet;
-      currentMagnet = undefined;
+      // const tmpMagnet = currentMagnet;
       const filePath: string = arg;
       if (_.endsWith(filePath, 'torrent')) {
+        currentMagnet = undefined;
         this.getFileFromURL(filePath);
       } else {
         console.log('Failed to get meta data!');
-        this.sendMagnet(tmpMagnet);
+        // this.sendMagnet(tmpMagnet);
       }
     });
 
@@ -90,7 +90,6 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
 
   private sendMagnet(magnet: string) {
     magnet = _.trim(magnet);
-    console.log(magnet);
     this.torrentService.sendMagnet(magnet)
         .subscribe((IsAdded: boolean) => {
           if (IsAdded) {
@@ -271,6 +270,15 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
         currentMagnet = magnetURL;
         alert('Add magnet successfully');
         this.webview.downloadURL(this.getTorrentFromInfoHash(infoHash));
+        setTimeout(() => {
+          if (currentMagnet !== undefined) {
+            console.log('Try to solve it by engine');
+            currentMagnet = undefined;
+            this.sendMagnet(magnetURL);
+          } else {
+            console.log('Solve it by itorrents, nothing more');
+          }
+        }, 10000);
       } else {
         alert('One magnet is handing, please wait a moment');
       }

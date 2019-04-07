@@ -71,7 +71,7 @@ func (engine *Engine)Restart()() {
 	logger.Info("Restart engine")
 
 	//To handle problems caused by change of settings
-	for index, _:= range engine.EngineRunningInfo.TorrentLogs {
+	for index := range engine.EngineRunningInfo.TorrentLogs {
 		if engine.EngineRunningInfo.TorrentLogs[index].Status != CompletedStatus && engine.EngineRunningInfo.TorrentLogs[index].StoragePath != clientConfig.TorrentConfig.DataDir{
 			filePath := filepath.Join(engine.EngineRunningInfo.TorrentLogs[index].StoragePath, engine.EngineRunningInfo.TorrentLogs[index].TorrentName)
 			log.WithFields(log.Fields{"Path":filePath}).Info("To restart engine, these unfinished files will be deleted")

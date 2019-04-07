@@ -9,8 +9,10 @@ import { shell } from 'electron';
 export class SearchComponent implements OnInit {
   itorrents = require('../../../assets/tools/itorrents.png');
   thepiratebay = require('../../../assets/tools/thepiratebay.png');
-  torlock = require('../../../assets/tools/torlock.png');
+  torrents = require('../../../assets/tools/torrents.png');
   torrentdownload = require('../../../assets/tools/torrentdownload.png');
+  toorgle = require('../../../assets/tools/toorgle.png');
+  torrentseeker = require('../../../assets/tools/torrentseeker.png');
   constructor() { }
 
   ngOnInit() {

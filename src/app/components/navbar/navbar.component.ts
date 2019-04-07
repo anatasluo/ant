@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  public portrait = require('../../../assets/mouse.jpg');
   constructor() { }
 
   ngOnInit() {

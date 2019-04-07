@@ -166,7 +166,7 @@ func (clientConfig *ClientSetting) loadValueFromConfig()() {
 	}
 
 	if clientConfig.LoggerSetting.LoggingOutput == "file" {
-		file, err := os.OpenFile(clientConfig.TorrentConfig.DataDir + "/ant_engine.log", os.O_CREATE|os.O_WRONLY, 0755)
+		file, err := os.OpenFile("./ant_engine.log", os.O_CREATE|os.O_WRONLY, 0755)
 		if err != nil {
 			clientConfig.Logger.WithFields(log.Fields{"Error":err}).Error("Failed to open log file")
 		} else {

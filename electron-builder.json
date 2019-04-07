@@ -21,19 +21,19 @@
         "!backend/"
     ],
   "win": {
-    "icon": "src/favicon.png",
+    "icon": "dist",
     "target": [
       "portable"
     ]
   },
   "mac": {
-    "icon": "src/favicon.png",
+    "icon": "dist",
     "target": [
       "dmg"
     ]
   },
   "linux": {
-    "icon": "src/favicon.png",
+    "icon": "dist",
     "target": [
       "AppImage"
     ]

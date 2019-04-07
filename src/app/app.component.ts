@@ -10,14 +10,7 @@ import { AppConfig } from '../environments/environment';
 })
 
 export class AppComponent implements OnInit {
-  public portrait = require('../assets/mouse.jpg');
-  ngOnInit() {
-    // TODO
-    // const ant = child_process.spawn('/home/anatas/Desktop/Git/ant/webview/src/assets/bin/ant', []);
-    // ant.stdout.on('data', (data) => {
-    //   console.log(`stdout: ${data}`);
-    // });
-  }
+  ngOnInit() {}
   constructor(public electronService: ElectronService,
               private translate: TranslateService) {
 

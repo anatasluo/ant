@@ -17,8 +17,6 @@ type WebviewInfo struct {
 
 type EngineInfo struct {
 	TorrentLogsAndID
-	MagnetAnalyseChan chan bool
-	MagnetDel         chan bool
 	MagnetNum         int
 	EngineCMD         chan MessageTypeID
 	HashToTorrentLog  map[metainfo.Hash]*TorrentLog
@@ -29,6 +27,9 @@ type EngineInfo struct {
 type TorrentLogExtend struct {
 	StatusPub			*pubsub.Subscription
 	HasStatusPub		bool
+	MagnetAnalyseChan 	chan bool
+	MagnetDelChan       chan bool
+	HasMagnetChan		bool
 }
 
 //WebInfo only can be used for show in the website, it is generated from engineInfo
@@ -58,7 +59,7 @@ const (
 
 const (
 	GetInfo				MessageTypeID = iota
-	RefleshInfo
+	RefreshInfo
 )
 
 type FileInfo struct {
@@ -124,8 +125,6 @@ const (
 
 func (engineInfo *EngineInfo) init()()  {
 	engineInfo.MagnetNum			= 0
-	engineInfo.MagnetAnalyseChan 	= make(chan bool)
-	engineInfo.MagnetDel 			= make(chan bool)
 	engineInfo.EngineCMD 			= make(chan MessageTypeID, 100)
 	engineInfo.ID					= TorrentLogsID
 	engineInfo.HashToTorrentLog 	= make(map[metainfo.Hash]*TorrentLog)
@@ -149,6 +148,21 @@ func (engineInfo *EngineInfo) AddOneTorrentFromMagnet(infoHash metainfo.Hash)(si
 		singleTorrentLog = createTorrentLogFromMagnet(infoHash)
 		engineInfo.TorrentLogs = append(engineInfo.TorrentLogs, *singleTorrentLog)
 		engineInfo.UpdateTorrentLog()
+		//create extend log
+		_, extendIsExist := engineInfo.TorrentLogExtends[infoHash]
+		if !extendIsExist {
+			logger.Debug("create extend for magnet", infoHash)
+			engineInfo.TorrentLogExtends[infoHash] = &TorrentLogExtend{
+				HasStatusPub:false,
+				HasMagnetChan:true,
+				MagnetAnalyseChan:make(chan bool, 100),
+				MagnetDelChan:make(chan bool, 100),
+			}
+		}else if extendIsExist && !engineInfo.TorrentLogExtends[infoHash].HasMagnetChan{
+			engineInfo.TorrentLogExtends[infoHash].HasMagnetChan = true
+			engineInfo.TorrentLogExtends[infoHash].MagnetAnalyseChan = make(chan bool, 100)
+			engineInfo.TorrentLogExtends[infoHash].MagnetDelChan = make(chan bool, 100)
+		}
 	}
 	return
 }
@@ -161,6 +175,11 @@ func (engineInfo *EngineInfo) UpdateMagnetInfo(singleTorrent *torrent.Torrent)()
 	singleTorrentLog.MetaInfo = singleTorrent.Metainfo()
 	singleTorrentLog.Status = QueuedStatus
 	engineInfo.UpdateTorrentLog()
+
+	singleTorrentLogExtend, _ := engineInfo.TorrentLogExtends[singleTorrent.InfoHash()]
+	singleTorrentLogExtend.HasMagnetChan = false
+	close(singleTorrentLogExtend.MagnetAnalyseChan)
+	close(singleTorrentLogExtend.MagnetDelChan)
 	return
 }
 

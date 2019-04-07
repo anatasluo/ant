@@ -34,8 +34,8 @@ func torrentProgress (w http.ResponseWriter, r *http.Request, ps httprouter.Para
 		select {
 			case cmdID := <- runningEngine.EngineRunningInfo.EngineCMD: {
 				logger.Debug("Send CMD Now", cmdID)
-				if cmdID == engine.RefleshInfo {
-					resInfo.MessageType = engine.RefleshInfo
+				if cmdID == engine.RefreshInfo {
+					resInfo.MessageType = engine.RefreshInfo
 					err = conn.WriteJSON(resInfo)
 					if err != nil {
 						logger.Error("Unable to write Message", err)
@@ -43,7 +43,6 @@ func torrentProgress (w http.ResponseWriter, r *http.Request, ps httprouter.Para
 				}
 			}
 			default:
-				_ = 1
 		}
 		err = conn.ReadJSON(&tmp)
 		if err != nil {

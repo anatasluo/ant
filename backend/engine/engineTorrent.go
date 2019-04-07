@@ -64,6 +64,7 @@ func (engine *Engine)AddOneTorrentFromMagnet (linkAddress string)(tmpTorrent *to
 
 		if needMoreOperation {
 			engine.EngineRunningInfo.AddOneTorrentFromMagnet(infoHash)
+			extendLog, _ := engine.EngineRunningInfo.TorrentLogExtends[infoHash]
 			go func() {
 				engine.EngineRunningInfo.MagnetNum ++
 				tmpTorrent, err = engine.TorrentEngine.AddMagnet(linkAddress)
@@ -76,12 +77,12 @@ func (engine *Engine)AddOneTorrentFromMagnet (linkAddress string)(tmpTorrent *to
 							engine.EngineRunningInfo.UpdateMagnetInfo(tmpTorrent)
 							engine.GenerateInfoFromTorrent(tmpTorrent)
 							engine.StartDownloadTorrent(tmpTorrent.InfoHash().HexString())
-							engine.EngineRunningInfo.EngineCMD <- RefleshInfo
-							logger.Debug("It should reflesh")
+							engine.EngineRunningInfo.EngineCMD <- RefreshInfo
+							logger.Debug("It should refresh")
 						}
-					case <- engine.EngineRunningInfo.MagnetAnalyseChan:
+					case <- extendLog.MagnetAnalyseChan:
 						tmpTorrent.Drop()
-						engine.EngineRunningInfo.MagnetDel <- true
+						extendLog.MagnetDelChan <- true
 						logger.Debug("One magnet has been deleted")
 				}
 				engine.EngineRunningInfo.MagnetNum --
@@ -125,12 +126,19 @@ func (engine *Engine)StartDownloadTorrent(hexString string)(downloaded bool) {
 		singleTorrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
 		if singleTorrentLog.Status != RunningStatus {
 			singleTorrentLog.Status = RunningStatus
+
+			//check if extend exist
 			_, extendIsExist := engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()];
 			if !extendIsExist {
 				engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()] = &TorrentLogExtend{
 					StatusPub:singleTorrent.SubscribePieceStateChanges(),
 					HasStatusPub:true,
+					HasMagnetChan:false,
 				}
+			}else if extendIsExist && !engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()].HasStatusPub{
+				logger.Debug("it has extend but no status pub")
+				engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()].HasStatusPub = true
+				engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()].StatusPub = singleTorrent.SubscribePieceStateChanges()
 			}
 			logger.Debug("Create extend info for log")
 			//Some download setting for task
@@ -207,12 +215,12 @@ func (engine *Engine)StopOneTorrent(hexString string)(stopped bool) {
 	return
 }
 
-
+// TODO: Find error of out range of index, not find reason now
 // Delete on torrent will operate logs directly, rather than get from getOne
 func (engine *Engine)DelOneTorrent(hexString string)(deleted bool) {
 	deleted = false
 
-	for index, _:= range engine.EngineRunningInfo.TorrentLogs {
+	for index := range engine.EngineRunningInfo.TorrentLogs {
 		if engine.EngineRunningInfo.TorrentLogs[index].Status != AnalysingStatus && engine.EngineRunningInfo.TorrentLogs[index].HashInfoBytes().HexString() == hexString {
 			if engine.EngineRunningInfo.TorrentLogs[index].Status == RunningStatus {
 				engine.StopOneTorrent(hexString)
@@ -227,22 +235,23 @@ func (engine *Engine)DelOneTorrent(hexString string)(deleted bool) {
 			engine.UpdateInfo()
 			delFiles(filePath)
 			deleted = true
-			break
+			return
 		}else if engine.EngineRunningInfo.TorrentLogs[index].Status == AnalysingStatus && engine.EngineRunningInfo.TorrentLogs[index].TorrentName == hexString {
 
-			engine.EngineRunningInfo.MagnetAnalyseChan <- true
+			//Magnet hash is stored in torrentName
+			torrentHash := metainfo.Hash{}
+			_ = torrentHash.FromHexString(engine.EngineRunningInfo.TorrentLogs[index].TorrentName)
+			extendLog, _ := engine.EngineRunningInfo.TorrentLogExtends[torrentHash]
+			extendLog.MagnetAnalyseChan <- true
 			select {
-				case <- engine.EngineRunningInfo.MagnetDel:
+				case <- extendLog.MagnetDelChan:
 					engine.EngineRunningInfo.TorrentLogs = append(engine.EngineRunningInfo.TorrentLogs[:index], engine.EngineRunningInfo.TorrentLogs[index+1:]...)
 					engine.UpdateInfo()
 					deleted = true
-					break
+					logger.Debug("Delete Magnet Done")
+					return
 			}
-			logger.Debug("Delete Magnet Done")
 		}
-	}
-	if !deleted {
-		logger.Error("Not find deleted hash in logs")
 	}
 	return
 }
@@ -261,6 +270,5 @@ func channelClosed (ch <-chan interface{}) bool {
 		return true
 	default:
 	}
-
 	return false
 }
