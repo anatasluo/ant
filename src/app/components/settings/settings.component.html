@@ -8,7 +8,7 @@
           <form>
             <div class="form-group row">
               <div class="col-sm-6">
-                <span>Enable Proxy</span>
+                <span>{{'SETTINGS.EnableProxy' | translate}}</span>
               </div>
               <div class="col-sm-6">
                 <div class="ckbx-style-9">
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
-                <span>Proxy URL</span>
+                <span>{{'SETTINGS.ProxyURL' | translate}}</span>
               </div>
               <div class="col-sm-6">
                 <div class="input-group-sm">
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
-                <span>Enable Default Trackers</span>
+                <span>{{'SETTINGS.EnableDefaultTrackers' | translate}}</span>
               </div>
               <div class="col-sm-6">
                 <div class="ckbx-style-9">
@@ -41,52 +41,65 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
-                <span>DefaultTrackerList</span>
+                <span>{{'SETTINGS.DefaultTrackerList' | translate}}</span>
               </div>
               <div class="col-sm-6">
                 <div class="input-group-sm">
-                  <input *ngIf="settings.EnableDefaultTrackers" title="Currently, it only supports format like this. If you want to change, please check this url." name="defaultTrackerList" type="text" [(ngModel)]="settings.DefaultTrackerList" class="form-control form-control-sm">
+                  <input *ngIf="settings.EnableDefaultTrackers" [title]="'SETTINGS.DefaultTrackerListHint' | translate" name="defaultTrackerList" type="text" [(ngModel)]="settings.DefaultTrackerList" class="form-control form-control-sm">
                   <input *ngIf="!settings.EnableDefaultTrackers" readonly name="defaultTrackerList" type="text" [(ngModel)]="settings.DefaultTrackerList" class="form-control form-control-sm">
                 </div>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
-                <span>MaxEstablishedConns({{settings.MaxEstablishedConns}})</span>
+                <span>{{'SETTINGS.MaxEstablishedConns' | translate}}({{settings.MaxEstablishedConns}})</span>
               </div>
               <div class="col-sm-6">
                 <div class="input-group-sm">
-                  <input type="range" min="50" max="200" title="Default is 100, you can set it depend on your computer." name="maxEstablishedConns" class="custom-range" [(ngModel)]="settings.MaxEstablishedConns">
+                  <input type="range" min="50" max="200" [title]="'SETTINGS.MaxEstablishedConnsHint' | translate" name="maxEstablishedConns" class="custom-range" [(ngModel)]="settings.MaxEstablishedConns">
                 </div>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
-                <span>Download Directory</span>
+                <span>{{'SETTINGS.Language' | translate}}</span>
               </div>
               <div class="col-sm-6">
-                <div class="input-group-sm">
-                  <input type="text" readonly class="form-control form-control-sm" title="This will lead to restart of all unfinished tasks." (click)="selectDataDir()" name="dataDir" [(ngModel)]="settings.DataDir">
+                <div ngbDropdown class="d-inline-block">
+                  <button class="btn btn-info btn-sm" id="languageList" ngbDropdownToggle>{{localeTolanguage.get(currentLanguage)}}</button>
+                  <div ngbDropdownMenu aria-labelledby="languageList">
+                    <button (click)="changeLanguage(lang)" *ngFor="let lang of translate.getLangs()" ngbDropdownItem>{{localeTolanguage.get(lang)}}</button>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
-                <span>Cache Directory</span>
+                <span>{{'SETTINGS.DownloadDirectory' | translate}}</span>
               </div>
               <div class="col-sm-6">
                 <div class="input-group-sm">
-                  <input type="text" readonly title="This directory is used for some cached data." class="form-control form-control-sm" (click)="selectTmpDir()" name="tmpDir" [(ngModel)]="settings.Tmpdir">
+                  <input type="text" readonly class="form-control form-control-sm" [title]="'SETTINGS.DownloadDirectoryHint' | translate" (click)="selectDataDir()" name="dataDir" [(ngModel)]="settings.DataDir">
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>{{'SETTINGS.CacheDirectory' | translate}}</span>
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group-sm">
+                  <input type="text" readonly [title]="'SETTINGS.CacheDirectoryHint' | translate" class="form-control form-control-sm" (click)="selectTmpDir()" name="tmpDir" [(ngModel)]="settings.Tmpdir">
                 </div>
               </div>
             </div>
             <br>
             <div class="form-group row">
               <div class="col-sm-2 offset-sm-8">
-                <button type="button" class="btn btn-light btn-xs btn-radius" (click)="resetSetting()">Reset</button>
+                <button type="button" class="btn btn-light btn-xs btn-radius" (click)="resetSetting()">{{'SETTINGS.Reset' | translate}}</button>
               </div>
               <div class="col-sm-2 offset-sm-0">
-                <button type="button" class="btn btn-warning btn-xs btn-radius"  (click)="applySetting()">Apply</button></div>
+                <button type="button" class="btn btn-warning btn-xs btn-radius"  (click)="applySetting()">{{'SETTINGS.Apply' | translate}}</button></div>
             </div>
           </form>
         </div>

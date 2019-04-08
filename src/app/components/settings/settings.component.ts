@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Settings } from '../../classes/settings';
 import { SettingsService } from '../../providers/settings.service';
+import { TranslateService } from '@ngx-translate/core';
 
 import { remote } from 'electron';
 
@@ -12,15 +13,30 @@ import { remote } from 'electron';
 export class SettingsComponent implements OnInit {
 
     settings: Settings;
-
+    currentLanguage: string;
+    localeTolanguage: Map<string, string>;
     constructor(
         private settingsService: SettingsService,
+        public translate: TranslateService
     ) { }
 
     ngOnInit() {
         // To avoid error of undefined
         this.settings = new Settings;
+        this.currentLanguage = localStorage.getItem('locale');
+        if (this.currentLanguage === null) {
+            this.currentLanguage = this.translate.getDefaultLang();
+        }
+        this.localeTolanguage = new Map<string, string>();
+        this.localeTolanguage.set('en', 'English');
+        this.localeTolanguage.set('zh', '中文');
         this.loadSettings();
+    }
+
+    changeLanguage(aimLanguage: string) {
+        localStorage.setItem('locale', aimLanguage);
+        this.currentLanguage = aimLanguage;
+        this.translate.use(aimLanguage);
     }
 
     private loadSettings() {

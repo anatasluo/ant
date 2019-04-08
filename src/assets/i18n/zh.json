@@ -1,0 +1,57 @@
+{
+  "NAVBAR": {
+      "LocalDownload": "本地下载",
+      "AllTasks": "全部任务",
+      "Downloading": "下载中",
+      "Completed": "已完成",
+      "MoreFunctions": "更多功能",
+      "Tools": "工具",
+      "Setting": "设置",
+      "System": "系统",
+      "AboutANT": "关于"
+  },
+  "TOOLS": {
+    "ThePirateBay": {
+      "title": "thepiratebay",
+      "content1": "海盗湾是全球最大的种子检索网站之一， 每天有数百万的访问者。",
+      "content2": "海盗湾允许访问者检索，下载，上传磁力链接和种子文件。"
+    },
+    "Torrentseeker": {
+      "title": "torrentseeker",
+      "content1": "TorrentSeeker是一个强大的种子检索引擎，它通过设置Google搜索从超过100个种子网站上抓取种子。"
+    },
+    "Torrents": {
+      "title": "torrents",
+      "content1": "torrents不同于其他熟知的种子搜索引擎，它的首页会显示种子搜索的热度排行，以帮助用户寻找到他们感兴趣的资源。"
+    },
+    "Itorrents": {
+      "title": "itorrents",
+      "content1": "iTorrents.org提供免费的种子在线存储服务",
+      "content2": "你无法检索存储在网站中的种子，你仅仅能够下载那些你知道info_hash值的种子。"
+    },
+    "Torrentdownload": {
+      "title": "torrentdownload",
+      "content1": "torrentdownload是一个能够检索各种种子资源的网站，包括电影，电视剧， 动画片， 电子书， 软件， 音乐等等。"
+    },
+    "Toorgle": {
+      "title": "toorgle",
+      "content1": "toorgle 是一个由Google驱动的检索引擎。"
+    }
+  },
+  "SETTINGS": {
+    "EnableProxy": "使用代理",
+    "ProxyURL": "代理地址",
+    "EnableDefaultTrackers": "使用默认Trackers",
+    "DefaultTrackerList": "默认Trackers链接",
+    "DefaultTrackerListHint": "目前, ANT仅支持特定格式的文件. 如果你想改变该选项，请先访问原设置的链接。",
+    "MaxEstablishedConns": "最大建立链接数",
+    "MaxEstablishedConnsHint": "默认是100，该选项取决于电脑的硬件条件。",
+    "Language": "语言",
+    "DownloadDirectory": "下载目录",
+    "DownloadDirectoryHint": "该选项的改变将导致所有未完成任务的重新下载。",
+    "CacheDirectory": "缓存目录",
+    "CacheDirectoryHint": "该目录用于存储运行过程中产生的中间数据。",
+    "Reset": "重置",
+    "Apply": "应用"
+  }
+}

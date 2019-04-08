@@ -187,9 +187,8 @@ function createWindow() {
     });
 }
 function copyFile(src, dist) {
-    if (fs.existsSync(dist)) {
-        fs.unlinkSync(dist);
+    if (!fs.existsSync(dist)) {
+        fs.writeFileSync(dist, fs.readFileSync(src));
     }
-    fs.writeFileSync(dist, fs.readFileSync(src));
 }
 //# sourceMappingURL=main.js.map

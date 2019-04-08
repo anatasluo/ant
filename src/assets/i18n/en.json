@@ -1,7 +1,57 @@
 {
-  "PAGES": {
-      "HOME": {
-          "TITLE": "App works !"
-      }
+  "NAVBAR": {
+    "LocalDownload": "Local Download",
+    "AllTasks": "All Tasks",
+    "Downloading": "Downloading",
+    "Completed": "Completed",
+    "MoreFunctions": "More Functions",
+    "Tools": "Tools",
+    "Setting": "Setting",
+    "System": "System",
+    "AboutANT": "About"
+  },
+  "TOOLS": {
+    "ThePirateBay": {
+      "title": "thepiratebay",
+      "content1": "The Pirate Bay (TPB) is one of the largest torrent sites, millions of visitors per day.",
+      "content2": "The Pirate Bay allows visitors to search, download, and contribute magnet links and torrent files."
+    },
+    "Torrentseeker": {
+      "title": "torrentseeker",
+      "content1": "TorrentSeeker is a robust torrent search engine that uses custom Google Search to scrape torrents from over 100 torrent sites."
+    },
+    "Torrents": {
+      "title": "torrents",
+      "content1": "This popular meta torrent search engine site is very different from any other BitTorrent-related site you’ll see. While homepages feature extensive lists of torrents, Torrents.me displays search trends for popular queries. These trends keep changing frequently and provide a good idea of what’s hot and what BitTorrent users are looking for."
+    },
+    "Itorrents": {
+      "title": "itorrents",
+      "content1": "iTorrents.org is a free service for caching torrent files online.",
+      "content2": "You can not search or list torrent files that are stored here, you can only access them if you already know the info_hash value of the torrent you want to download."
+    },
+    "Torrentdownload": {
+      "title": "torrentdownload",
+      "content1": "torrentdownload is a website which features various torrent files to download movies, TV series, anime, ebooks, software, music, and so on."
+    },
+    "Toorgle": {
+      "title": "toorgle",
+      "content1": "toorgle is a torrent search engine powered by google."
+    }
+  },
+  "SETTINGS": {
+    "EnableProxy": "Enable Proxy",
+    "ProxyURL": "Proxy URL",
+    "EnableDefaultTrackers": "Enable Default Trackers",
+    "DefaultTrackerList": "Default Tracker List",
+    "DefaultTrackerListHint": "Currently, it only supports format like this. If you want to change, please check this url.",
+    "MaxEstablishedConns": "Max Established Conns",
+    "MaxEstablishedConnsHint": "Default is 100, you can set it depend on your computer.",
+    "Language": "Language",
+    "DownloadDirectory": "Download Directory",
+    "DownloadDirectoryHint": "Change of this will lead to restart of all unfinished tasks.",
+    "CacheDirectory": "Cache Directory",
+    "CacheDirectoryHint": "This directory is used to store data generated during running period.",
+    "Reset": "Reset",
+    "Apply": "Apply"
   }
 }

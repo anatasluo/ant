@@ -13,8 +13,13 @@ export class AppComponent implements OnInit {
   ngOnInit() {}
   constructor(public electronService: ElectronService,
               private translate: TranslateService) {
-
+    translate.addLangs(['en', 'zh']);
     translate.setDefaultLang('en');
+
+    const browserLang = localStorage.getItem('locale');
+    if (browserLang !== null) {
+      translate.use(browserLang.match(/en|zh/) ? browserLang : 'en');
+    }
     console.log('AppConfig', AppConfig);
 
     if (electronService.isElectron()) {
