@@ -8,7 +8,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {ConfigService} from '../../providers/config.service';
+import { ConfigService } from '../../providers/config.service';
+import { MessagesService } from '../../providers/messages.service';
 
 import { magnetDecode } from '@ctrl/magnet-link';
 
@@ -35,8 +36,10 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
               private configService: ConfigService,
               private route: ActivatedRoute,
               private modalService: NgbModal,
+              private messagesService: MessagesService,
   ) { }
   ngOnInit() {
+    const tmpThis = this;
     currentMagnet = undefined;
     this.status = this.route.snapshot.url[0].path;
     this.getTorrents();
@@ -46,19 +49,18 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     this.webview = document.querySelector('webview');
     // @ts-ignore
     this.webview.addEventListener('dom-ready', () => {
-      console.log('webview ready!');
+      tmpThis.messagesService.add('itorrents service ready');
     });
 
     ipcRenderer.on('torrentDownload', (event, arg) => {
-      console.log('Download Finished! Handle it now');
+      tmpThis.messagesService.add('get torrent file from itorrents successfully');
       // const tmpMagnet = currentMagnet;
       const filePath: string = arg;
       if (_.endsWith(filePath, 'torrent')) {
         currentMagnet = undefined;
         this.getFileFromURL(filePath);
       } else {
-        console.log('Failed to get meta data!');
-        // this.sendMagnet(tmpMagnet);
+        tmpThis.messagesService.add('Failed to get torrent file from itorrents');
       }
     });
 
@@ -94,7 +96,6 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
         .subscribe((IsAdded: boolean) => {
           if (IsAdded) {
             // location.reload();
-            console.log('Update magnet');
             this.getTorrents();
           }
         }, error => {
@@ -107,10 +108,10 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     const tmpThis = this;
     const tmpWS = new WebSocket(this.configService.wsBaseUrl);
     tmpWS.onopen = function(evt: any) {
-      console.log('create websocket');
+      tmpThis.messagesService.add('create websocket');
     };
     tmpWS.onclose = function(evt: any) {
-      console.log('close websocket');
+      tmpThis.messagesService.add('close websocket');
       ws.close();
       setTimeout(() => {
         location.reload();
@@ -136,7 +137,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
           }
         }
       } else if (data.MessageType === 1) {
-        console.log('Should reflesh');
+        console.log('Should refresh');
         tmpThis.getTorrents();
         // location.reload();
       }
@@ -169,7 +170,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
   getTorrents(): void {
     this.torrentService.getSelectedTorrents(this.status)
         .subscribe((datas: Torrent[]) => {
-          console.log(datas);
+          this.messagesService.add('torrents list update');
           this.torrents = datas;
           globalTorrents = this.torrents;
           for (let i = 0; i < this.torrents.length; i ++) {
@@ -187,22 +188,22 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
 
   private addOneTorrentService(file: File): void {
     if (_.endsWith(_.lowerCase(file.name), 'torrent')) {
-      console.log(file.name);
       this.torrentService.addOneTorrent(file)
           .subscribe((IsAdded: boolean) => {
             if (IsAdded) {
+              this.messagesService.add('add one torrent successfully');
               this.getTorrents();
             }
           }, error => {
+            this.messagesService.add('unable to add this torrent file');
             console.log(error);
           });
     } else {
-      alert('请上传有效文件(后缀为.torrent)');
+      alert('Please upload a valid file which ends with .torrent');
     }
   }
 
   addOneTorrent(files: FileList): void {
-    console.log('Click addOne Torrent');
     if (files.length !== 0) {
       return this.addOneTorrentService(files[0]);
     }
@@ -272,11 +273,11 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
         this.webview.downloadURL(this.getTorrentFromInfoHash(infoHash));
         setTimeout(() => {
           if (currentMagnet !== undefined) {
-            console.log('Try to solve it by engine');
+            this.messagesService.add('use engine to resolve magnet');
             currentMagnet = undefined;
             this.sendMagnet(magnetURL);
           } else {
-            console.log('Solve it by itorrents, nothing more');
+            // console.log('Solve it by itorrents, nothing more');
           }
         }, 10000);
       } else {
@@ -296,7 +297,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
           .subscribe((data: JSON) => {
             this.getTorrents();
             if (!data['IsDownloading']) {
-              alert('无法下载已完成任务');
+              this.messagesService.add('Fail to start this task');
             }
           }, error => {
             console.log(error);
@@ -317,9 +318,10 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
               .subscribe((data: JSON) => {
                 this.getTorrents();
                 if (!data['IsStopped']) {
-                  alert('Failed to stop');
+                  this.messagesService.add('Fail to stop this task');
                 }
               }, error => {
+                this.messagesService.add('Error !!!');
                 console.log(error);
               });
         }
@@ -342,10 +344,13 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
             this.getTorrents();
             console.log(data);
             if (!data['IsDeleted']) {
-              alert('Failed to delete');
+              this.messagesService.add('Failed to delete');
+            } else {
+              this.messagesService.add('Delete successfully');
             }
             // location.reload();
           }, error => {
+            this.messagesService.add('Error !!!');
             console.log(error);
           });
     }
@@ -378,12 +383,12 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
           autoHideMenuBar: true,
           titleBarStyle: 'hidden',
         });
-        const playerUrl = this.getBaseHost() + 'player/' + this.selectedTorrent.HexString
-        console.log(playerUrl);
+        const playerUrl = this.getBaseHost() + 'player/' + this.selectedTorrent.HexString;
+        this.messagesService.add('Steam torrent now');
         win.loadURL(playerUrl);
         // win.webContents.openDevTools();
       } else {
-        alert('Pleas choose a running task');
+        this.messagesService.add('Please choose a running task');
       }
     }
   }

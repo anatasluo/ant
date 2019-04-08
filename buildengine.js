@@ -34,9 +34,13 @@ if (_.startsWith(argv.arch, 'arm'))
 if (argv.system === 'darwin' || argv.system === 'linux')
 {
     aimPlatform = argv.system;
+    sourcePath = './backend/ant';
+    destPath = './torrent/ant_' + aimVersion;
 }else if (argv.system === 'win32' || argv.system === 'windows')
 {
     aimPlatform = 'windows';
+    sourcePath = './backend/ant.exe';
+    destPath = './torrent/ant_' + aimVersion + '.exe';
 }else {
     console.log("Not support such platform");
     process.exit(1);
@@ -47,13 +51,9 @@ let currentOS = os.platform();
 if (currentOS === 'linux' || currentOS === 'darwin')
 {
     buildCmd = util.format('CGO_ENABLED=0 GOOS=%s GOARCH=%s go build ant.go', aimPlatform, aimArch);
-    sourcePath = './backend/ant';
-    destPath = './torrent/ant_' + aimVersion;
 }else if (currentOS === 'win32')
 {
     buildCmd = util.format('SET CGO_ENABLED=0 && SET GOOS=%s && SET GOARCH=%s && go build ant.go', aimPlatform, aimArch);
-    sourcePath = './backend/ant.exe';
-    destPath = './torrent/ant_' + aimVersion + '.exe';
 }else
 {
     console.log("Not support such platform");

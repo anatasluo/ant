@@ -24,6 +24,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { SearchComponent } from './components/search/search.component';
 import { AboutComponent } from './components/about/about.component';
 import { FormsModule } from '@angular/forms';
+import { MessagesComponent } from './components/messages/messages.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SettingsComponent,
     SearchComponent,
     AboutComponent,
+    MessagesComponent,
   ],
   imports: [
     NgbModule,

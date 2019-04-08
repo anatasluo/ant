@@ -4,7 +4,7 @@
   <div class="col-sm-10 nav-set">
     <div class="container-fluid">
       <div class="row nav sticky-top">
-        <div class="btn-toolbar col-sm-10 nav-top" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-toolbar col-sm-8 nav-top" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group nav-btn-groups" role="group" aria-label="First group">
             <button type="button" class="btn btn-light" title="Open Torrent" onclick="upFile.click()"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></button>
             <input type="file" id="upFile" (change)="addOneTorrent($event.target.files)" class="upFile">
@@ -134,7 +134,8 @@
           </div>
         </div>
 
-        <div class="btn-toolbar col-sm-2 nav-top" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="col-sm-4 nav-top messages" role="toolbar" aria-label="Toolbar with button groups">
+          <app-messages></app-messages>
         </div>
       </div>
       <div class="row">

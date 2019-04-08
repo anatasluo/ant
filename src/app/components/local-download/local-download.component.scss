@@ -1,5 +1,11 @@
 $nav_background_color : #FCFCFC;
 
+@mixin nameOverflow {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .nav-top {
   /* border-bottom: 1px solid rgba(0,0,0,.125); */
   padding: 0px;
@@ -34,6 +40,10 @@ button {
   outline:none;
 }
 
+.messages {
+  padding-top: 0.2rem;
+}
+
 .singleTorrent {
   background-color: $nav_background_color;
   margin: 15px;
@@ -50,12 +60,6 @@ button {
 
 .singleTorrent:focus {
   outline: none;
-}
-
-@mixin nameOverflow {
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .torrentName {

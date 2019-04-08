@@ -60,6 +60,7 @@ export class SettingsComponent implements OnInit {
         this.settingsService.applySettings(this.settings)
             .subscribe((isApplied: boolean) => {
                 console.log(isApplied);
+                location.reload();
             }, error => {
                 console.log(error);
             });
