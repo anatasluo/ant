@@ -6,23 +6,28 @@
   port = "8482"
   supportremote = false
 
-[LoggerSetting]
-  LoggingLevel = 5
-  LoggingOutput = "file"
+[encryptionpolicy]
+  disableencryption = false
+  forceencryption = false
+  prefernoencryption = true
 
-[Enginesetting]
-  MaxActiveTorrents     = 5
-  SocksProxyURL         = ""
-  UseSocksproxy         = false
-  TorrentDBPath         = "storm.db"
-  Tmpdir                = "tmp"
-  MaxEstablishedConns   = 100
-  DataDir = "download"
-  EnableDefaultTrackers = true
-  DefaultTrackerList = "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ip.txt"
-  DefaultIPBlockList = "http://john.bitsurge.net/public/biglist.p2p.gz"
+[enginesetting]
+  datadir = "/home/anatas/Downloads"
+  defaultipblocklist = "http://john.bitsurge.net/public/biglist.p2p.gz"
+  defaulttrackerlist = "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ip.txt"
+  enabledefaulttrackers = true
+  maxactivetorrents = 5
+  maxestablishedconns = 100
+  socksproxyurl = ""
+  tmpdir = "/home/anatas/Downloads"
+  torrentdbpath = "storm.db"
+  usesocksproxy = false
 
-[Torrentconfig]
+[loggersetting]
+  logginglevel = 5
+  loggingoutput = "file"
+
+[torrentconfig]
   bep20 = ""
   debug = false
   defaultstorage = ""
@@ -37,14 +42,9 @@
   httpuseragent = ""
   ipblocklist = ""
   listenaddr = ""
-  ListenPort = 0
+  listenport = 0
   nodht = false
   noupload = false
   peerid = ""
   seed = false
   uploadratelimit = ""
-
-[Encryptionpolicy]
-  disableencryption = false
-  forceencryption = false
-  prefernoencryption = true

@@ -141,7 +141,7 @@
       <div class="row">
         <div class="col-sm-12 infoPage" tabindex="0" (click) = "torrentBlur()">
           <div *ngFor="let torrent of torrents">
-            <div class="row singleTorrent" tabindex="0" (click)="clickOneTorrent($event, torrent)" [ngClass]="{'selectedTorrent' : judgeEqual(torrent, selectedTorrent)}">
+            <div class="row singleTorrent" tabindex="0" (contextmenu) = "rightClick($event, torrent)" (click)="clickOneTorrent($event, torrent)" [ngClass]="{'selectedTorrent' : judgeEqual(torrent, selectedTorrent)}">
               <div class="col-sm-2 singleTorrentLeft">
                 <img [src]="torrent.TypeImg" class="fileType" [alt]="torrent.TypeImg"/>
               </div>

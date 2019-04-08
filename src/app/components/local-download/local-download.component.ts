@@ -3,7 +3,7 @@ import {TorrentService} from '../../providers/torrent.service';
 import * as _ from 'lodash';
 import {Torrent} from '../../classes/torrent';
 import {ActivatedRoute} from '@angular/router';
-import { ipcRenderer, remote, screen } from 'electron';
+import { ipcRenderer, remote, screen, Menu, shell } from 'electron';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -32,6 +32,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
   selectedTorrent: Torrent;
   status: string;
   webview: any;
+  rightMenu: Menu;
   constructor(private torrentService: TorrentService,
               private configService: ConfigService,
               private route: ActivatedRoute,
@@ -67,6 +68,40 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     ipcRenderer.on('torrentLoaded', () => {
       this.addOneTorrentService(torrentFile);
     });
+
+    this.rightMenu = new remote.Menu();
+    this.rightMenu.append(new remote.MenuItem({
+      label: 'Start task', click() {
+        tmpThis.startOneTorrent();
+      }
+    }));
+
+    // this.rightMenu.append(new remote.MenuItem({
+    //   type: 'separator'
+    // }));
+    this.rightMenu.append(new remote.MenuItem({
+      label: 'Stop task', click() {
+        tmpThis.stopOneTorrent();
+      }
+    }));
+
+    this.rightMenu.append(new remote.MenuItem({
+      label: 'Delete task', click() {
+        tmpThis.delOneTorrent();
+      }
+    }));
+
+    this.rightMenu.append(new remote.MenuItem({
+      label: 'Play while downloading', click() {
+        tmpThis.showPlay();
+      }
+    }));
+
+    this.rightMenu.append(new remote.MenuItem({
+      label: 'Show in directory', click() {
+        tmpThis.openInDirectory();
+      }
+    }));
   }
 
   ngOnDestroy() {
@@ -225,6 +260,14 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     this.selectedTorrent = torrent;
   }
 
+  rightClick(event: Event, torrent: Torrent) {
+    event.stopPropagation();
+    this.selectedTorrent = torrent;
+    this.rightMenu.popup({
+      window: remote.getCurrentWindow()
+    });
+  }
+
   private updateInfo(hexString: string) {
     for (let i = 0; i < this.torrents.length; i ++) {
       if (this.torrents[i].HexString === hexString && this.torrents[i].Interval < 0) {
@@ -302,6 +345,13 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
           }, error => {
             console.log(error);
           });
+    }
+  }
+
+  private openInDirectory() {
+    this.selectedTorrent = this.getTrueFromSelect(this.selectedTorrent);
+    if (this.selectedTorrent !== null && this.selectedTorrent !== undefined) {
+      shell.openItem(this.selectedTorrent.StoragePath);
     }
   }
 
@@ -388,7 +438,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
         win.loadURL(playerUrl);
         // win.webContents.openDevTools();
       } else {
-        this.messagesService.add('Please choose a running task');
+        alert('Please choose a running task');
       }
     }
   }
