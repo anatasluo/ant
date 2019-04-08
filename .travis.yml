@@ -1,5 +1,5 @@
 language: node_js
 os: linux
-rvm:
+node_js:
   - 11.13.0
   - golang
