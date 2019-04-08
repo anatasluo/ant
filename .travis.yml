@@ -3,4 +3,6 @@ script: true
 os: linux
 node_js:
   - 11.13.0
+go:
+  - 1.11.x
 
