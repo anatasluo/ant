@@ -26,7 +26,7 @@ let currentMagnet: string;
 
 export class LocalDownloadComponent implements OnInit, OnDestroy {
 
-  private aviImg = require('../../../assets/file_type/zip.png');
+  private defaultFileIcon = require('../../../assets/zip.png');
   torrents: Torrent[];
   // See GetTrueFromSelected
   selectedTorrent: Torrent;
@@ -184,7 +184,16 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
   }
 
   private getTorrentWebFromData(torrent: Torrent): Torrent {
-    torrent.TypeImg = this.aviImg;
+    torrent.TypeImg = this.defaultFileIcon;
+    remote.app.getFileIcon(torrent.StoragePath + '/' + torrent.TorrentName, {
+      'size': 'large'
+    }, (err, iconImg) => {
+      if (err !== null) {
+        console.log(err);
+      } else {
+        torrent.TypeImg = iconImg.toDataURL();
+      }
+    });
     torrent.LeftTime = 'Estimating ...';
     torrent.DownloadSpeed = 'Estimating ...';
     torrent.Interval = -1;

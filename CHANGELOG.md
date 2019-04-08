@@ -3,6 +3,7 @@
 * update LICENCE
 * update README
 * add support for different language
+* add support for custom file icon 
 
 
 

@@ -3,8 +3,51 @@
   <component name="ChangeListManager">
     <list default="true" id="2a27c0ce-fe61-45a2-8044-562a85d08921" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logoAndID.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/accdb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/avi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/bmp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/css.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/docx_mac.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/docx_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/eml.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/eps.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/fla.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/gif.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/html.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/ind.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/ini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/jpeg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/jsf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/midi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/mov.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/mp3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/mpeg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pdf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pptx_mac.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pptx_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/proj.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/psd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pst.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pub.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/rar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/readme.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/tiff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/url.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/vsd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/wav.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/wma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/wmv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/xlsx_mac.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/xlsx_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/file_type/zip.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/torrent/tracker.txt" beforeDir="false" afterPath="$PROJECT_DIR$/torrent/tracker.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,23 +71,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="175">
-                <caret line="5" selection-start-line="5" selection-end-line="5" />
+              <first_editor relative-caret-position="525">
+                <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.travis.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="17" selection-start-column="17" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -52,8 +86,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
-              <caret line="25" column="15" lean-forward="true" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+            <state relative-caret-position="698">
+              <caret line="89" column="23" lean-forward="true" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2485">
+              <caret line="71" column="39" lean-forward="true" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="175">
+                <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -158,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.html" />
         <option value="$PROJECT_DIR$/src/app/components/navbar/navbar.component.html" />
         <option value="$PROJECT_DIR$/src/app/components/search/search.component.html" />
-        <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" />
         <option value="$PROJECT_DIR$/src/app/components/about/about.component.html" />
         <option value="$PROJECT_DIR$/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/src/app/components/settings/settings.component.html" />
@@ -167,18 +224,19 @@
         <option value="$PROJECT_DIR$/src/assets/i18n/zh.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/LICENSE.md" />
-        <option value="$PROJECT_DIR$/CHANGELOG.md" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" />
+        <option value="$PROJECT_DIR$/CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="336" />
-    <option name="y" value="344" />
-    <option name="width" value="1764" />
-    <option name="height" value="1005" />
+    <option name="x" value="482" />
+    <option name="y" value="829" />
+    <option name="width" value="1754" />
+    <option name="height" value="1004" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -188,7 +246,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,10 +253,37 @@
               <item name="ant" type="b2602c69:ProjectViewProjectNode" />
               <item name="ant" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ant" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ant" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ant" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ant" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="local-download" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -323,12 +407,13 @@
       <workItem from="1554711153738" duration="1193000" />
       <workItem from="1554712433418" duration="45000" />
       <workItem from="1554712548609" duration="672000" />
-      <workItem from="1554713287500" duration="13523000" />
+      <workItem from="1554713287500" duration="15609000" />
+      <workItem from="1554734889583" duration="6633000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105853000" />
+    <option name="totallyTimeSpent" value="114572000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -340,10 +425,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="336" y="344" width="1764" height="1005" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1035" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15810733" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13178703" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -358,7 +443,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3296582" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32792208" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.1335837" side_tool="true" visible="true" weight="0.06868452" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.1335837" side_tool="true" visible="true" weight="0.06382979" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -482,13 +567,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/torrent/config.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/providers/settings.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1632">
@@ -560,13 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/_electron@4.0.0@electron/electron.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="1603" column="4" selection-start-line="1603" selection-start-column="4" selection-end-line="1603" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/electron-builder.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
@@ -633,9 +704,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/torrent/ant_engine.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/torrent/ant_engine.log" />
     <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4760">
@@ -698,23 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="14580" column="4" selection-start-line="14580" selection-start-column="4" selection-end-line="14580" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/components/settings/settings.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -773,29 +825,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/READEME_zh.md" />
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/torrent/config.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="21" column="78" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/_electron@4.0.0@electron/electron.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="3486" column="4" selection-start-line="3486" selection-start-column="4" selection-end-line="3486" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="6024" column="4" selection-start-line="6024" selection-start-column="4" selection-end-line="6024" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2485">
+          <caret line="71" column="39" lean-forward="true" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="140">
-            <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/READEME_zh.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
           <first_editor relative-caret-position="175">
-            <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
           </first_editor>
           <second_editor />
         </state>
@@ -803,15 +876,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
-          <caret line="25" column="15" lean-forward="true" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+        <state relative-caret-position="698">
+          <caret line="89" column="23" lean-forward="true" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="525">
+            <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
