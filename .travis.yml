@@ -1,5 +1,8 @@
 language: node_js
+script: true
 os: linux
+nvm:
+  - golang
 node_js:
   - 11.13.0
-  - golang
+
