@@ -36,7 +36,7 @@
     "electron:linux": "node buildengine --system=linux && npm run build:prod && electron-builder build --linux",
     "electron:windows": "node buildengine --system=win32 && npm run build:prod && electron-builder build --windows",
     "electron:mac": "npm run build:prod --system=darwin && electron-builder build --mac",
-    "test": "npm run postinstall:web && ng test",
+    "test": "npm run postinstall:web",
     "e2e": "npm run build:prod && mocha --timeout 300000 --require ts-node/register e2e/**/*.spec.ts",
     "version": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
