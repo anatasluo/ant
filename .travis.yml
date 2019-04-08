@@ -1,6 +1,4 @@
 language: node_js
-script: true
-os: linux
 node_js:
   - 11.13.0
 go:
