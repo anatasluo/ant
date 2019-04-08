@@ -37,15 +37,13 @@ If you like this application, please consider give a star for this project.
 
 ## Preview:
 + ### Add torrent download task
-![](./src/assets/READEME/task.png)
+![](./src/assets/READEME/task.gif)
 --------------
 
 + ### Steaming video while downloading
 ![](./src/assets/READEME/steaming.png)
 --------------
 
-+ ### Setting
-![](./src/assets/READEME/setting.png)
 
 ## Get Started
 

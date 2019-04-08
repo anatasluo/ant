@@ -5,6 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README_zh.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_zh.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/READEME/setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/READEME/task.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/torrent/tracker.txt" beforeDir="false" afterPath="$PROJECT_DIR$/torrent/tracker.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,24 +31,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="369">
-                <caret line="35" column="33" selection-end-line="72" />
+              <first_editor relative-caret-position="404">
+                <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README_zh.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="698">
-                <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+              <first_editor relative-caret-position="313">
+                <caret line="44" column="14" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
               </first_editor>
               <second_editor />
             </state>
@@ -56,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="698">
-              <caret line="89" column="23" lean-forward="true" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+              <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -65,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2485">
-              <caret line="71" column="39" lean-forward="true" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
+              <caret line="71" column="39" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
               <folding>
                 <element signature="e#0#60#0" expanded="true" />
               </folding>
@@ -196,16 +199,14 @@
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/README_zh.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="568" />
-    <option name="y" value="649" />
-    <option name="width" value="1754" />
-    <option name="height" value="1004" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1920" />
+    <option name="height" value="1035" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -377,12 +378,12 @@
       <workItem from="1554712433418" duration="45000" />
       <workItem from="1554712548609" duration="672000" />
       <workItem from="1554713287500" duration="15609000" />
-      <workItem from="1554734889583" duration="8494000" />
+      <workItem from="1554734889583" duration="8601000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116433000" />
+    <option name="totallyTimeSpent" value="116540000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -394,10 +395,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="568" y="649" width="1754" height="1004" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1035" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14442518" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13178703" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -412,7 +413,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3296582" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32792208" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.1335837" side_tool="true" visible="true" weight="0.06612529" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.1335837" side_tool="true" visible="true" weight="0.06382979" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -816,7 +817,7 @@
     <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2485">
-          <caret line="71" column="39" lean-forward="true" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
+          <caret line="71" column="39" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
           </folding>
@@ -836,25 +837,25 @@
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="698">
-          <caret line="89" column="23" lean-forward="true" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="369">
-            <caret line="35" column="33" selection-end-line="72" />
-          </first_editor>
-          <second_editor />
+          <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README_zh.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="698">
-            <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+          <first_editor relative-caret-position="313">
+            <caret line="44" column="14" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="404">
+            <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
           </first_editor>
           <second_editor />
         </state>

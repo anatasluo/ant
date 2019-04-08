@@ -37,15 +37,12 @@
 
 ## 应用预览:
 + ### 添加下载任务
-![](./src/assets/READEME/task.png)
+![](./src/assets/READEME/task.gif)
 --------------
 
 + ### 边放边播
 ![](./src/assets/READEME/steaming.png)
 --------------
-
-+ ### 设置页面
-![](./src/assets/READEME/setting.png)
 
 ## 开始使用
 
