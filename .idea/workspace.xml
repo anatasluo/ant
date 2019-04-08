@@ -3,51 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2a27c0ce-fe61-45a2-8044-562a85d08921" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logoAndID.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/accdb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/avi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/bmp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/css.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/docx_mac.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/docx_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/eml.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/eps.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/fla.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/gif.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/html.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/ind.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/ini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/jpeg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/jsf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/midi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/mov.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/mp3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/mpeg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pdf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/png.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pptx_mac.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pptx_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/proj.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/psd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pst.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/pub.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/rar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/readme.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/settings.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/text.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/tiff.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/url.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/vsd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/wav.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/wma.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/wmv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/xlsx_mac.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/xlsx_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/file_type/zip.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/torrent/tracker.txt" beforeDir="false" afterPath="$PROJECT_DIR$/torrent/tracker.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README_zh.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_zh.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,12 +28,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="525">
-                <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+              <first_editor relative-caret-position="369">
+                <caret line="35" column="33" selection-end-line="72" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README_zh.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="698">
+                <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
               </first_editor>
               <second_editor />
             </state>
@@ -178,7 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/backend/router/player.go" />
         <option value="$PROJECT_DIR$/backend/engine/player.go" />
         <option value="$PROJECT_DIR$/src/app/providers/settings.service.ts" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
@@ -229,12 +197,13 @@
         <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/README_zh.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="482" />
-    <option name="y" value="829" />
+    <option name="x" value="568" />
+    <option name="y" value="649" />
     <option name="width" value="1754" />
     <option name="height" value="1004" />
   </component>
@@ -408,12 +377,12 @@
       <workItem from="1554712433418" duration="45000" />
       <workItem from="1554712548609" duration="672000" />
       <workItem from="1554713287500" duration="15609000" />
-      <workItem from="1554734889583" duration="6633000" />
+      <workItem from="1554734889583" duration="8494000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114572000" />
+    <option name="totallyTimeSpent" value="116433000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -425,10 +394,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1035" extended-state="6" />
+    <frame x="568" y="649" width="1754" height="1004" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13178703" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14442518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -443,7 +412,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3296582" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32792208" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.1335837" side_tool="true" visible="true" weight="0.06382979" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.1335837" side_tool="true" visible="true" weight="0.06612529" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -505,16 +474,6 @@
     <proxy>http://127.0.0.1:7777/</proxy>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1122">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-          <folding>
-            <element signature="e#16#190#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -884,8 +843,18 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="525">
-            <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+          <first_editor relative-caret-position="369">
+            <caret line="35" column="33" selection-end-line="72" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README_zh.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="698">
+            <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
           </first_editor>
           <second_editor />
         </state>
