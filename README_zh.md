@@ -32,6 +32,10 @@
 - [ ] 自动打开本地播放器播放
 - [ ] 远程控制ANT下载器
 
+## TODO List
+- 美化中文字体
+- 标记无法在大陆访问的检索网站
+
 ## 项目架构:
 ![](./src/assets/READEME/architecture.jpg)
 

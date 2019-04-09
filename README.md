@@ -32,6 +32,10 @@ If you like this application, please consider give a star for this project.
 - [ ] Automatically open local player to play video.
 - [ ] Control ANT Downloader from remote machine.
 
+## TODO List
+- Beautify chinese fonts
+- Mark search websites which are banned by GFW
+
 ## Architecture:
 ![](./src/assets/READEME/architecture.jpg)
 
