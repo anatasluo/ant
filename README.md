@@ -29,7 +29,6 @@ If you like this application, please consider give a star for this project.
 - [ ] Download and steam selected file (Current version will download all files in one torrent and only steam the biggest file.)
 - [ ] Support different UI themes
 - [ ] Support more download methods like baiduyun, webTorrent
-- [ ] Automatically open local player to play video.
 - [ ] Control ANT Downloader from remote machine.
 
 ## TODO List
