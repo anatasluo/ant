@@ -19,10 +19,10 @@ let sourcePath, destPath;
 if (_.startsWith(argv.arch, 'arm'))
 {
     aimArch = 'arm';
-}else if (_.startsWith(argv.arch, 'x32'))
+}else if (_.startsWith(argv.arch, 'x32') || _.startsWith(argv.arch, '386'))
 {
     aimArch = '386';
-}else if (_.startsWith(argv.arch, 'x64'))
+}else if (_.startsWith(argv.arch, 'x64') || _.startsWith(argv.arch, 'amd64'))
 {
     aimArch = 'amd64';
 }else {
@@ -53,7 +53,7 @@ if (currentOS === 'linux' || currentOS === 'darwin')
     buildCmd = util.format('CGO_ENABLED=0 GOOS=%s GOARCH=%s go build ant.go', aimPlatform, aimArch);
 }else if (currentOS === 'win32')
 {
-    buildCmd = util.format('SET CGO_ENABLED=0 && SET GOOS=%s && SET GOARCH=%s && go build ant.go', aimPlatform, aimArch);
+    buildCmd = util.format('SET CGO_ENABLED=0 SET GOOS=%s SET GOARCH=%s go build ant.go', aimPlatform, aimArch);
 }else
 {
     console.log("Not support such platform");
