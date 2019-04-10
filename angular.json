@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-electron": {
+    "ANT-Downloader": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -139,7 +139,7 @@
       }
     }
   },
-  "defaultProject": "angular-electron",
+  "defaultProject": "ANT-Downloader",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

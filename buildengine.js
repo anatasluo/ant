@@ -88,6 +88,9 @@ function copyFile(src, dist) {
 }
 
 function removeDir(dir) {
+    if (!fs.existsSync(dir)) {
+        return
+    }
     let files = fs.readdirSync(dir);
     for(let i=0;i<files.length;i++){
         let newPath = path.join(dir,files[i]);
