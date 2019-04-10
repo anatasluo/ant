@@ -69,5 +69,13 @@ More npm usage is described in package.json, make sure your system has following
 + node >= 11.0.x
 + golang >= 1.10.x
 
+
+# Special thanks
+
+[anacrolix/torrent](https://github.com/anacrolix/torrent)
+[goTorrent](https://github.com/deranjer/goTorrent)
+[go-peerflix](https://github.com/Sioro-Neoku/go-peerflix)
+[cloud-torrent](https://github.com/jpillora/cloud-torrent)
+
 # Contact me
 You can send emails to luolongjuna@gmail.com.

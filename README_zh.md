@@ -68,6 +68,13 @@ npm run electron:mac
 + node >= 11.0.x
 + golang >= 1.10.x
 
+# 特别致谢
+
+[anacrolix/torrent](https://github.com/anacrolix/torrent)
+[goTorrent](https://github.com/deranjer/goTorrent)
+[go-peerflix](https://github.com/Sioro-Neoku/go-peerflix)
+[cloud-torrent](https://github.com/jpillora/cloud-torrent)
+
 # 联系我
 你可以发邮件到 luolongjuna@gmail.com
 或者微信ID: luolongjuna
