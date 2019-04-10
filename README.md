@@ -72,10 +72,10 @@ More npm usage is described in package.json, make sure your system has following
 
 # Special thanks
 
-[anacrolix/torrent](https://github.com/anacrolix/torrent)
-[goTorrent](https://github.com/deranjer/goTorrent)
-[go-peerflix](https://github.com/Sioro-Neoku/go-peerflix)
-[cloud-torrent](https://github.com/jpillora/cloud-torrent)
++ [anacrolix/torrent](https://github.com/anacrolix/torrent)
++ [goTorrent](https://github.com/deranjer/goTorrent)
++ [go-peerflix](https://github.com/Sioro-Neoku/go-peerflix)
++ [cloud-torrent](https://github.com/jpillora/cloud-torrent)
 
 # Contact me
 You can send emails to luolongjuna@gmail.com.

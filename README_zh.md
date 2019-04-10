@@ -70,10 +70,10 @@ npm run electron:mac
 
 # 特别致谢
 
-[anacrolix/torrent](https://github.com/anacrolix/torrent)
-[goTorrent](https://github.com/deranjer/goTorrent)
-[go-peerflix](https://github.com/Sioro-Neoku/go-peerflix)
-[cloud-torrent](https://github.com/jpillora/cloud-torrent)
++ [anacrolix/torrent](https://github.com/anacrolix/torrent)
++ [goTorrent](https://github.com/deranjer/goTorrent)
++ [go-peerflix](https://github.com/Sioro-Neoku/go-peerflix)
++ [cloud-torrent](https://github.com/jpillora/cloud-torrent)
 
 # 联系我
 你可以发邮件到 luolongjuna@gmail.com
