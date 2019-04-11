@@ -446,6 +446,8 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
         this.messagesService.add('Steam torrent now');
         win.loadURL(playerUrl);
         // win.webContents.openDevTools();
+      } else if (this.selectedTorrent.Status === 'Completed') {
+        this.openInDirectory();
       } else {
         alert('Please choose a running task');
       }

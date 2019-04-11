@@ -11,8 +11,19 @@
             <button type="button" class="btn btn-light" (click)="handleMagnet(magnet)" title="Add Magnet"><i class="fa fa-link fa-1x" aria-hidden="true"></i></button>
             <ng-template #magnet let-modal>
               <div class="modal-body">
-                <textarea type="text" class="form-control" #box (keyup.enter)="downloadMagnet(box.value)" placeholder="magnet:?xt=urn:" aria-label="Magnet"></textarea>
+                <div class="input-group">
+                  <!--<div class="input-group-prepend">-->
+                    <!--<button type="button" class="btn btn-light" (click)="modal.dismiss('Cross click')"><i class="fa fa-times fa-1x" aria-hidden="true"></i></button>-->
+                  <!--</div>-->
+                  <textarea type="text" class="form-control" #box (keyup.enter)="downloadMagnet(box.value)" placeholder="magnet:?xt=urn:" aria-label="Magnet"></textarea>
+                  <div class="input-group-prepend">
+                    <button type="button" class="btn btn-light" (click)="downloadMagnet(box.value)"><i class="fa fa-check fa-1x" aria-hidden="true"></i></button></div>
+                </div>
               </div>
+              <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')"><i class="fa fa-times fa-1x" aria-hidden="true"></i></button>-->
+                <!--<button type="button" class="btn btn-outline-dark" (click)="downloadMagnet(box.value)"><i class="fa fa-check fa-1x" aria-hidden="true"></i></button>-->
+              <!--</div>-->
             </ng-template>
           </div>
           <div class="btn-group nav-btn-groups" role="group" aria-label="Second group">

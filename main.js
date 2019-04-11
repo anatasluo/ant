@@ -49,6 +49,11 @@ if (gotTheLock) {
                 win.focus();
             }
         });
+        // handle system restart or shutdown
+        process.on('exit', function () {
+            console.log('system restart');
+            electron_1.app.quit();
+        });
     }
     catch (e) {
         console.log(e);

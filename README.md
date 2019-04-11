@@ -32,8 +32,7 @@ If you like this application, please consider give a star for this project.
 - [ ] Control ANT Downloader from remote machine.
 
 ## TODO List
-- Beautify chinese fonts
-- Mark search websites which are banned by GFW
+- Add support for network speed limit
 
 ## Architecture:
 ![](./src/assets/READEME/architecture.jpg)

@@ -55,6 +55,12 @@ if (gotTheLock) {
             }
         });
 
+        // handle system restart or shutdown
+        process.on('exit', function() {
+            console.log('system restart');
+            app.quit();
+        });
+
     } catch (e) {
         console.log(e);
         // Catch Error

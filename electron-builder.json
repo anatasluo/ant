@@ -1,5 +1,6 @@
 {
-  "productName": "ANT-Downloader",
+  "productName": "ant-downloader",
+  "appId": "com.electron.ant_downloader",
   "directories": {
     "output": "./release/"
   },
