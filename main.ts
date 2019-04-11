@@ -58,7 +58,9 @@ if (gotTheLock) {
         // handle system restart or shutdown
         process.on('exit', function() {
             console.log('system restart');
-            app.quit();
+            if (!serve && !torrentEngine.killed) {
+                torrentEngine.kill();
+            }
         });
 
     } catch (e) {

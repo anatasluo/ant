@@ -21,6 +21,7 @@ func (engine *Engine)AddOneTorrentFromFile (filepathAbs string)(tmpTorrent *torr
 		if needMoreOperation {
 			tmpTorrent, err = engine.TorrentEngine.AddTorrent(torrentMetaInfo)
 			engine.EngineRunningInfo.AddOneTorrent(tmpTorrent)
+			engine.SaveInfo()
 		}
 	}
 	return tmpTorrent, err
@@ -75,6 +76,7 @@ func (engine *Engine)AddOneTorrentFromMagnet (linkAddress string)(tmpTorrent *to
 						}else{
 							logger.Debug("Add torrent from magnet")
 							engine.EngineRunningInfo.UpdateMagnetInfo(tmpTorrent)
+							engine.SaveInfo()
 							engine.GenerateInfoFromTorrent(tmpTorrent)
 							engine.StartDownloadTorrent(tmpTorrent.InfoHash().HexString())
 							engine.EngineRunningInfo.EngineCMD <- RefreshInfo
@@ -164,6 +166,7 @@ func (engine *Engine)CompleteOneTorrent(singleTorrent *torrent.Torrent)() {
 		logger.WithFields(log.Fields{"TorrentName": singleTorrent.Name()}).Info("Torrent has been finished")
 		singleTorrent.VerifyData()
 		singleTorrentLog.Status = CompletedStatus
+		engine.SaveInfo()
 		if extendExist && singleTorrentLogExtend.HasStatusPub && singleTorrentLogExtend.StatusPub != nil {
 			singleTorrentLogExtend.HasStatusPub = false
 			if !channelClosed(singleTorrentLogExtend.StatusPub.Values) {
@@ -253,6 +256,7 @@ func (engine *Engine)DelOneTorrent(hexString string)(deleted bool) {
 			}
 		}
 	}
+	engine.SaveInfo()
 	return
 }
 

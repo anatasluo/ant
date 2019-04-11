@@ -88,6 +88,12 @@ func (engine *Engine)Restart()() {
 	GetEngine()
 }
 
+func (engine *Engine)SaveInfo()() {
+	tmpErr := engine.TorrentDB.DB.Save(&engine.EngineRunningInfo.TorrentLogsAndID)
+	if tmpErr != nil {
+		logger.WithFields(log.Fields{"Error":tmpErr}).Fatal("Failed to save torrent queues")
+	}
+}
 
 func (engine *Engine)Cleanup()() {
 
@@ -124,10 +130,7 @@ func (engine *Engine)Cleanup()() {
 		}
 	}
 
-	tmpErr := engine.TorrentDB.DB.Save(&engine.EngineRunningInfo.TorrentLogsAndID)
-	if tmpErr != nil {
-		logger.WithFields(log.Fields{"Error":tmpErr}).Fatal("Failed to save torrent queues")
-	}
+	engine.SaveInfo()
 
 	engine.TorrentEngine.Close()
 	engine.TorrentDB.Cleanup()
