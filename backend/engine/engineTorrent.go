@@ -128,7 +128,7 @@ func (engine *Engine)StartDownloadTorrent(hexString string)(downloaded bool) {
 		singleTorrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
 		if singleTorrentLog.Status != RunningStatus {
 			singleTorrentLog.Status = RunningStatus
-
+			engine.SaveInfo()
 			//check if extend exist
 			_, extendIsExist := engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()];
 			if !extendIsExist {

@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2a27c0ce-fe61-45a2-8044-562a85d08921" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/engine/engine.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/engine.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README_zh.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_zh.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/engine/engineTorrent.go" beforeDir="false" afterPath="$PROJECT_DIR$/backend/engine/engineTorrent.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,38 +32,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2068">
-              <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2090">
-              <caret line="125" column="6" selection-start-line="125" selection-start-column="6" selection-end-line="125" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4152">
-              <caret line="65" column="30" lean-forward="true" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="315">
+              <caret line="36" column="57" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="210">
+                <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README_zh.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="601">
+                <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -69,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1166">
+            <state relative-caret-position="1855">
               <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
               <folding>
                 <element signature="e#0#88#0" expanded="true" />
@@ -184,21 +183,22 @@
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/electron-builder.json" />
         <option value="$PROJECT_DIR$/src/styles.scss" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/README_zh.md" />
         <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.html" />
         <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" />
         <option value="$PROJECT_DIR$/backend/engine/engine.go" />
-        <option value="$PROJECT_DIR$/backend/engine/engineTorrent.go" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/main.ts" />
+        <option value="$PROJECT_DIR$/backend/engine/engineTorrent.go" />
+        <option value="$PROJECT_DIR$/README_zh.md" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="122" />
-    <option name="width" value="1636" />
-    <option name="height" value="913" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="761" />
+    <option name="y" value="253" />
+    <option name="width" value="1626" />
+    <option name="height" value="912" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -208,6 +208,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -236,7 +237,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -285,20 +285,20 @@
     </option>
   </component>
   <component name="RunManager" selected="JavaScript Debug.Angular Application">
-    <configuration name="Goo" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="ant" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <filePath value="$PROJECT_DIR$/|$PROJECT_DIR$/ant.go" />
-      <directory value="$PROJECT_DIR$/" />
-      <output_directory value="$PROJECT_DIR$/bin" />
-      <method v="2" />
-    </configuration>
     <configuration name="GooSin" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="ant" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="DIRECTORY" />
-      <filePath value="$PROJECT_DIR$/|$PROJECT_DIR$/ant.go" />
+      <filePath value="$PROJECT_DIR$/|/home/anatas/Desktop/Git/ant/ant.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <output_directory value="$PROJECT_DIR$/bin" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Goo" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="ant" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/|/home/anatas/Desktop/Git/ant/ant.go" />
       <directory value="$PROJECT_DIR$/" />
       <output_directory value="$PROJECT_DIR$/bin" />
       <method v="2" />
@@ -307,7 +307,7 @@
       <module name="ant" />
       <working_directory value="$PROJECT_DIR$/torrent" />
       <kind value="DIRECTORY" />
-      <filePath value="$PROJECT_DIR$/|$PROJECT_DIR$/ant.go" />
+      <filePath value="$PROJECT_DIR$/|/home/anatas/Desktop/Git/ant/ant.go" />
       <directory value="$PROJECT_DIR$/backend" />
       <output_directory value="$PROJECT_DIR$/torrent" />
       <method v="2" />
@@ -333,10 +333,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Build.Goo" />
-      <item itemvalue="Go Build.GooSin" />
-      <item itemvalue="Go Build.ant" />
       <item itemvalue="JavaScript Debug.Angular Application" />
+      <item itemvalue="Karma.Tests" />
       <item itemvalue="npm.Angular CLI Server" />
     </list>
   </component>
@@ -373,11 +371,12 @@
       <workItem from="1554872399619" duration="1413000" />
       <workItem from="1554957227568" duration="8106000" />
       <workItem from="1554969142576" duration="185000" />
+      <workItem from="1554971492777" duration="559000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128111000" />
+    <option name="totallyTimeSpent" value="128670000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -389,10 +388,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1928" height="1039" extended-state="6" />
+    <frame x="-4" y="272" width="1626" height="912" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19581544" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23573668" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -407,7 +406,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3296582" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32792208" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5009346" side_tool="true" visible="true" weight="0.17214043" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5009346" side_tool="true" visible="true" weight="0.20104438" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -692,26 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="414">
-            <caret line="34" selection-start-line="34" selection-end-line="34" selection-end-column="37" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README_zh.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="385">
-            <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/NodeJS/lib/NodeJS.jar!/com/jetbrains/nodejs/packageJson/packageJsonSchema.json" />
     <entry file="file://$PROJECT_DIR$/src/app/app.component.scss">
       <provider selected="true" editor-type-id="text-editor">
@@ -779,23 +758,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
+    <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2068">
-          <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state relative-caret-position="4375">
+          <caret line="125" column="6" selection-start-line="125" selection-start-column="6" selection-end-line="125" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1166">
+        <state relative-caret-position="1855">
           <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
           <folding>
             <element signature="e#0#88#0" expanded="true" />
@@ -803,17 +775,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
+    <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2090">
-          <caret line="125" column="6" selection-start-line="125" selection-start-column="6" selection-end-line="125" selection-end-column="6" />
+        <state relative-caret-position="1151">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
+    <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4152">
-          <caret line="65" column="30" lean-forward="true" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
+        <state relative-caret-position="626">
+          <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README_zh.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="601">
+            <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="210">
+            <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="36" column="57" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
         </state>
       </provider>
     </entry>

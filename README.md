@@ -4,7 +4,7 @@
 ## ANT Downloader
 
 [![Build Status](https://travis-ci.com/anatasluo/ant.svg?branch=master)](https://travis-ci.com/anatasluo/ant)
-[![Stable Version](https://img.shields.io/badge/version-1.1.0-blueviolet.svg)](https://img.shields.io/badge/version-1.1.0-blueviolet.svg)
+[![Stable Version](https://img.shields.io/badge/version-1.2.0-blueviolet.svg)](https://img.shields.io/badge/version-1.1.0-blueviolet.svg)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
 ### [English](README.md) | [中文](README_zh.md)
@@ -46,6 +46,7 @@ If you like this application, please consider give a star for this project.
 ![](./src/assets/READEME/steaming.png)
 --------------
 
+## Download Mirror
 
 ## Get Started
 
