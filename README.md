@@ -33,6 +33,7 @@ If you like this application, please consider give a star for this project.
 
 ## TODO List
 - Add support for network speed limit
+- Add support for maximum number of download task
 
 ## Architecture:
 ![](./src/assets/READEME/architecture.jpg)
@@ -45,8 +46,6 @@ If you like this application, please consider give a star for this project.
 + ### Steaming video while downloading
 ![](./src/assets/READEME/steaming.png)
 --------------
-
-## Download Mirror
 
 ## Get Started
 

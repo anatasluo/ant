@@ -33,6 +33,7 @@
 
 ## TODO List
 - Add support for network speed limit
+- Add support for maximum number of download task
 
 ## 项目架构:
 ![](./src/assets/READEME/architecture.jpg)

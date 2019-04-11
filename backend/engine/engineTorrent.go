@@ -76,8 +76,8 @@ func (engine *Engine)AddOneTorrentFromMagnet (linkAddress string)(tmpTorrent *to
 						}else{
 							logger.Debug("Add torrent from magnet")
 							engine.EngineRunningInfo.UpdateMagnetInfo(tmpTorrent)
-							engine.SaveInfo()
 							engine.GenerateInfoFromTorrent(tmpTorrent)
+							engine.SaveInfo()
 							engine.StartDownloadTorrent(tmpTorrent.InfoHash().HexString())
 							engine.EngineRunningInfo.EngineCMD <- RefreshInfo
 							logger.Debug("It should refresh")
@@ -128,7 +128,6 @@ func (engine *Engine)StartDownloadTorrent(hexString string)(downloaded bool) {
 		singleTorrentLog, _ := engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
 		if singleTorrentLog.Status != RunningStatus {
 			singleTorrentLog.Status = RunningStatus
-			engine.SaveInfo()
 			//check if extend exist
 			_, extendIsExist := engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()];
 			if !extendIsExist {
@@ -200,6 +199,7 @@ func (engine *Engine)StopOneTorrent(hexString string)(stopped bool) {
 		singleTorrentLog, _:= engine.EngineRunningInfo.HashToTorrentLog[singleTorrent.InfoHash()]
 		if singleTorrentLog.Status != CompletedStatus {
 			singleTorrentLog.Status = StoppedStatus
+			engine.SaveInfo()
 			//engine.EngineRunningInfo.UpdateTorrentLog()
 			singleTorrentLogExtend, extendExist := engine.EngineRunningInfo.TorrentLogExtends[singleTorrent.InfoHash()]
 			if extendExist && singleTorrentLogExtend.HasStatusPub && singleTorrentLogExtend.StatusPub != nil {
