@@ -13,7 +13,8 @@ serve = args.some(function (val) { return val === '--serve'; });
 var aimVersion = electron_1.app.getVersion();
 var gotTheLock = electron_1.app.requestSingleInstanceLock();
 var tray = null;
-var torrentEngine;
+var torrentEngine = null;
+var processExit = false;
 if (gotTheLock) {
     try {
         // run torrent engine
@@ -32,7 +33,7 @@ if (gotTheLock) {
             // On OS X it is common for applications and their menu bar
             // to stay active until the user quits explicitly with Cmd + Q
             if (process.platform !== 'darwin') {
-                electron_1.app.quit();
+                exitApp();
             }
         });
         electron_1.app.on('activate', function () {
@@ -51,10 +52,8 @@ if (gotTheLock) {
         });
         // handle system restart or shutdown
         process.on('exit', function () {
-            console.log('system restart');
-            if (!serve && !torrentEngine.killed) {
-                torrentEngine.kill();
-            }
+            console.log('process exit');
+            exitApp();
         });
     }
     catch (e) {
@@ -66,6 +65,27 @@ if (gotTheLock) {
 else {
     console.log('Only one instance can run');
     electron_1.app.quit();
+}
+function exitApp() {
+    if (processExit === false) {
+        processExit = true;
+    }
+    else {
+        return;
+    }
+    console.log('Close everything left');
+    if (win !== null) {
+        win.destroy();
+    }
+    if (torrentEngine !== null) {
+        torrentEngine.kill();
+    }
+    if (tray !== null) {
+        tray.destroy();
+    }
+    if (electron_1.app !== null) {
+        electron_1.app.quit();
+    }
 }
 function runEngine() {
     console.log('Engine running');
@@ -87,7 +107,7 @@ function runEngine() {
         copyFile(electron_1.app.getAppPath() + '/torrent' + '/config.toml', userData + '/config.toml');
     }
     fs.chmodSync(userData + cmdPath, '0555');
-    torrentEngine = child_process_1.exec(userData + cmdPath, { cwd: userData }, function (error, stdout, stderr) {
+    torrentEngine = child_process_1.execFile(userData + cmdPath, { cwd: userData }, function (error, stdout, stderr) {
         if (error) {
             console.error("Exec Failed: " + error);
             return;
@@ -103,7 +123,7 @@ function runEngine() {
     });
     torrentEngine.on('close', function (code) {
         console.log('out code：' + code);
-        electron_1.app.quit();
+        exitApp();
     });
 }
 function createTray() {
@@ -123,8 +143,7 @@ function createTray() {
         },
         {
             label: 'Quit', click: function () {
-                win.destroy();
-                electron_1.app.quit();
+                exitApp();
             }
         },
     ]);
@@ -174,9 +193,7 @@ function createWindow() {
     });
     win.on('closed', function (evt) {
         console.log('App quit now');
-        if (!serve && !torrentEngine.killed) {
-            torrentEngine.kill();
-        }
+        exitApp();
     });
     win.webContents.session.on('will-download', function (event, item, webContents) {
         var filePath = electron_1.app.getPath('downloads') + '/' + item.getFilename();

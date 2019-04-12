@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as url from 'url';
 import * as fs from 'fs';
 import * as os from 'os';
-import { exec, ChildProcess } from 'child_process';
+import { execFile, ChildProcess } from 'child_process';
 
 require('update-electron-app')();
 
@@ -14,8 +14,9 @@ serve = args.some(val => val === '--serve');
 const aimVersion = app.getVersion();
 const gotTheLock = app.requestSingleInstanceLock();
 
-let tray = null;
-let torrentEngine: ChildProcess;
+let tray: Tray = null;
+let torrentEngine: ChildProcess = null;
+let processExit: Boolean = false;
 
 if (gotTheLock) {
     try {
@@ -35,7 +36,7 @@ if (gotTheLock) {
             // On OS X it is common for applications and their menu bar
             // to stay active until the user quits explicitly with Cmd + Q
             if (process.platform !== 'darwin') {
-                app.quit();
+                exitApp();
             }
         });
 
@@ -57,10 +58,8 @@ if (gotTheLock) {
 
         // handle system restart or shutdown
         process.on('exit', function() {
-            console.log('system restart');
-            if (!serve && !torrentEngine.killed) {
-                torrentEngine.kill();
-            }
+            console.log('process exit');
+            exitApp();
         });
 
     } catch (e) {
@@ -73,6 +72,26 @@ if (gotTheLock) {
     app.quit();
 }
 
+function exitApp() {
+    if (processExit === false) {
+        processExit = true;
+    } else {
+        return;
+    }
+    console.log('Close everything left');
+    if (win !== null) {
+        win.destroy();
+    }
+    if (torrentEngine !== null) {
+        torrentEngine.kill();
+    }
+    if (tray !== null) {
+        tray.destroy();
+    }
+    if (app !== null) {
+        app.quit();
+    }
+}
 function runEngine() {
     console.log('Engine running');
     const userData = app.getPath('userData');
@@ -94,7 +113,7 @@ function runEngine() {
     }
     fs.chmodSync(userData + cmdPath, '0555');
 
-    torrentEngine = exec(userData + cmdPath, {cwd: userData}, (error, stdout, stderr) => {
+    torrentEngine = execFile(userData + cmdPath, {cwd: userData}, (error, stdout, stderr) => {
         if (error) {
             console.error(`Exec Failed: ${error}`);
             return;
@@ -110,7 +129,7 @@ function runEngine() {
     });
     torrentEngine.on('close', function (code) {
         console.log('out code：' + code);
-        app.quit();
+        exitApp();
     });
 }
 
@@ -131,8 +150,7 @@ function createTray() {
         },
         {
             label: 'Quit', click: () => {
-                win.destroy();
-                app.quit();
+                exitApp();
             }
         },
     ]);
@@ -190,9 +208,7 @@ function createWindow() {
 
     win.on('closed', (evt) => {
         console.log('App quit now');
-        if (!serve && !torrentEngine.killed) {
-            torrentEngine.kill();
-        }
+        exitApp();
     });
 
     win.webContents.session.on('will-download', (event, item, webContents) => {
