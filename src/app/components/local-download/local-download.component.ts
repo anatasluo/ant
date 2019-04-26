@@ -164,6 +164,10 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
               globalTorrents[i].Percentage = data.Percentage;
               globalTorrents[i].LeftTime = data.LeftTime;
               globalTorrents[i].DownloadSpeed = data.DownloadSpeed;
+              globalTorrents[i].UpdateTime = Date.now();
+            } else if (parseFloat(currentProgress) === parseFloat(data.Percentage) && (Date.now() - globalTorrents[i].UpdateTime >= 5000)) {
+              globalTorrents[i].LeftTime = 'Estimating';
+              globalTorrents[i].DownloadSpeed = '0 Kb/s';
             }
             if (parseFloat(currentProgress) === parseFloat('1')) {
               globalTorrents[i].Status = 'Completed';
@@ -173,8 +177,9 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
         }
       } else if (data.MessageType === 1) {
         console.log('Should refresh');
-        tmpThis.getTorrents();
-        // location.reload();
+        // tmpThis.getTorrents();
+        tmpThis.messagesService.add('Magnet resolve successfully');
+        location.reload();
       }
     };
     tmpWS.onerror = function(evt: Event) {
@@ -336,7 +341,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
         alert('One magnet is handing, please wait a moment');
       }
     } else {
-      alert('Invalid infohash');
+      alert('Invalid magnet');
     }
   }
 

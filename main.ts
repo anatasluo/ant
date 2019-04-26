@@ -141,7 +141,7 @@ function createTray() {
     const contextMenu = Menu.buildFromTemplate([
         {
             label: 'Show', click: () => {
-                win.isVisible() ? win.hide() : win.show();
+                win.show();
             }
         },
         {

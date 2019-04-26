@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2a27c0ce-fe61-45a2-8044-562a85d08921" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/local-download/local-download.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/local-download/local-download.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,23 +32,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="36" column="57" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
+            <state relative-caret-position="35">
+              <caret line="143" column="27" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#88#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.ts">
+        <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="133" column="1" selection-start-line="133" selection-start-column="1" selection-end-line="133" selection-end-column="1" />
+            <state relative-caret-position="3570">
+              <caret line="141" selection-start-line="141" selection-end-line="141" />
               <folding>
-                <element signature="e#0#88#0" expanded="true" />
+                <element signature="e#0#60#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="122" column="152" selection-start-line="122" selection-start-column="152" selection-end-line="122" selection-end-column="152" />
             </state>
           </provider>
         </entry>
@@ -64,7 +78,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Num</find>
       <find>torrentDownload</find>
       <find>globalReflesh</find>
       <find>analysing</find>
@@ -94,6 +107,7 @@
       <find>process</find>
       <find>serve</find>
       <find>sys</find>
+      <find>time</find>
     </findStrings>
     <replaceStrings>
       <replace>TorrentLog</replace>
@@ -156,23 +170,23 @@
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/electron-builder.json" />
         <option value="$PROJECT_DIR$/src/styles.scss" />
-        <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.html" />
-        <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" />
         <option value="$PROJECT_DIR$/backend/engine/engine.go" />
         <option value="$PROJECT_DIR$/backend/engine/engineTorrent.go" />
         <option value="$PROJECT_DIR$/README_zh.md" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/main.ts" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/main.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/components/local-download/local-download.component.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="734" />
-    <option name="y" value="372" />
-    <option name="width" value="1923" />
-    <option name="height" value="1328" />
+    <option name="x" value="-272" />
+    <option name="y" value="664" />
+    <option name="width" value="1975" />
+    <option name="height" value="868" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -182,7 +196,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -190,10 +203,37 @@
               <item name="ant" type="b2602c69:ProjectViewProjectNode" />
               <item name="ant" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ant" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ant" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ant" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ant" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="local-download" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,11 +374,18 @@
       <workItem from="1554973600850" duration="116000" />
       <workItem from="1554976056655" duration="39000" />
       <workItem from="1555040458398" duration="1612000" />
+      <workItem from="1556074011471" duration="14000" />
+      <workItem from="1556085969866" duration="1334000" />
+      <workItem from="1556117383278" duration="74000" />
+      <workItem from="1556117498283" duration="467000" />
+      <workItem from="1556245236227" duration="210000" />
+      <workItem from="1556245463191" duration="700000" />
+      <workItem from="1556246459412" duration="3210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130613000" />
+    <option name="totallyTimeSpent" value="136622000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -350,10 +397,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="734" y="372" width="1923" height="1328" extended-state="0" />
+    <frame x="-179" y="238" width="1975" height="868" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19947368" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19701646" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -368,7 +415,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3296582" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32792208" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5009346" side_tool="true" visible="true" weight="0.12984823" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5009346" side_tool="true" visible="true" weight="0.13296399" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -430,42 +477,6 @@
     <proxy>http://127.0.0.1:7777/</proxy>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/components/messages/messages.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/components/messages/messages.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/torrent/ant_engine.log" />
-    <entry file="file://$PROJECT_DIR$/src/app/components/navbar/navbar.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="48" column="184" selection-start-line="48" selection-start-column="152" selection-end-line="48" selection-end-column="184" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/components/search/search.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="86" column="25" lean-forward="true" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/components/about/about.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -564,16 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buildengine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -589,13 +590,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/postinstall.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angular.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/postinstall-web.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -647,16 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9438">
-          <caret line="453" column="5" selection-start-line="453" selection-start-column="5" selection-end-line="453" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -689,41 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2244">
           <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4375">
-          <caret line="125" column="6" selection-start-line="125" selection-start-column="6" selection-end-line="125" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7000">
-          <caret line="200" column="29" selection-start-line="200" selection-start-column="29" selection-end-line="200" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/engine/info.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4655">
-          <caret line="133" column="30" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -761,20 +710,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="36" column="57" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/magent.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/router.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/torrent.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4375">
+          <caret line="125" column="6" selection-start-line="125" selection-start-column="6" selection-end-line="125" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/engine/info.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4655">
+          <caret line="133" column="30" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/engine/player.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/engine/torrentDB.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildengine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/router/setting.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-646" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/engine/engineTorrent.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9135">
+          <caret line="261" selection-start-line="261" selection-end-line="261" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/setting/loadSetting.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="215" column="78" selection-start-line="215" selection-start-column="78" selection-end-line="215" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/engine/engine.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3080">
+          <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="133" column="1" selection-start-line="133" selection-start-column="1" selection-end-line="133" selection-end-column="1" />
+        <state relative-caret-position="35">
+          <caret line="143" column="27" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
           <folding>
             <element signature="e#0#88#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="36" column="57" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
+        <state relative-caret-position="3570">
+          <caret line="141" selection-start-line="141" selection-end-line="141" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/components/local-download/local-download.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="122" column="152" selection-start-line="122" selection-start-column="152" selection-end-line="122" selection-end-column="152" />
         </state>
       </provider>
     </entry>

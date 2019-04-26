@@ -134,7 +134,7 @@ function createTray() {
     var contextMenu = electron_1.Menu.buildFromTemplate([
         {
             label: 'Show', click: function () {
-                win.isVisible() ? win.hide() : win.show();
+                win.show();
             }
         },
         {

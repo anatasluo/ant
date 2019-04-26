@@ -108,19 +108,19 @@
                           <div class="col-sm-4">
                             <input type="text" readonly class="form-control-plaintext" id="torrentStatus" [value]="selectedTorrent.Status">
                           </div>
-                          <label for="updateTime" class="col-sm-2 col-form-label">UpdateAt</label>
-                          <div class="col-sm-4">
-                            <input type="text" readonly class="form-control-plaintext" id="updateTime" [value]="selectedTorrent.UpdateTime">
-                          </div>
-                        </div>
-                        <div class="form-group row">
                           <label for="percentage" class="col-sm-2 col-form-label">Progress</label>
                           <div class="col-sm-4">
                             <input type="text" readonly class="form-control-plaintext" id="percentage" [value]="selectedTorrent.Percentage | percent:'2.2-4'">
                           </div>
-                          <label for="peers" class="col-sm-2 col-form-label">Peers</label>
+                        </div>
+                        <div class="form-group row">
+                          <label for="peers" class="col-sm-2 col-form-label">Active Peers </label>
                           <div class="col-sm-4">
-                            <input type="text" readonly class="form-control-plaintext" id="peers" [value]="selectedTorrent.TorrentStatus.ActivePeers + ' / ' + selectedTorrent.TorrentStatus.TotalPeers">
+                            <input type="text" readonly class="form-control-plaintext" id="activePeers" [value]="selectedTorrent.TorrentStatus.ActivePeers">
+                          </div>
+                          <label for="peers" class="col-sm-2 col-form-label">Total Peers </label>
+                          <div class="col-sm-4">
+                            <input type="text" readonly class="form-control-plaintext" id="totalPeers" [value]="selectedTorrent.TorrentStatus.TotalPeers">
                           </div>
                         </div>
                         <div class="form-group row" *ngIf="selectedTorrent.Status === 'Running'">
