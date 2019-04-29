@@ -19,6 +19,7 @@ type EngineInfo struct {
 	TorrentLogsAndID
 	MagnetNum         int
 	EngineCMD         chan MessageTypeID
+	HasRestarted	  bool
 	HashToTorrentLog  map[metainfo.Hash]*TorrentLog
 	TorrentLogExtends map[metainfo.Hash]*TorrentLogExtend
 }
@@ -125,6 +126,7 @@ const (
 
 func (engineInfo *EngineInfo) init()()  {
 	engineInfo.MagnetNum			= 0
+	engineInfo.HasRestarted         = false
 	engineInfo.EngineCMD 			= make(chan MessageTypeID, 100)
 	engineInfo.ID					= TorrentLogsID
 	engineInfo.HashToTorrentLog 	= make(map[metainfo.Hash]*TorrentLog)

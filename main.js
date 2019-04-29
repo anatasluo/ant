@@ -15,6 +15,7 @@ var gotTheLock = electron_1.app.requestSingleInstanceLock();
 var tray = null;
 var torrentEngine = null;
 var processExit = false;
+var userData = electron_1.app.getPath('userData');
 if (gotTheLock) {
     try {
         // run torrent engine
@@ -89,7 +90,6 @@ function exitApp() {
 }
 function runEngine() {
     console.log('Engine running');
-    var userData = electron_1.app.getPath('userData');
     var systemVersion = os.platform();
     var cmdPath;
     if (systemVersion === 'win32') {
@@ -104,8 +104,9 @@ function runEngine() {
         console.log('version update');
         copyFile(electron_1.app.getAppPath() + '/torrent' + cmdPath, userData + cmdPath);
         copyFile(electron_1.app.getAppPath() + '/torrent' + '/tracker.txt', userData + '/tracker.txt');
-        copyFile(electron_1.app.getAppPath() + '/torrent' + '/config.toml', userData + '/config.toml');
     }
+    // restore broken setting file
+    restoreSettingFile(electron_1.app.getAppPath() + '/torrent' + '/config.toml', userData + '/config.toml');
     fs.chmodSync(userData + cmdPath, '0555');
     torrentEngine = child_process_1.execFile(userData + cmdPath, { cwd: userData }, function (error, stdout, stderr) {
         if (error) {
@@ -210,9 +211,17 @@ function createWindow() {
         });
     });
 }
-function copyFile(src, dist) {
-    if (!fs.existsSync(dist)) {
-        fs.writeFileSync(dist, fs.readFileSync(src));
+function restoreSettingFile(src, dst) {
+    var srcLines = fs.readFileSync(src).toString().split('\n').length;
+    var dstLines = fs.readFileSync(dst).toString().split('\n').length;
+    if (srcLines !== dstLines) {
+        console.log('restore broken setting file.');
+        fs.writeFileSync(dst, fs.readFileSync(src));
+    }
+}
+function copyFile(src, dst) {
+    if (!fs.existsSync(dst)) {
+        fs.writeFileSync(dst, fs.readFileSync(src));
     }
 }
 //# sourceMappingURL=main.js.map

@@ -1,4 +1,3 @@
-
 [connectsetting]
   authpassword = "passwd"
   authusername = "ANT"
@@ -21,13 +20,14 @@
   EnableDefaultTrackers = true
   DefaultTrackerList = "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all_ip.txt"
   DefaultIPBlockList = "http://john.bitsurge.net/public/biglist.p2p.gz"
+  disableipv6 = false
+  disableipv4 = false
 
 [Torrentconfig]
   bep20 = ""
   debug = false
   defaultstorage = ""
   dhtconfig = ""
-  disableipv6 = false
   disablepex = false
   disabletcp = false
   disabletrackers = false

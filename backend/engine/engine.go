@@ -68,6 +68,7 @@ func (engine *Engine)setEnvironment()() {
 }
 
 func (engine *Engine)Restart()() {
+
 	logger.Info("Restart engine")
 
 	//To handle problems caused by change of settings
@@ -86,6 +87,7 @@ func (engine *Engine)Restart()() {
 	}
 	engine.Cleanup()
 	GetEngine()
+
 }
 
 func (engine *Engine)SaveInfo()() {

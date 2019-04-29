@@ -7,7 +7,7 @@ import { shell } from 'electron';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-
+  public collapseNum = 1;
   constructor() { }
 
   ngOnInit() {

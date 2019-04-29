@@ -54,10 +54,10 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     });
 
     ipcRenderer.on('torrentDownload', (event, arg) => {
-      tmpThis.messagesService.add('get torrent file from itorrents successfully');
       // const tmpMagnet = currentMagnet;
       const filePath: string = arg;
       if (_.endsWith(filePath, 'torrent')) {
+        tmpThis.messagesService.add('get torrent file from itorrents successfully');
         currentMagnet = undefined;
         this.getFileFromURL(filePath);
       } else {

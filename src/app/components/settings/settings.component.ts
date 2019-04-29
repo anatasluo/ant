@@ -15,6 +15,7 @@ export class SettingsComponent implements OnInit {
     settings: Settings;
     currentLanguage: string;
     localeTolanguage: Map<string, string>;
+    loadCompleted: boolean;
     constructor(
         private settingsService: SettingsService,
         public translate: TranslateService
@@ -23,6 +24,7 @@ export class SettingsComponent implements OnInit {
     ngOnInit() {
         // To avoid error of undefined
         this.settings = new Settings;
+        this.loadCompleted = false;
         this.currentLanguage = localStorage.getItem('locale');
         if (this.currentLanguage === null) {
             this.currentLanguage = this.translate.getDefaultLang();
@@ -44,6 +46,7 @@ export class SettingsComponent implements OnInit {
             .subscribe((data: Settings) => {
                 // console.log(data);
                 this.settings = data;
+                this.loadCompleted = true;
             }, error => {
                 console.log(error);
             });
@@ -73,13 +76,19 @@ export class SettingsComponent implements OnInit {
     }
 
     applySetting() {
-        this.settingsService.applySettings(this.settings)
-            .subscribe((isApplied: boolean) => {
-                console.log(isApplied);
-                location.reload();
-            }, error => {
-                console.log(error);
-            });
+        if (this.loadCompleted === false) {
+            return;
+        } else if (this.settings.DisableIPv4 === true && this.settings.DisableIPv6 === true) {
+            alert('IPV4 and IPV6 can not be disabled at same time.');
+        } else {
+            this.settingsService.applySettings(this.settings)
+                .subscribe((isApplied: boolean) => {
+                    console.log(isApplied);
+                    location.reload();
+                }, error => {
+                    console.log(error);
+                });
+        }
     }
 
 }

@@ -8,7 +8,8 @@
     "Tools": "Tools",
     "Setting": "Setting",
     "System": "System INFO",
-    "AboutANT": "About"
+    "AboutANT": "About",
+    "FAQ": "FAQ"
   },
   "TOOLS": {
     "ThePirateBay": {
@@ -40,6 +41,8 @@
   },
   "SETTINGS": {
     "EnableProxy": "Enable Proxy",
+    "DisableIPv6": "DisableIPv6",
+    "DisableIPv4": "DisableIPv4",
     "ProxyURL": "Proxy URL",
     "EnableDefaultTrackers": "Enable Default Trackers",
     "DefaultTrackerList": "Default Tracker List",

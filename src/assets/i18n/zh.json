@@ -8,7 +8,8 @@
       "Tools": "工具",
       "Setting": "设置",
       "System": "系统信息",
-      "AboutANT": "关于"
+      "AboutANT": "关于",
+      "FAQ": "问答"
   },
   "TOOLS": {
     "ThePirateBay": {
@@ -41,6 +42,8 @@
   "SETTINGS": {
     "EnableProxy": "使用代理",
     "ProxyURL": "代理地址",
+    "DisableIPv6": "禁用IPv6",
+    "DisableIPv4": "禁用IPv4",
     "EnableDefaultTrackers": "使用默认Trackers",
     "DefaultTrackerList": "默认Trackers链接",
     "DefaultTrackerListHint": "目前, ANT仅支持特定格式的文件. 如果你想改变该选项，请先访问原设置的链接。",

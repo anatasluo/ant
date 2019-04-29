@@ -53,6 +53,13 @@
               <span>
                 <strong>Kai </strong>
                 zhaokai0614@outlook.com
+                <span class="badge badge-pill badge-success">supply 2 feedbacks </span>
+              </span>
+            </a>
+            <a class="list-group-item list-group-item-action d-flex align-items-center">
+              <span>
+                <strong>仗剑走天涯 </strong>
+                w-l18@mails.tsinghua.edu.cn
                 <span class="badge badge-pill badge-success">supply 1 feedback </span>
               </span>
             </a>
@@ -61,6 +68,67 @@
           <h2 class="bd-title">Get involved</h2>
           <p>Get involved with ant development by <a (click)="openUrl('https://github.com/anatasluo/ant/issues/new')"><strong>opening an issue</strong></a> or submitting a pull request.</p>
           <p>You can also email luolongjuna@gmail.com your idea and feedback.</p>
+        </div>
+        <div class="col-sm-12 py-md-3 pl-md-5">
+          <h2 class="bd-title">Frequently Asked Questions</h2>
+          <br>
+          <div class="row">
+            <div class="col-sm-12 offset-sm-0">
+              <div id="accordion">
+                <div class="card">
+                  <div class="card-header" (click)="collapseNum = 1">
+                    <h5 class="mb-0">How many states does a task have ? </h5>
+                  </div>
+                  <div class="collapse show" [ngbCollapse]="collapseNum != 1" data-parent="#accordion">
+                    <div class="card-body">
+                      <p>A task can have four states in different periods.</p>
+                      <p>Analysing -- Engine is analysing magnet url in order to get necessary torrent information. This can take a long period.</p>
+                      <p>Running -- Task is running.</p>
+                      <p>Stopped -- Task has been stopped.</p>
+                      <p>Completed -- Task has been Completed.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" (click)="collapseNum = 2">
+                    <h5 class="mb-0">What is itorrents service ? </h5>
+                  </div>
+                  <div class="collapse show" [ngbCollapse]="collapseNum != 2" data-parent="#accordion">
+                    <div class="card-body">
+                      <p>itorrents is a free service for caching torrent files online. ANT Downloader will always try to get torrent infomation from magnet url to reduce waiting time.
+                        If itorrents has no such infomation, ANT Downloader will use engine to resolve magnet url.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" (click)="collapseNum = 3">
+                    <h5 class="mb-0">Can ANT Downloader support more protocols, like ed2k and baiduyun ? </h5>
+                  </div>
+                  <div class="collapse show" [ngbCollapse]="collapseNum != 3" data-parent="#accordion">
+                    <div class="card-body">
+                      <p>Actually, i am thinking about it. However, my time is limited. I need get enough feedbacks to decide whether if ANT Downloader should support specific protocol.
+                        You are welcome to supply feedbacks if you have ideas. </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" (click)="collapseNum = 4">
+                    <h5 class="mb-0">Why is the speed of ANT Downloader lower than some Bittorrent clinets like xunlei ? </h5>
+                  </div>
+                  <div class="collapse show" [ngbCollapse]="collapseNum != 4" data-parent="#accordion">
+                    <div class="card-body">
+                      <p>ANT Downloader can get the best theoretical speed. And speed depends on your network condition and popularity of resources.
+                        In some cases, some bittorrent clients like xunlei can have better speed since xunlei only share speed with their own users.
+                        You can use torrent or magnet url from websites like thepiratebay to solve this problem.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

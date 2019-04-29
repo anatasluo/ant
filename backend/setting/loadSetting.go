@@ -67,6 +67,8 @@ type WebSetting struct {
 	DataDir					string
 	EnableDefaultTrackers 	bool
 	DefaultTrackerList		string
+	DisableIPv4				bool
+	DisableIPv6				bool
 }
 
 func (clientConfig *ClientSetting) GetWebSetting()(webSetting WebSetting)  {
@@ -77,6 +79,8 @@ func (clientConfig *ClientSetting) GetWebSetting()(webSetting WebSetting)  {
 	webSetting.MaxEstablishedConns = clientConfig.MaxEstablishedConns
 	webSetting.Tmpdir = clientConfig.Tmpdir
 	webSetting.DataDir = clientConfig.TorrentConfig.DataDir
+	webSetting.DisableIPv4 = clientConfig.TorrentConfig.DisableIPv4
+	webSetting.DisableIPv6 = clientConfig.TorrentConfig.DisableIPv6
 	return
 }
 
@@ -136,7 +140,8 @@ func (clientConfig *ClientSetting) loadValueFromConfig()() {
 	clientConfig.EngineSetting.TorrentConfig.Seed = globalViper.GetBool("TorrentConfig.Seed")
 	clientConfig.EngineSetting.TorrentConfig.DisableUTP = globalViper.GetBool("TorrentConfig.DisableUTP")
 	clientConfig.EngineSetting.TorrentConfig.DisableTCP = globalViper.GetBool("TorrentConfig.DisableTCP")
-	clientConfig.EngineSetting.TorrentConfig.DisableIPv6 = globalViper.GetBool("TorrentConfig.DisableIPv6")
+	clientConfig.EngineSetting.TorrentConfig.DisableIPv6 = globalViper.GetBool("EngineSetting.DisableIPv6")
+	clientConfig.EngineSetting.TorrentConfig.DisableIPv4 = globalViper.GetBool("EngineSetting.DisableIPv4")
 	clientConfig.EngineSetting.TorrentConfig.Debug = globalViper.GetBool("TorrentConfig.Debug")
 	clientConfig.EngineSetting.TorrentConfig.PeerID = globalViper.GetString("TorrentConfig.PeerID")
 
@@ -219,6 +224,8 @@ func (clientConfig *ClientSetting) UpdateConfig (newSetting WebSetting)()  {
 	globalViper.Set("EngineSetting.MaxEstablishedConns", newSetting.MaxEstablishedConns)
 	globalViper.Set("EngineSetting.Tmpdir", newSetting.Tmpdir)
 	globalViper.Set("EngineSetting.DataDir", newSetting.DataDir)
+	globalViper.Set("EngineSetting.DisableIPv4", newSetting.DisableIPv4)
+	globalViper.Set("EngineSetting.DisableIPv6", newSetting.DisableIPv6)
 
 	tr, err := toml.TreeFromMap(globalViper.AllSettings())
 	trS := tr.String()

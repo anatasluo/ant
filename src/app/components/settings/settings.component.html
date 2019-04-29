@@ -52,24 +52,23 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
-                <span>{{'SETTINGS.MaxEstablishedConns' | translate}}({{settings.MaxEstablishedConns}})</span>
+                <span>{{'SETTINGS.DisableIPv4' | translate}}</span>
               </div>
               <div class="col-sm-6">
-                <div class="input-group-sm">
-                  <input type="range" min="50" max="200" [title]="'SETTINGS.MaxEstablishedConnsHint' | translate" name="maxEstablishedConns" class="custom-range" [(ngModel)]="settings.MaxEstablishedConns">
+                <div class="ckbx-style-9">
+                  <input type="checkbox" id="disableIPV4" [(ngModel)]="settings.DisableIPv4" name="disableIPV4">
+                  <label for="disableIPV4"></label>
                 </div>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
-                <span>{{'SETTINGS.Language' | translate}}</span>
+                <span>{{'SETTINGS.DisableIPv6' | translate}}</span>
               </div>
               <div class="col-sm-6">
-                <div ngbDropdown class="d-inline-block">
-                  <button class="btn btn-info btn-sm" id="languageList" ngbDropdownToggle>{{localeTolanguage.get(currentLanguage)}}</button>
-                  <div ngbDropdownMenu aria-labelledby="languageList">
-                    <button (click)="changeLanguage(lang)" *ngFor="let lang of translate.getLangs()" ngbDropdownItem>{{localeTolanguage.get(lang)}}</button>
-                  </div>
+                <div class="ckbx-style-9">
+                  <input type="checkbox" id="disableIPV6" [(ngModel)]="settings.DisableIPv6" name="disableIPV6">
+                  <label for="disableIPV6"></label>
                 </div>
               </div>
             </div>
@@ -90,6 +89,29 @@
               <div class="col-sm-6">
                 <div class="input-group-sm">
                   <input type="text" readonly [title]="'SETTINGS.CacheDirectoryHint' | translate" class="form-control form-control-sm" (click)="selectTmpDir()" name="tmpDir" [(ngModel)]="settings.Tmpdir">
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>{{'SETTINGS.MaxEstablishedConns' | translate}}({{settings.MaxEstablishedConns}})</span>
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group-sm">
+                  <input type="range" min="50" max="200" [title]="'SETTINGS.MaxEstablishedConnsHint' | translate" name="maxEstablishedConns" class="custom-range" [(ngModel)]="settings.MaxEstablishedConns">
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <span>{{'SETTINGS.Language' | translate}}</span>
+              </div>
+              <div class="col-sm-6">
+                <div ngbDropdown class="d-inline-block">
+                  <button class="btn btn-info btn-sm" id="languageList" ngbDropdownToggle>{{localeTolanguage.get(currentLanguage)}}</button>
+                  <div ngbDropdownMenu aria-labelledby="languageList">
+                    <button (click)="changeLanguage(lang)" *ngFor="let lang of translate.getLangs()" ngbDropdownItem>{{localeTolanguage.get(lang)}}</button>
+                  </div>
                 </div>
               </div>
             </div>

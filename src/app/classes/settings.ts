@@ -6,4 +6,6 @@ export class Settings {
     DataDir:                string;
     EnableDefaultTrackers:  boolean;
     DefaultTrackerList:     string;
+    DisableIPv4:            boolean;
+    DisableIPv6:            boolean;
 }
