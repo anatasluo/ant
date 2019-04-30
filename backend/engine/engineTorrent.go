@@ -234,11 +234,13 @@ func (engine *Engine)DelOneTorrent(hexString string)(deleted bool) {
 			}
 			filePath := filepath.Join(engine.EngineRunningInfo.TorrentLogs[index].StoragePath, engine.EngineRunningInfo.TorrentLogs[index].TorrentName)
 			logger.WithFields(log.Fields{"Path":filePath}).Info("Files have been deleted!")
-			engine.EngineRunningInfo.TorrentLogs = append(engine.EngineRunningInfo.TorrentLogs[:index], engine.EngineRunningInfo.TorrentLogs[index+1:]...)
+			//fmt.Printf("Before delete: %+v\n", engine.EngineRunningInfo.TorrentLogsAndID)
+			engine.EngineRunningInfo.TorrentLogsAndID.TorrentLogs = append(engine.EngineRunningInfo.TorrentLogs[:index], engine.EngineRunningInfo.TorrentLogs[index+1:]...)
+			//fmt.Printf("After delete: %+v\n", engine.EngineRunningInfo.TorrentLogsAndID)
 			engine.UpdateInfo()
+			engine.SaveInfo()
 			delFiles(filePath)
 			deleted = true
-			return
 		}else if engine.EngineRunningInfo.TorrentLogs[index].Status == AnalysingStatus && engine.EngineRunningInfo.TorrentLogs[index].TorrentName == hexString {
 
 			//Magnet hash is stored in torrentName
@@ -250,13 +252,13 @@ func (engine *Engine)DelOneTorrent(hexString string)(deleted bool) {
 				case <- extendLog.MagnetDelChan:
 					engine.EngineRunningInfo.TorrentLogs = append(engine.EngineRunningInfo.TorrentLogs[:index], engine.EngineRunningInfo.TorrentLogs[index+1:]...)
 					engine.UpdateInfo()
+					engine.SaveInfo()
 					deleted = true
 					logger.Debug("Delete Magnet Done")
 					return
 			}
 		}
 	}
-	engine.SaveInfo()
 	return
 }
 

@@ -31,6 +31,7 @@ func (TorrentDB *TorrentDB)Cleanup()() {
 }
 
 func (TorrentDB *TorrentDB)GetLogs(torrentLogs *TorrentLogsAndID)() {
+	torrentLogs.ID = TorrentLogsID;
 	err := TorrentDB.DB.One("ID", TorrentLogsID, torrentLogs)
 	if err != nil {
 		logger.WithFields(log.Fields{"Error":err}).Info("Init running queue now")

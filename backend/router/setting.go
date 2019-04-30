@@ -2,7 +2,7 @@ package router
 
 import (
 	"encoding/json"
-	"fmt"
+	"github.com/anatasluo/ant/backend/engine"
 	"github.com/anatasluo/ant/backend/setting"
 	"github.com/julienschmidt/httprouter"
 	log "github.com/sirupsen/logrus"
@@ -15,7 +15,12 @@ func getSetting(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 func getStatus(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	runningEngine.TorrentEngine.WriteStatus(w)
-	fmt.Println(runningEngine.TorrentEngine.ListenAddrs())
+}
+
+func getRunningQueue(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	var tmp engine.TorrentLogsAndID
+	runningEngine.TorrentDB.GetLogs(&tmp)
+	WriteResponse(w, tmp)
 }
 
 func applySetting(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
@@ -43,5 +48,6 @@ func applySetting(w http.ResponseWriter, r *http.Request, ps httprouter.Params) 
 func handleSetting(router *httprouter.Router)  {
 	router.GET("/settings/config", getSetting)
 	router.GET("/settings/status", getStatus)
+	router.GET("/settings/queue", getRunningQueue)
 	router.POST("/settings/apply", applySetting)
 }
