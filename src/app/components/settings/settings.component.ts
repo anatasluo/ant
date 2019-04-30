@@ -16,6 +16,7 @@ export class SettingsComponent implements OnInit {
     currentLanguage: string;
     localeTolanguage: Map<string, string>;
     loadCompleted: boolean;
+    hasApply: boolean;
     constructor(
         private settingsService: SettingsService,
         public translate: TranslateService
@@ -26,6 +27,7 @@ export class SettingsComponent implements OnInit {
         this.settings = new Settings;
         this.loadCompleted = false;
         this.currentLanguage = localStorage.getItem('locale');
+        this.hasApply = false;
         if (this.currentLanguage === null) {
             this.currentLanguage = this.translate.getDefaultLang();
         }
@@ -81,6 +83,7 @@ export class SettingsComponent implements OnInit {
         } else if (this.settings.DisableIPv4 === true && this.settings.DisableIPv6 === true) {
             alert('IPV4 and IPV6 can not be disabled at same time.');
         } else {
+            this.hasApply = true;
             this.settingsService.applySettings(this.settings)
                 .subscribe((isApplied: boolean) => {
                     console.log(isApplied);

@@ -1,7 +1,12 @@
 <div class="row flex-xl-nowrap">
   <app-navbar class="col-sm-2 nav-set">
   </app-navbar>
-  <div class="col-sm-10 nav-set">
+  <div class="col-sm-10 nav-set wrapper">
+    <div class="overlay" *ngIf="hasApply">
+      <div class="spinner-wrapper">
+        <app-spinner message="Magnet URL Resolving"></app-spinner>
+      </div>
+    </div>
     <div class="container-fluid infoPage">
       <div class="row">
         <div class="col-sm-8 offset-sm-2">
@@ -116,7 +121,7 @@
               </div>
             </div>
             <br>
-            <div class="form-group row">
+            <div class="form-group row" *ngIf="hasApply === false">
               <div class="col-sm-2 offset-sm-8">
                 <button type="button" class="btn btn-light btn-xs btn-radius" (click)="resetSetting()">{{'SETTINGS.Reset' | translate}}</button>
               </div>

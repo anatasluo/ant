@@ -21,7 +21,7 @@ let processExit: Boolean = false;
 if (gotTheLock) {
     try {
         // run torrent engine
-        if (!serve) {
+        if (!serve || true) {
             runEngine();
         }
         // This method will be called when Electron has finished
