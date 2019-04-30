@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as url from 'url';
 import * as fs from 'fs';
 import * as os from 'os';
-import { exec, ChildProcess } from 'child_process';
+import { execFile, ChildProcess } from 'child_process';
 
 require('update-electron-app')();
 
@@ -110,7 +110,7 @@ function runEngine() {
     restoreSettingFile(app.getAppPath() + '/torrent' + '/config.toml', userData + '/config.toml');
     fs.chmodSync(userData + cmdPath, '0555');
 
-    torrentEngine = exec(userData + cmdPath, {cwd: userData}, (error, stdout, stderr) => {
+    torrentEngine = execFile(userData + cmdPath, {cwd: userData}, (error, stdout, stderr) => {
         if (error) {
             console.error(`Exec Failed: ${error}`);
             return;
