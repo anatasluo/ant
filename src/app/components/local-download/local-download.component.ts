@@ -16,7 +16,6 @@ import { magnetDecode } from '@ctrl/magnet-link';
 let globalTorrents: Torrent[];
 let ws: WebSocket;
 let torrentFile: File;
-let currentMagnet: string;
 
 @Component({
   selector: 'app-local-download',
@@ -33,6 +32,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
   status: string;
   webview: any;
   rightMenu: Menu;
+  currentMagnet: string;
   constructor(private torrentService: TorrentService,
               private configService: ConfigService,
               private route: ActivatedRoute,
@@ -41,7 +41,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
   ) { }
   ngOnInit() {
     const tmpThis = this;
-    currentMagnet = undefined;
+    this.currentMagnet = undefined;
     this.status = this.route.snapshot.url[0].path;
     this.getTorrents();
     if (ws === null || ws === undefined) {
@@ -58,7 +58,7 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
       const filePath: string = arg;
       if (_.endsWith(filePath, 'torrent')) {
         tmpThis.messagesService.add('get torrent file from itorrents successfully');
-        currentMagnet = undefined;
+        tmpThis.currentMagnet = undefined;
         this.getFileFromURL(filePath);
       } else {
         tmpThis.messagesService.add('Failed to get torrent file from itorrents');
@@ -177,9 +177,9 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
         }
       } else if (data.MessageType === 1) {
         console.log('Should refresh');
-        // tmpThis.getTorrents();
+        tmpThis.getTorrents();
         tmpThis.messagesService.add('Magnet resolve successfully');
-        location.reload();
+        // location.reload();
       }
     };
     tmpWS.onerror = function(evt: Event) {
@@ -324,14 +324,15 @@ export class LocalDownloadComponent implements OnInit, OnDestroy {
     const torrent = magnetDecode(magnetURL);
     if (torrent.infoHash !== undefined && torrent.infoHash !== '' && torrent.infoHash.length === 40) {
       const infoHash = torrent.infoHash.toUpperCase();
-      if (currentMagnet === undefined) {
-        currentMagnet = magnetURL;
+      if (this.currentMagnet === undefined) {
+        this.currentMagnet = magnetURL;
         alert('Add magnet successfully');
         this.webview.downloadURL(this.getTorrentFromInfoHash(infoHash));
+        const tmpThis = this;
         setTimeout(() => {
-          if (currentMagnet !== undefined) {
-            this.messagesService.add('use engine to resolve magnet');
-            currentMagnet = undefined;
+          if (tmpThis.currentMagnet !== undefined) {
+            this.messagesService.add('use engine to resolve magnet url');
+            tmpThis.currentMagnet = undefined;
             this.sendMagnet(magnetURL);
           } else {
             // console.log('Solve it by itorrents, nothing more');

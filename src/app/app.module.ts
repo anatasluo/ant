@@ -26,6 +26,7 @@ import { AboutComponent } from './components/about/about.component';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/messages/messages.component';
 import { FAQComponent } from './components/faq/faq.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AboutComponent,
     MessagesComponent,
     FAQComponent,
+    SpinnerComponent,
   ],
   imports: [
     NgbModule,

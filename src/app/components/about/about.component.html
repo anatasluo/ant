@@ -13,63 +13,16 @@
           <h2 class="bd-title">About</h2>
           <p>ANT Downloader is a BitTorrent client developed by golang and electron. It almost can run in all platforms.</p>
           <!--<ul class="list">-->
-            <!--<li>It can run in all platforms, including linux, windows, mac.</li>-->
-            <!--<li>It is totally open source and concentrates on supplying best download experience with least system resources.</li>-->
-            <!--<li>It uses services from many other open websites to strengthen user experiences. Including following services</li>-->
-            <!--<ul>-->
-              <!--<li>use itorrents to convert magnet to torrent file.</li>-->
-              <!--<li>automatically update best tracker servers.</li>-->
-              <!--<li>automatically update block list.</li>-->
-            <!--</ul>-->
+          <!--<li>It can run in all platforms, including linux, windows, mac.</li>-->
+          <!--<li>It is totally open source and concentrates on supplying best download experience with least system resources.</li>-->
+          <!--<li>It uses services from many other open websites to strengthen user experiences. Including following services</li>-->
+          <!--<ul>-->
+          <!--<li>use itorrents to convert magnet to torrent file.</li>-->
+          <!--<li>automatically update best tracker servers.</li>-->
+          <!--<li>automatically update block list.</li>-->
+          <!--</ul>-->
           <!--</ul>-->
           <br>
-          <h2 class="bd-title">Developers</h2>
-          <ul class="list-group mb-3">
-            <a class="list-group-item list-group-item-action d-flex align-items-center" (click)="openUrl('https://github.com/anatasluo')">
-              <img src="https://github.com/anatasluo.png" alt="@anatasluo" width="32" height="32" class="rounded mr-2">
-              <span>
-                <strong>Anatas Luo</strong> @anatasluo
-              </span>
-            </a>
-          </ul>
-          <br>
-          <h2 class="bd-title">Special Thanks</h2>
-          <ul class="list-group mb-3">
-            <a class="list-group-item list-group-item-action d-flex align-items-center">
-              <span>
-                <strong>修罗少女 </strong>
-                1041347575@qq.com
-                <span class="badge badge-pill badge-primary">logo designer </span>
-              </span>
-            </a>
-            <a class="list-group-item list-group-item-action d-flex align-items-center">
-              <span>
-                <strong>Mcoder.cc </strong>
-                mcoder2014@gmail.com
-                <span class="badge badge-pill badge-success">supply 3 feedbacks </span>
-              </span>
-            </a>
-            <a class="list-group-item list-group-item-action d-flex align-items-center">
-              <span>
-                <strong>Kai </strong>
-                zhaokai0614@outlook.com
-                <span class="badge badge-pill badge-success">supply 2 feedbacks </span>
-              </span>
-            </a>
-            <a class="list-group-item list-group-item-action d-flex align-items-center">
-              <span>
-                <strong>仗剑走天涯 </strong>
-                w-l18@mails.tsinghua.edu.cn
-                <span class="badge badge-pill badge-success">supply 1 feedback </span>
-              </span>
-            </a>
-          </ul>
-          <br>
-          <h2 class="bd-title">Get involved</h2>
-          <p>Get involved with ant development by <a (click)="openUrl('https://github.com/anatasluo/ant/issues/new')"><strong>opening an issue</strong></a> or submitting a pull request.</p>
-          <p>You can also email luolongjuna@gmail.com your idea and feedback.</p>
-        </div>
-        <div class="col-sm-12 py-md-3 pl-md-5">
           <h2 class="bd-title">Frequently Asked Questions</h2>
           <br>
           <div class="row">
@@ -126,9 +79,70 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="card">
+                  <div class="card-header" (click)="collapseNum = 5">
+                    <h5 class="mb-0">How can I stream video while downloading, or how can i use StearmURL in task detail page?  </h5>
+                  </div>
+                  <div class="collapse show" [ngbCollapse]="collapseNum != 5" data-parent="#accordion">
+                    <div class="card-body">
+                      <p>ANT Downloader's video player simply depends on html5 and it's size can be ignored.
+                        We strongly recommend you to use your own player since almost all video players support the function of "Open Network Stream".
+                        And the "StearmURL" you see in task detail page should be the address you supply for your video player.
+                        If you still questions about usage of this function, you can google about "Open Network Stream"(流媒体播放).</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+          <br>
+          <h2 class="bd-title">Developers</h2>
+          <ul class="list-group mb-3">
+            <a class="list-group-item list-group-item-action d-flex align-items-center" (click)="openUrl('https://github.com/anatasluo')">
+              <img src="https://github.com/anatasluo.png" alt="@anatasluo" width="32" height="32" class="rounded mr-2">
+              <span>
+                <strong>Anatas Luo</strong> @anatasluo
+              </span>
+            </a>
+          </ul>
+          <br>
+          <h2 class="bd-title">Special Thanks</h2>
+          <ul class="list-group mb-3">
+            <a class="list-group-item list-group-item-action d-flex align-items-center">
+              <span>
+                <strong>修罗少女 </strong>
+                1041347575@qq.com
+                <span class="badge badge-pill badge-primary">logo designer </span>
+              </span>
+            </a>
+            <a class="list-group-item list-group-item-action d-flex align-items-center">
+              <span>
+                <strong>Mcoder.cc </strong>
+                mcoder2014@gmail.com
+                <span class="badge badge-pill badge-success">supply 3 feedbacks </span>
+              </span>
+            </a>
+            <a class="list-group-item list-group-item-action d-flex align-items-center">
+              <span>
+                <strong>Kai </strong>
+                zhaokai0614@outlook.com
+                <span class="badge badge-pill badge-success">supply 2 feedbacks </span>
+              </span>
+            </a>
+            <a class="list-group-item list-group-item-action d-flex align-items-center">
+              <span>
+                <strong>仗剑走天涯 </strong>
+                w-l18@mails.tsinghua.edu.cn
+                <span class="badge badge-pill badge-success">supply 1 feedback </span>
+              </span>
+            </a>
+          </ul>
+          <br>
+          <h2 class="bd-title">Get involved</h2>
+          <p>Get involved with ant development by <a (click)="openUrl('https://github.com/anatasluo/ant/issues/new')"><strong>opening an issue</strong></a> or submitting a pull request.</p>
+          <p>You can also email luolongjuna@gmail.com your idea and feedback.</p>
         </div>
       </div>
     </div>

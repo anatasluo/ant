@@ -15,11 +15,10 @@ var gotTheLock = electron_1.app.requestSingleInstanceLock();
 var tray = null;
 var torrentEngine = null;
 var processExit = false;
-var userData = electron_1.app.getPath('userData');
 if (gotTheLock) {
     try {
         // run torrent engine
-        if (!serve) {
+        if (!serve || true) {
             runEngine();
         }
         // This method will be called when Electron has finished
@@ -89,8 +88,8 @@ function exitApp() {
     }
 }
 function runEngine() {
-    console.log('Engine running');
     var systemVersion = os.platform();
+    var userData = electron_1.app.getPath('userData');
     var cmdPath;
     if (systemVersion === 'win32') {
         cmdPath = '/ant_' + aimVersion + '.exe';
@@ -98,13 +97,10 @@ function runEngine() {
     else {
         cmdPath = '/ant_' + aimVersion;
     }
-    // Copy file from app.asar to user data
-    // Do nothing if find needed binary file
-    if (!fs.existsSync(userData + cmdPath)) {
-        console.log('version update');
-        copyFile(electron_1.app.getAppPath() + '/torrent' + cmdPath, userData + cmdPath);
-        copyFile(electron_1.app.getAppPath() + '/torrent' + '/tracker.txt', userData + '/tracker.txt');
-    }
+    // Copy file from app.asar to user data unless find it
+    copyFile(electron_1.app.getAppPath() + '/torrent' + cmdPath, userData + cmdPath);
+    copyFile(electron_1.app.getAppPath() + '/torrent' + '/tracker.txt', userData + '/tracker.txt');
+    copyFile(electron_1.app.getAppPath() + '/torrent' + '/config.toml', userData + '/config.toml');
     // restore broken setting file
     restoreSettingFile(electron_1.app.getAppPath() + '/torrent' + '/config.toml', userData + '/config.toml');
     fs.chmodSync(userData + cmdPath, '0555');
@@ -213,7 +209,10 @@ function createWindow() {
 }
 function restoreSettingFile(src, dst) {
     var srcLines = fs.readFileSync(src).toString().split('\n').length;
-    var dstLines = fs.readFileSync(dst).toString().split('\n').length;
+    var dstLines = 0;
+    if (fs.existsSync(dst) === true) {
+        dstLines = fs.readFileSync(dst).toString().split('\n').length;
+    }
     if (srcLines !== dstLines) {
         console.log('restore broken setting file.');
         fs.writeFileSync(dst, fs.readFileSync(src));

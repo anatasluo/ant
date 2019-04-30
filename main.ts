@@ -18,8 +18,6 @@ let tray: Tray = null;
 let torrentEngine: ChildProcess = null;
 let processExit: Boolean = false;
 
-const userData = app.getPath('userData');
-
 if (gotTheLock) {
     try {
         // run torrent engine
@@ -95,21 +93,18 @@ function exitApp() {
     }
 }
 function runEngine() {
-    console.log('Engine running');
     const systemVersion = os.platform();
+    const userData = app.getPath('userData');
     let cmdPath;
     if (systemVersion === 'win32') {
         cmdPath = '/ant_' + aimVersion + '.exe';
     } else {
         cmdPath = '/ant_' + aimVersion;
     }
-    // Copy file from app.asar to user data
-    // Do nothing if find needed binary file
-    if (!fs.existsSync(userData + cmdPath)) {
-        console.log('version update');
-        copyFile(app.getAppPath() + '/torrent' + cmdPath, userData + cmdPath);
-        copyFile(app.getAppPath() + '/torrent' + '/tracker.txt', userData + '/tracker.txt');
-    }
+    // Copy file from app.asar to user data unless find it
+    copyFile(app.getAppPath() + '/torrent' + cmdPath, userData + cmdPath);
+    copyFile(app.getAppPath() + '/torrent' + '/tracker.txt', userData + '/tracker.txt');
+    copyFile(app.getAppPath() + '/torrent' + '/config.toml', userData + '/config.toml');
 
     // restore broken setting file
     restoreSettingFile(app.getAppPath() + '/torrent' + '/config.toml', userData + '/config.toml');
@@ -230,7 +225,10 @@ function createWindow() {
 }
 function restoreSettingFile(src, dst) {
     const srcLines = fs.readFileSync(src).toString().split('\n').length;
-    const dstLines = fs.readFileSync(dst).toString().split('\n').length;
+    let dstLines = 0;
+    if (fs.existsSync(dst) === true) {
+        dstLines = fs.readFileSync(dst).toString().split('\n').length;
+    }
     if (srcLines !== dstLines) {
         console.log('restore broken setting file.');
         fs.writeFileSync(dst, fs.readFileSync(src));

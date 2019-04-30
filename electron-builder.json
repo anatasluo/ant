@@ -22,19 +22,20 @@
         "!backend/"
     ],
   "win": {
-    "icon": "dist",
+    "icon": "logos/icon.ico",
     "target": [
       "portable"
     ]
   },
   "mac": {
-    "icon": "dist",
+    "icon": "logos",
     "target": [
       "dmg"
     ]
   },
   "linux": {
-    "icon": "dist",
+    "category": "public.app-category.p2p",
+    "icon": "logos",
     "target": [
       "AppImage"
     ]

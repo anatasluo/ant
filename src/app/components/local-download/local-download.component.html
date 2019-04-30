@@ -1,9 +1,14 @@
 <div class="row flex-xl-nowrap">
   <app-navbar class="col-sm-2 nav-set">
   </app-navbar>
-  <div class="col-sm-10 nav-set">
+  <div class="col-sm-10 nav-set wrapper">
+    <div class="overlay" *ngIf="currentMagnet !== undefined">
+      <div class="spinner-wrapper">
+        <app-spinner message="Magnet URL Resolving"></app-spinner>
+      </div>
+    </div>
     <div class="container-fluid">
-      <div class="row nav sticky-top">
+      <div class="row nav sticky-top" *ngIf="currentMagnet === undefined">
         <div class="btn-toolbar col-sm-8 nav-top" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group nav-btn-groups" role="group" aria-label="First group">
             <button type="button" class="btn btn-light" title="Open Torrent" onclick="upFile.click()"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></button>
