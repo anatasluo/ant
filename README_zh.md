@@ -4,7 +4,7 @@
 ## ANT Downloader
 
 [![Build Status](https://travis-ci.com/anatasluo/ant.svg?branch=master)](https://travis-ci.com/anatasluo/ant)
-[![Stable Version](https://img.shields.io/badge/version-1.3.2-blueviolet.svg)](https://img.shields.io/badge/version-1.1.0-blueviolet.svg)
+[![Stable Version](https://img.shields.io/badge/version-1.3.6-blueviolet.svg)](https://img.shields.io/badge/version-1.1.0-blueviolet.svg)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
 ### [English](README.md) | [中文](README_zh.md)
@@ -18,7 +18,6 @@
 - 一个界面简洁美观的下载器
 - 一个资源占用低，开箱即用的下载器
 - 一个功能丰富的下载器，边放边播，种子检索应有尽有
-- 一个将全部精力投入到种子下载体验中的下载器
 - ANT 集成了很多公用的种子服务，来提供更好的体验，包括
   - [itorrents](https://itorrents.org/)
   - [trackerslist](https://github.com/ngosang/trackerslist)
@@ -28,7 +27,7 @@
 ## 新版本将会考虑的特性:
 - [ ] 下载或者缓存特地文件 (目前版本会下载全部文件，并且只缓存一个任务中体积最大的文件)
 - [ ] 支持不同的UI主题
-- [ ] 支持更多的下载方式，包括baiduyun, webTorrent
+- [ ] 支持更多的下载方式，包括ed2k, webTorrent
 - [ ] 远程控制ANT下载器
 
 ## TODO List
@@ -77,4 +76,3 @@ npm run electron:mac
 
 # 联系我
 你可以发邮件到 luolongjuna@gmail.com
-或者微信ID: luolongjuna

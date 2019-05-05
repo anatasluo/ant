@@ -4,7 +4,7 @@
 ## ANT Downloader
 
 [![Build Status](https://travis-ci.com/anatasluo/ant.svg?branch=master)](https://travis-ci.com/anatasluo/ant)
-[![Stable Version](https://img.shields.io/badge/version-1.3.2-blueviolet.svg)](https://img.shields.io/badge/version-1.1.0-blueviolet.svg)
+[![Stable Version](https://img.shields.io/badge/version-1.3.6-blueviolet.svg)](https://img.shields.io/badge/version-1.1.0-blueviolet.svg)
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
 ### [English](README.md) | [中文](README_zh.md)
@@ -17,8 +17,7 @@ If you like this application, please consider give a star for this project.
 - a BitTorrent client for all platforms
 - a BitTorrent client with beautiful UI
 - a BitTorrent client with low resource occupancy.
-- a BitTorrent client with rich set of functions like steaming video while downloading
-- a BitTorrent client which only concentrates on resource download
+- a BitTorrent client with rich set of functions like playing video while downloading
 - ANT uses many public torrent services to supply better user experience like
   - [itorrents](https://itorrents.org/)
   - [trackerslist](https://github.com/ngosang/trackerslist)
@@ -28,7 +27,7 @@ If you like this application, please consider give a star for this project.
 ## Considering features in following version:
 - [ ] Download and steam selected file (Current version will download all files in one torrent and only steam the biggest file.)
 - [ ] Support different UI themes
-- [ ] Support more download methods like baiduyun, webTorrent
+- [ ] Support more download methods like ed2k, webTorrent
 - [ ] Control ANT Downloader from remote machine.
 
 ## TODO List
@@ -43,7 +42,7 @@ If you like this application, please consider give a star for this project.
 ![](./src/assets/READEME/task.gif)
 --------------
 
-+ ### Steaming video while downloading
++ ### Playing video while downloading
 ![](./src/assets/READEME/steaming.png)
 --------------
 
