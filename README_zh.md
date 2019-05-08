@@ -9,19 +9,21 @@
 
 ### [English](README.md) | [中文](README_zh.md)
 
-> ANT Downloader(蚂蚁下载器) 是一个由go语言， angular7 和 electron开发的BitTorrent下载客户端。 ANT Downloader致力于利用最少的系统资源， 提供最佳的种子下载体验。
+> ANT Downloader(蚂蚁下载器) 是一个由go语言， angular7 和 electron开发的BitTorrent客户端。 ANT Downloader致力于设计一个轻便，功能丰富，易于使用，外观现代的BitTorrent客户端。
 
 如果你喜欢这个应用，请考虑给项目一颗star.
 
 ## 为什么你应该考虑使用 ANT Downloader:
 - 一个面向全平台的下载器
-- 一个界面简洁美观的下载器
-- 一个资源占用低，开箱即用的下载器
-- 一个功能丰富的下载器，边放边播，种子检索应有尽有
-- ANT 集成了很多公用的种子服务，来提供更好的体验，包括
-  - [itorrents](https://itorrents.org/)
-  - [trackerslist](https://github.com/ngosang/trackerslist)
-  - [thepiratebay](https://www.thepiratebay.org/)
+- 一个界面简洁现代的下载器
+- 一个资源占用低，开箱即用的下载器，整个windows安装包不过40M左右。=
+- 一个功能丰富的下载器
+  - 支持IPV4和IPV6设置
+  - 支持种子文件和磁力链接
+  - 支持边放边播
+- 一个易于使用的下载器，ANT Downloader将会自动寻找一个BitTorrent客户端所需要的大部分配置，包括
+  - 借助[itorrents](https://itorrents.org/)缩短解析磁力链接的时间
+  - 从[trackerslist](https://github.com/ngosang/trackerslist)更新最佳的Tracker服务器列表
   - ...
 
 ## 新版本将会考虑的特性:

@@ -9,19 +9,21 @@
 
 ### [English](README.md) | [中文](README_zh.md)
 
-> ANT Downloader is a BitTorrent Client developed by golang, angular 7, and electron. ANT focuses on supplying best user experience for torrent resource download with least system resource.  
+> ANT Downloader is a BitTorrent Client developed by golang, angular 7, and electron. ANT aims to be a lightweight, feature-rich, easy-to-use and nice-looking client.
 
 If you like this application, please consider give a star for this project.
 
 ## Why you should consider ANT Downloader:
 - a BitTorrent client for all platforms
-- a BitTorrent client with beautiful UI
-- a BitTorrent client with low resource occupancy.
-- a BitTorrent client with rich set of functions like playing video while downloading
-- ANT uses many public torrent services to supply better user experience like
-  - [itorrents](https://itorrents.org/)
-  - [trackerslist](https://github.com/ngosang/trackerslist)
-  - [thepiratebay](https://www.thepiratebay.org/)
+- a BitTorrent client with aesthetic appearance
+- a BitTorrent client with low resource occupancy, total size of installation package for windows is only about 40M.
+- a BitTorrent client with rich set of functions including:
+    - support for IPV4 and IPV6 settings
+    - support for torrent file and magnet link
+    - support for playing video while downloading
+- a easy-to-use BitTorrent client. ANT Downloader will take care of most settings needed for a BitTorrent client, including:
+  - Reduce time to analyse magnet link by using [itorrents](https://itorrents.org/)
+  - Update best tracker servers from [trackerslist](https://github.com/ngosang/trackerslist)
   - ...
 
 ## Considering features in following version:
