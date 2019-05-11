@@ -13,7 +13,7 @@
 
 If you like this application, please consider give a star for this project.
 
-## Why you should consider ANT Downloader:
+## Why should you consider ANT Downloader:
 - a BitTorrent client for all platforms
 - a BitTorrent client with aesthetic appearance
 - a BitTorrent client with low resource occupancy, total size of installation package for windows is only about 40M.
