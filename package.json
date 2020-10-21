@@ -63,7 +63,7 @@
     "codelyzer": "4.5.0",
     "conventional-changelog-cli": "2.0.11",
     "core-js": "2.6.1",
-    "electron": "9.1.0",
+    "electron": "10.1.3",
     "electron-builder": "20.36.2",
     "electron-reload": "1.3.0",
     "jasmine-core": "3.3.0",
